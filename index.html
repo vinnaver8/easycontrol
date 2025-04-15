@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ghibli Image Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+    img {
+      max-width: 300px;
+      margin: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+    .spinner {
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ghibli Style Image Generator</h1>
+
+  <input type="file" id="imageInput" accept="image/*"><br><br>
+  <button onclick="uploadImage()">Generate</button>
+
+  <div id="preview">
+    <h3>Original Image:</h3>
+    <img id="originalImage" src="#" alt="Preview" style="display: none;">
+  </div>
+
+  <div class="spinner" id="spinner">Processing...</div>
+
+  <div id="result">
+    <h3>Generated Image:</h3>
+    <img id="generatedImage" src="#" alt="Result" style="display: none;">
+  </div>
+
+  <script>
+    const apiUrl = "https://vinnaver8-backend-api.hf.space/generate"; // Update if changed
+
+    function uploadImage() {
+      const fileInput = document.getElementById('imageInput');
+      const file = fileInput.files[0];
+      if (!file) return alert("Please choose an image");
+
+      // Show preview
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.getElementById('originalImage');
+        img.src = e.target.result;
+        img.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+
+      // Prepare form data
+      const formData = new FormData();
+      formData.append("file", file);
+
+      // Show spinner
+      document.getElementById("spinner").style.display = "block";
+
+      // Send POST request
+      fetch(apiUrl, {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("spinner").style.display = "none";
+        if (data.output_url) {
+          const img = document.getElementById("generatedImage");
+          img.src = data.output_url;
+          img.style.display = "block";
+        } else {
+          alert("Error: " + (data.error || "Something went wrong"));
+        }
+      })
+      .catch(err => {
+        document.getElementById("spinner").style.display = "none";
+        alert("Error: " + err.message);
+      });
+    }
+  </script>
+</body>
+</html>
