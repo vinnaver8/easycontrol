@@ -1,0 +1,11 @@
+@keyframes scroll-left {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      .animate-scroll-left_40s_linear_infinite {
+        animation: scroll-left 40s linear infinite;
+      }
