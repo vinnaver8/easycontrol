@@ -46,11 +46,19 @@
 <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path></svg></button>
 </div></form></div></div></div></div></div></div></di
 <!-- SCROLLING TICKER CONTAINER -->
-<div class="absolute bottom-[88px] z-30 overflow-hidden text-14 tracking-snugger lg:bottom-14 md:bottom-12 md:text-13 sm:bottom-9 sm:left-5 sm:right-0 sm:text-12 xs:left-0 xs:before:absolute xs:before:bottom-0 xs:before:left-0 xs:before:z-10 xs:before:h-5 xs:before:w-[90px] xs:before:bg-[linear-gradient(90deg,#090A0C_28.3%,rgba(9,10,12,0)_100%)] xs:after:absolute xs:after:bottom-0 xs:after:right-0 xs:after:z-10 xs:after:h-5 xs:after:w-[90px] xs:after:bg-[linear-gradient(270deg,#090A0C_28.3%,rgba(9,10,12,0)_100%)]">
-  <p class="mb-3.5 font-light leading-none text-white/60 will-change-transform md:mb-3 xs:pl-5">Explore our AI tools:</p>
-  <div class="overflow-hidden w-full bg-black text-white py-2">
-    <div class="scroll-loop">
-      <ul class="flex gap-4">
+<div class="absolute bottom-[88px] z-30 w-full text-14 tracking-snugger lg:bottom-14 md:bottom-12 sm:bottom-9 sm:left-0 sm:text-12">
+  <!-- Top label -->
+  <p class="mb-3.5 font-light leading-none text-white/60 md:mb-3 px-5">Explore our AI tools:</p>
+
+  <!-- SCROLLING TOOL LIST -->
+  <div class="relative w-full overflow-hidden bg-black text-white py-2 px-5">
+    <!-- Gradient edges -->
+    <div class="absolute top-0 left-0 h-full w-20 z-10 bg-gradient-to-r from-black to-transparent pointer-events-none"></div>
+    <div class="absolute top-0 right-0 h-full w-20 z-10 bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
+
+    <!-- Animated list (looped twice for seamless scroll) -->
+    <div class="flex w-max animate-scroll gap-10 whitespace-nowrap">
+      <ul class="flex gap-10">
         <li>Resume Forge</li>
         <li>Image Spark</li>
         <li>Code Whisper</li>
@@ -67,7 +75,8 @@
         <li>Word Synth</li>
         <li>Think Lens</li>
       </ul>
-      <ul class="flex gap-4">
+      <ul class="flex gap-10">
+        <!-- Duplicate for looping -->
         <li>Resume Forge</li>
         <li>Image Spark</li>
         <li>Code Whisper</li>
@@ -86,13 +95,25 @@
       </ul>
     </div>
   </div>
+
+  <!-- RED ARROW ICON -->
+  <div class="relative w-full flex justify-end items-end p-6">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" class="w-8 h-8">
+      <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>
+    </svg>
+  </div>
 </div>
-<!-- RED ARROW ICON -->
-<div class="absolute bottom-5 right-4 z-40">
-  <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" class="w-8 h-8">
-    <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>
-  </svg>
-</div>
+
+<!-- Tailwind custom animation -->
+<style>
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-scroll {
+    animation: scroll-left 30s linear infinite;
+  }
+</style>
 <div class="flex flex-col items-end gap-6 sm:gap-8 lg:gap-12 md:flex-row">
 <div class="flex flex-col gap-3 sm:flex-row">
 </div></div></div></div></div></div>
