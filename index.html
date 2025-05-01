@@ -45,24 +45,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="!size-4">
 <path fill-rule="evenodd" d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd"></path></svg></button>
 </div></form></div></div></div></div></div></div></di
-<!-- Marquee Container -->
-<div class="relative overflow-hidden py-3 bg-transparent">
-  <div class="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black to-transparent z-10"></div>
+<!-- Flex container for marquee and arrow -->
+<div class="relative flex items-center justify-between overflow-hidden bg-transparent py-3">
 
-  <!-- Scrolling Row -->
-  <div class="animate-marquee whitespace-nowrap flex gap-10 px-6 text-white/60 min-w-max">
-    <span>Resume Forge</span>
-    <span>Image Spark</span>
-    <span>Code Whisper</span>
-    <span>Voice Note</span>
-    <span>Text Flow</span>
-    <span>Idea Bloom</span>
-    <span>Prompt Lab</span>
-    <span>Photo Fix</span>
-    <span>Draft Mate</span>
-    <span>Logic Bot</span>
-    <svg xmlns="http://www.w3.org/2000/svg" fill="rgba(255,0,0,0.6)" viewBox="0 0 24 24" class="w-5 h-5">
-      <path d="M12 21l-8-9h6V3h4v9h6z"/>
+  <!-- Left fade -->
+  <div class="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-black to-transparent pointer-events-none"></div>
+
+  <!-- Right fade -->
+  <div class="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-black to-transparent pointer-events-none"></div>
+
+  <!-- Scroll area -->
+  <div class="flex overflow-hidden w-full whitespace-nowrap animate-scroll">
+    <div class="flex gap-10 text-white/60">
+      <!-- Duplicate items for seamless scroll -->
+      <span>Resume Forge</span>
+      <span>Image Spark</span>
+      <span>Code Whisper</span>
+      <span>Voice Note</span>
+      <span>Text Flow</span>
+      <span>Idea Bloom</span>
+      <span>Prompt Lab</span>
+      <span>Photo Fix</span>
+      <span>Draft Mate</span>
+      <span>Logic Bot</span>
+      <span>Task Pilot</span>
+      <span>Art Pulse</span>
+      <span>Script Sync</span>
+      <span>Word Synth</span>
+      <span>Think Lens</span>
+<!-- Repeat -->
+      <span>Resume Forge</span>
+      <span>Image Spark</span>
+      <span>Code Whisper</span>
+      <span>Voice Note</span>
+      <span>Text Flow</span>
+      <span>Idea Bloom</span>
+      <span>Prompt Lab</span>
+      <span>Photo Fix</span>
+      <span>Draft Mate</span>
+      <span>Logic Bot</span>
+      <span>Task Pilot</span>
+      <span>Art Pulse</span>
+      <span>Script Sync</span>
+      <span>Word Synth</span>
+      <span>Think Lens</span>
+    </div>
+  </div>
+ <!-- Red arrow -->
+  <div class="pl-2 pr-2 z-20 shrink-0 flex items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="rgba(255, 0, 0, 0.6)" viewBox="0 0 24 24" class="w-5 h-5">
+      <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>
     </svg>
   </div>
 </div>
