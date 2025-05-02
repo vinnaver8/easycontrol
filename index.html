@@ -1,175 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>INDOX Reveal Final</title>
-  <style>
-    body {
-      background: #111;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    svg {
-      cursor: pointer;
-    }
-
-    .hidden-group > g, .typing-group {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .visible {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-
-    .typing-line {
-      fill: white;
-      font-size: 12px;
-      font-family: sans-serif;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>INDOX Reveal</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <svg id="indox-svg" width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="598" height="398" rx="12" ry="12" fill="black" stroke="#ffffff" stroke-width="1"/>
+    <line x1="1" y1="40" x2="599" y2="40" stroke="#ffffff" stroke-width="1"/>
+    <line x1="120" y1="40" x2="120" y2="400" stroke="white" stroke-width="1"/>
+    <circle cx="20" cy="20" r="6" fill="#FF5F57"/>
+    <circle cx="40" cy="20" r="6" fill="#FFBD2E"/>
+    <circle cx="60" cy="20" r="6" fill="#28C840"/>
+    <rect x="490" y="12" width="60" height="15" rx="7.5" fill="none" stroke="#ffffff" stroke-width="1"/>
+    <circle cx="570" cy="20" r="10" stroke="white" fill="none" stroke-width="1"/>
+    <text x="480" y="25" fill="#ffffff" font-family="sans-serif" font-size="18" text-anchor="end">INDOX</text>
 
-<svg id="indox-svg" width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outer window -->
-  <rect x="1" y="1" width="598" height="398" rx="12" ry="12" fill="black" stroke="#ffffff" stroke-width="1"/>
-  <line x1="1" y1="40" x2="599" y2="40" stroke="#ffffff" stroke-width="1"/>
-  <line x1="120" y1="40" x2="120" y2="400" stroke="white" stroke-width="1"/>
-
-  <!-- Traffic light buttons -->
-  <circle cx="20" cy="20" r="6" fill="#FF5F57"/>
-  <circle cx="40" cy="20" r="6" fill="#FFBD2E"/>
-  <circle cx="60" cy="20" r="6" fill="#28C840"/>
-
-  <!-- Top right pill and circle -->
-  <rect x="490" y="12" width="60" height="15" rx="7.5" fill="none" stroke="#ffffff" stroke-width="1"/>
-  <circle cx="570" cy="20" r="10" stroke="white" fill="none" stroke-width="1"/>
-
-  <!-- INDOX text -->
-  <text x="480" y="25" fill="#ffffff" font-family="sans-serif" font-size="18" text-anchor="end">INDOX</text>
-
-  <!-- REVEAL GROUP -->
-  <g id="reveal-sequence" class="hidden-group">
-    <!-- 1. Today + Image Creation -->
-    <g id="step1">
-      <text x="15" y="65" fill="white" font-size="12" font-weight="bold">Today</text>
-      <rect x="10" y="75" width="100" height="25" rx="5" fill="#2C2C2C"/>
-      <text x="17" y="92" fill="white" font-size="12">Image Creation</text>
+    <g id="reveal-sequence" class="hidden-group">
+      <g id="step1">
+        <text x="15" y="65" fill="white" font-size="12" font-weight="bold">Today</text>
+        <rect x="10" y="75" width="100" height="25" rx="5" fill="#2C2C2C"/>
+        <text x="17" y="92" fill="white" font-size="12">Image Creation</text>
+      </g>
+      <g id="step2">
+        <text x="15" y="125" fill="white" font-size="12" font-weight="bold">Yesterday</text>
+        <rect x="10" y="135" width="100" height="25" rx="5" fill="#2C2C2C"/>
+        <text x="17" y="152" fill="white" font-size="12">Resume making</text>
+      </g>
+      <g id="step3">
+        <rect x="330" y="180" width="230" height="30" rx="10" fill="#444"/>
+        <text x="340" y="200" fill="white" font-size="12">What is the AI Toolkit?</text>
+      </g>
+      <g id="step4">
+        <rect x="140" y="220" width="350" height="90" rx="10" fill="#2E2E2E"/>
+        <text id="typing-container" x="150" y="240" class="typing-line"></text>
+      </g>
+      <g id="step5">
+        <rect x="140" y="340" width="320" height="25" rx="12" fill="none" stroke="white" stroke-width="1"/>
+        <text x="150" y="356" fill="#888" font-size="12">Ask anything, Indox...</text>
+        <path transform="translate(440, 344) scale(0.6)" fill="red" d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z"/>
+      </g>
     </g>
-
-    <!-- 2. Yesterday + Resume -->
-    <g id="step2">
-      <text x="15" y="125" fill="white" font-size="12" font-weight="bold">Yesterday</text>
-      <rect x="10" y="135" width="100" height="25" rx="5" fill="#2C2C2C"/>
-      <text x="17" y="152" fill="white" font-size="12">Resume making</text>
-    </g>
-
-    <!-- 3. User message -->
-    <g id="step3">
-      <rect x="330" y="180" width="230" height="30" rx="10" fill="#444"/>
-      <text x="340" y="200" fill="white" font-size="12">What is the AI Toolkit?</text>
-    </g>
-
-    <!-- 4. AI message with typing -->
-    <g id="step4">
-      <rect x="140" y="220" width="350" height="90" rx="10" fill="#2E2E2E"/>
-      <text id="typing-container" x="150" y="240" class="typing-line"></text>
-    </g>
-
-    <!-- 5. Input box -->
-    <g id="step5">
-      <rect x="140" y="340" width="320" height="25" rx="12" fill="none" stroke="white" stroke-width="1"/>
-      <text x="150" y="356" fill="#888" font-size="12">Ask anything, Indox...</text>
-      <path transform="translate(440, 344) scale(0.6)" fill="red"
-        d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z"/>
-    </g>
-  </g>
-</svg>
-
-<script>
-  const svg = document.getElementById('indox-svg');
-  const steps = [
-    document.getElementById('step1'),
-    document.getElementById('step2'),
-    document.getElementById('step3'),
-    document.getElementById('step4'),
-    document.getElementById('step5'),
-  ];
-  const typingContainer = document.getElementById('typing-container');
-  const messageLines = [
-    "The AI Toolkit is a collection",
-    "of advanced tools and frameworks",
-    "to build and deploy AI apps easily."
-  ];
-
-  let animating = false;
-
-  svg.addEventListener('click', () => {
-    if (animating) {
-      // Reset all
-      steps.forEach(step => step.classList.remove('visible'));
-      typingContainer.innerHTML = '';
-      animating = false;
-      return;
-    }
-
-    animating = true;
-
-    // Show steps one by one
-    steps.forEach((step, index) => {
-      setTimeout(() => {
-        step.classList.add('visible');
-        if (index === 3) typeAIText();
-      }, index * 800);
-    });
-  });
-
-  function typeAIText() {
-    typingContainer.innerHTML = ''; // clear
-    let lineIndex = 0;
-    let charIndex = 0;
-    let currentLine = '';
-    const typingSpeed = 25;
-
-    function typeChar() {
-      if (lineIndex >= messageLines.length) return;
-
-      currentLine += messageLines[lineIndex][charIndex];
-      updateLine(currentLine, lineIndex);
-
-      charIndex++;
-
-      if (charIndex >= messageLines[lineIndex].length) {
-        lineIndex++;
-        charIndex = 0;
-        currentLine = '';
-        setTimeout(typeChar, typingSpeed * 4); // pause between lines
-      } else {
-        setTimeout(typeChar, typingSpeed);
-      }
-    }
-
-    function updateLine(text, index) {
-      let tspans = typingContainer.querySelectorAll('tspan');
-      if (!tspans[index]) {
-        let tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-        tspan.setAttribute("x", 150);
-        tspan.setAttribute("dy", index === 0 ? 0 : "1.3em");
-        typingContainer.appendChild(tspan);
-      }
-      typingContainer.querySelectorAll('tspan')[index].textContent = text;
-    }
-
-    typeChar();
-  }
-</script>
-
+  </svg>
+  <script src="script.js"></script>
 </body>
 </html>
