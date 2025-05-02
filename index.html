@@ -50,9 +50,9 @@
 </div></form></div></div></div></div></div></div></div>
 <!-- Bottom AI message section -->
 <div class="relative w-full flex justify-end items-end p-4">
-<div class="w-14 h-14 border-2 border-white rounded-full flex items-center justify-center">
-<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="w-8 h-8">
-<path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd"/>
+<div class="w-14 h-14 border-2 border-black rounded-full flex items-center justify-center">
+<svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" class="w-8 h-8">
+<path fill-rule="evenodd"d="M12 15a1 1 0 0 1-.707-.293l-3-3a1 1 0 0 1 1.414-1.414L12 12.586l2.293-2.293a1 1 0 0 1 1.414 1.414l-3 3A1 1 0 0 1 12 15z" clip-rule="evenodd"/>
 </svg></div></div>
 <div class="flex flex-col items-end gap-6 sm:gap-8 lg:gap-12 md:flex-row">
 <!-- INDOX Section -->
@@ -102,24 +102,13 @@
 <div class="absolute inset-0 -inset-x-8 flex justify-center items-center group-hover:opacity-100 opacity-0 duration-100">
 <canvas style="width:100%;height:auto" width="416" height="150"></canvas></div>
 <!-- Skewed SVG PC Window -->
-<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-  <!-- Outer window -->
-  <rect x="1" y="1" width="598" height="398" rx="12" ry="12" fill="black" stroke="#ffffff" stroke-width="1"/>
-
-  <!-- Top bar line -->
-  <line x1="1" y1="40" x2="599" y2="40" stroke="#ffffff" stroke-width="1"/>
-
-  <!-- Left sidebar line -->
-  <line x1="60" y1="40" x2="60" y2="399" stroke="#ffffff" stroke-width="1"/>
-
-  <!-- Traffic light buttons -->
-  <circle cx="20" cy="20" r="6" fill="#ff5f56"/>
-  <circle cx="40" cy="20" r="6" fill="#ffbd2e"/>
-  <circle cx="60" cy="20" r="6" fill="#27c93f"/>
-  <rect x="490" y="12" width="60" height="15" rx="7.5" ry="7.5" fill="none" stroke="#ffffff" stroke-width="1"/>
-  <circle cx="570" cy="20" r="10" fill="none" stroke="#ffffff" stroke-width<text x="480" y="25" fill="#ffffff" font-family="sans-serif" font-size="18" text-anchor="end">INDOX</text>
-</svg>
-</div></div>
+<svg class="w-full h-full opacity-40 group-hover:opacity-70 group-hover:skew-y-[12deg] group-hover:scale-75 transition duration-300 origin-center z-10 relative" viewBox="0 0 488 382" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="2.2" y="1.6" width="484.3" height="415.4" stroke="white" />
+<text x="16" y="30" fill="#FFD700" font-size="20" font-family="Arial, sans-serif" font-weight="bold">INDOX</text>
+<rect x="406" y="14.8" width="45" height="15" rx="4.5" stroke="white" />
+<circle cx="467.5" cy="22.3" r="7.5" stroke="white" />
+<line x1="88" y1="42" x2="88" y2="418" stroke="white" />
+<line x1="486.5" y1="42.5" x2="2.2" y2="42.5" stroke="white" /></svg></div></div>
 <div class="flex items-center justify-center">
 <button type="button" class="relative isolate inline-flex items-center justify-center border text-base/6 uppercase font-mono tracking-widest shrink-0 focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-blue-500 data-[disabled]:opacity-50 [&>[data-slot=icon]]:-mx-0.5 [&>[data-slot=icon]]:my-0.5 [&>[data-slot=icon]]:shrink-0 [&>[data-slot=icon]]:sm:my-1 px-3.5 py-1.5 sm:text-sm [&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:sm:size-3 gap-x-2 bg-[--btn-bg] text-[--btn-text] border-[--btn-border] hover:bg-[--btn-hover] rounded-full [--btn-bg:transparent] [--btn-border:theme(colors.primary/25%)] [--btn-text:theme(colors.primary)] [--btn-hover:theme(colors.secondary/20%)] group-hover:bg-[--btn-hover] pointer-events-none">
 <span class="absolute left-1/2 top-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden" aria-hidden="true"></span>Build now
