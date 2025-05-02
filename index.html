@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>INDOX Reveal</title>
+  <title>INDOX Reveal Final</title>
   <style>
     body {
       background: #111;
@@ -28,11 +28,10 @@
       transform: translateY(0) !important;
     }
 
-    .typing-text {
+    .typing-line {
       fill: white;
       font-size: 12px;
       font-family: sans-serif;
-      white-space: pre;
     }
   </style>
 </head>
@@ -58,7 +57,6 @@
 
   <!-- REVEAL GROUP -->
   <g id="reveal-sequence" class="hidden-group">
-
     <!-- 1. Today + Image Creation -->
     <g id="step1">
       <text x="15" y="65" fill="white" font-size="12" font-weight="bold">Today</text>
@@ -82,7 +80,7 @@
     <!-- 4. AI message with typing -->
     <g id="step4">
       <rect x="140" y="220" width="350" height="90" rx="10" fill="#2E2E2E"/>
-      <text id="typing-text" x="150" y="240" class="typing-text"></text>
+      <text id="typing-container" x="150" y="240" class="typing-line"></text>
     </g>
 
     <!-- 5. Input box -->
@@ -92,7 +90,6 @@
       <path transform="translate(440, 344) scale(0.6)" fill="red"
         d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z"/>
     </g>
-
   </g>
 </svg>
 
@@ -105,19 +102,25 @@
     document.getElementById('step4'),
     document.getElementById('step5'),
   ];
-  const typingText = document.getElementById('typing-text');
+  const typingContainer = document.getElementById('typing-container');
   const messageLines = [
-    "The AI Toolkit is a collection of advanced tools",
-    "and frameworks designed to facilitate the",
-    "development and deployment of artificial",
-    "intelligence models and applications."
+    "The AI Toolkit is a collection",
+    "of advanced tools and frameworks",
+    "to build and deploy AI apps easily."
   ];
 
-  let clicked = false;
+  let animating = false;
 
   svg.addEventListener('click', () => {
-    if (clicked) return;
-    clicked = true;
+    if (animating) {
+      // Reset all
+      steps.forEach(step => step.classList.remove('visible'));
+      typingContainer.innerHTML = '';
+      animating = false;
+      return;
+    }
+
+    animating = true;
 
     // Show steps one by one
     steps.forEach((step, index) => {
@@ -129,20 +132,42 @@
   });
 
   function typeAIText() {
-    let fullText = messageLines.join('\n');
-    let currentText = '';
-    let i = 0;
-    const speed = 25;
+    typingContainer.innerHTML = ''; // clear
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLine = '';
+    const typingSpeed = 25;
 
-    function type() {
-      if (i < fullText.length) {
-        currentText += fullText[i] === '\n' ? '\n' : fullText[i];
-        typingText.textContent = currentText;
-        i++;
-        setTimeout(type, speed);
+    function typeChar() {
+      if (lineIndex >= messageLines.length) return;
+
+      currentLine += messageLines[lineIndex][charIndex];
+      updateLine(currentLine, lineIndex);
+
+      charIndex++;
+
+      if (charIndex >= messageLines[lineIndex].length) {
+        lineIndex++;
+        charIndex = 0;
+        currentLine = '';
+        setTimeout(typeChar, typingSpeed * 4); // pause between lines
+      } else {
+        setTimeout(typeChar, typingSpeed);
       }
     }
-    type();
+
+    function updateLine(text, index) {
+      let tspans = typingContainer.querySelectorAll('tspan');
+      if (!tspans[index]) {
+        let tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        tspan.setAttribute("x", 150);
+        tspan.setAttribute("dy", index === 0 ? 0 : "1.3em");
+        typingContainer.appendChild(tspan);
+      }
+      typingContainer.querySelectorAll('tspan')[index].textContent = text;
+    }
+
+    typeChar();
   }
 </script>
 
