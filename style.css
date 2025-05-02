@@ -1,0 +1,29 @@
+body {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.hidden-group > g, .typing-group {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.typing-line {
+  fill: white;
+  font-size: 12px;
+  font-family: sans-serif;
+}
