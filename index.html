@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INDOX AI Browser Animation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen">
+
+  <!-- Interactive SVG Section -->
+  <div id="svgWrapper" class="flex-1 max-w-4xl flex flex-col group cursor-pointer p-4">
+
+    <!-- First SVG: Idle Window -->
+    <div id="idleWindow" class="opacity-75 flex-1 pointer-events-auto transition duration-300">
+      <div class="relative">
+        <div class="absolute inset-0 -inset-x-8 flex justify-center items-center group-hover:opacity-100 opacity-0 duration-100">
+          <canvas style="width:100%;height:auto" width="416" height="150"></canvas>
+        </div>
+        <!-- Skewed Window -->
+        <svg class="w-full h-full opacity-40 group-hover:opacity-70 group-hover:skew-y-[12deg] group-hover:scale-75 transition duration-300 origin-center z-10 relative"
+          viewBox="0 0 488 382" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2.2" y="1.6" width="484.3" height="415.4" stroke="white" />
+          <text x="16" y="30" fill="#FFD700" font-size="20" font-family="Arial, sans-serif" font-weight="bold">INDOX</text>
+          <rect x="406" y="14.8" width="45" height="15" rx="4.5" stroke="white" />
+          <circle cx="467.5" cy="22.3" r="7.5" stroke="white" />
+          <line x1="88" y1="42" x2="88" y2="418" stroke="white" />
+          <line x1="486.5" y1="42.5" x2="2.2" y2="42.5" stroke="white" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Second SVG: Expanded Window with Content -->
+    <div id="expandedWindow" class="hidden flex-1 transition duration-500 ease-in-out">
+      <svg class="w-full h-full scale-95 opacity-80 transition duration-500"
+        viewBox="0 0 488 382" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2.2" y="1.6" width="484.3" height="415.4" stroke="white" />
+        <text x="16" y="30" fill="#FFD700" font-size="20" font-family="Arial, sans-serif" font-weight="bold">INDOX Chat</text>
+        <rect x="406" y="14.8" width="45" height="15" rx="4.5" stroke="white" />
+        <circle cx="467.5" cy="22.3" r="7.5" stroke="white" />
+        <line x1="88" y1="42" x2="88" y2="418" stroke="white" />
+        <line x1="486.5" y1="42.5" x2="2.2" y2="42.5" stroke="white" />
+
+        <!-- Content Area -->
+        <text x="100" y="100" fill="white" font-size="16">👩‍💻 Hello, how can INDOX help?</text>
+        <text x="100" y="140" fill="white" font-size="16">🤖 You can access our AI APIs here.</text>
+        <text x="100" y="180" fill="white" font-size="16">✨ Build next-gen apps in minutes!</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- JS for toggle -->
+  <script>
+    const wrapper = document.getElementById("svgWrapper");
+    const idle = document.getElementById("idleWindow");
+    const expanded = document.getElementById("expandedWindow");
+    let isExpanded = false;
+
+    wrapper.addEventListener("click", () => {
+      isExpanded = !isExpanded;
+      idle.classList.toggle("hidden", isExpanded);
+      expanded.classList.toggle("hidden", !isExpanded);
+    });
+  </script>
+
+</body>
+</html>
