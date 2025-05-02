@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>INDOX SVG Reveal</title>
+  <meta charset="UTF-8">
+  <title>INDOX Reveal</title>
   <style>
     body {
       background: #111;
@@ -17,19 +17,22 @@
       cursor: pointer;
     }
 
-    /* Hidden state */
-    .hidden-group {
+    .hidden-group > g, .typing-group {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(10px);
       transition: opacity 0.6s ease, transform 0.6s ease;
-      pointer-events: none;
     }
 
-    /* Visible state with smooth entrance */
     .visible {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    .typing-text {
+      fill: white;
+      font-size: 12px;
+      font-family: sans-serif;
+      white-space: pre;
     }
   </style>
 </head>
@@ -40,58 +43,107 @@
   <rect x="1" y="1" width="598" height="398" rx="12" ry="12" fill="black" stroke="#ffffff" stroke-width="1"/>
   <line x1="1" y1="40" x2="599" y2="40" stroke="#ffffff" stroke-width="1"/>
   <line x1="120" y1="40" x2="120" y2="400" stroke="white" stroke-width="1"/>
-  
+
   <!-- Traffic light buttons -->
   <circle cx="20" cy="20" r="6" fill="#FF5F57"/>
   <circle cx="40" cy="20" r="6" fill="#FFBD2E"/>
   <circle cx="60" cy="20" r="6" fill="#28C840"/>
-  
+
   <!-- Top right pill and circle -->
-  <rect x="490" y="12" width="60" height="15" rx="7.5" ry="7.5" fill="none" stroke="#ffffff" stroke-width="1"/>
+  <rect x="490" y="12" width="60" height="15" rx="7.5" fill="none" stroke="#ffffff" stroke-width="1"/>
   <circle cx="570" cy="20" r="10" stroke="white" fill="none" stroke-width="1"/>
-  
+
   <!-- INDOX text -->
   <text x="480" y="25" fill="#ffffff" font-family="sans-serif" font-size="18" text-anchor="end">INDOX</text>
-  
-  <!-- Hidden content group -->
-  <g id="reveal-content" class="hidden-group">
-    <!-- Sidebar Labels -->
-    <text x="15" y="65" fill="white" font-size="12" font-weight="bold">Today</text>
-    <rect x="10" y="75" width="100" height="25" rx="5" fill="#2C2C2C"/>
-    <text x="17" y="92" fill="white" font-size="12">Image Creation</text>
-    
-    <text x="15" y="125" fill="white" font-size="12" font-weight="bold">Yesterday</text>
-    <rect x="10" y="135" width="100" height="25" rx="5" fill="#2C2C2C"/>
-    <text x="17" y="152" fill="white" font-size="12">Resume making</text>
 
-    <!-- User Message -->
-    <rect x="330" y="180" width="230" height="30" rx="10" fill="#444"/>
-    <text x="340" y="200" fill="white" font-size="12">What is the AI Toolkit?</text>
-    
-    <!-- AI Message -->
-    <rect x="140" y="220" width="350" height="90" rx="10" fill="#2E2E2E"/>
-    <text x="150" y="240" fill="white" font-size="12">
-      <tspan x="150" dy="0">The AI Toolkit is a collection of advanced tools</tspan>
-      <tspan x="150" dy="18">and frameworks designed to facilitate the</tspan>
-      <tspan x="150" dy="18">development and deployment of artificial</tspan>
-      <tspan x="150" dy="18">intelligence models and applications.</tspan>
-    </text>
+  <!-- REVEAL GROUP -->
+  <g id="reveal-sequence" class="hidden-group">
 
-    <!-- Input Box -->
-    <rect x="140" y="340" width="320" height="25" rx="12" fill="none" stroke="white" stroke-width="1"/>
-    <text x="150" y="356" fill="#888" font-size="12">Ask anything, Indox...</text>
-    <path transform="translate(440, 344) scale(0.6)" fill="red"
-      d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z"/>
+    <!-- 1. Today + Image Creation -->
+    <g id="step1">
+      <text x="15" y="65" fill="white" font-size="12" font-weight="bold">Today</text>
+      <rect x="10" y="75" width="100" height="25" rx="5" fill="#2C2C2C"/>
+      <text x="17" y="92" fill="white" font-size="12">Image Creation</text>
+    </g>
+
+    <!-- 2. Yesterday + Resume -->
+    <g id="step2">
+      <text x="15" y="125" fill="white" font-size="12" font-weight="bold">Yesterday</text>
+      <rect x="10" y="135" width="100" height="25" rx="5" fill="#2C2C2C"/>
+      <text x="17" y="152" fill="white" font-size="12">Resume making</text>
+    </g>
+
+    <!-- 3. User message -->
+    <g id="step3">
+      <rect x="330" y="180" width="230" height="30" rx="10" fill="#444"/>
+      <text x="340" y="200" fill="white" font-size="12">What is the AI Toolkit?</text>
+    </g>
+
+    <!-- 4. AI message with typing -->
+    <g id="step4">
+      <rect x="140" y="220" width="350" height="90" rx="10" fill="#2E2E2E"/>
+      <text id="typing-text" x="150" y="240" class="typing-text"></text>
+    </g>
+
+    <!-- 5. Input box -->
+    <g id="step5">
+      <rect x="140" y="340" width="320" height="25" rx="12" fill="none" stroke="white" stroke-width="1"/>
+      <text x="150" y="356" fill="#888" font-size="12">Ask anything, Indox...</text>
+      <path transform="translate(440, 344) scale(0.6)" fill="red"
+        d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z"/>
+    </g>
+
   </g>
 </svg>
 
 <script>
   const svg = document.getElementById('indox-svg');
-  const content = document.getElementById('reveal-content');
+  const steps = [
+    document.getElementById('step1'),
+    document.getElementById('step2'),
+    document.getElementById('step3'),
+    document.getElementById('step4'),
+    document.getElementById('step5'),
+  ];
+  const typingText = document.getElementById('typing-text');
+  const messageLines = [
+    "The AI Toolkit is a collection of advanced tools",
+    "and frameworks designed to facilitate the",
+    "development and deployment of artificial",
+    "intelligence models and applications."
+  ];
+
+  let clicked = false;
 
   svg.addEventListener('click', () => {
-    content.classList.toggle('visible');
+    if (clicked) return;
+    clicked = true;
+
+    // Show steps one by one
+    steps.forEach((step, index) => {
+      setTimeout(() => {
+        step.classList.add('visible');
+        if (index === 3) typeAIText();
+      }, index * 800);
+    });
   });
+
+  function typeAIText() {
+    let fullText = messageLines.join('\n');
+    let currentText = '';
+    let i = 0;
+    const speed = 25;
+
+    function type() {
+      if (i < fullText.length) {
+        currentText += fullText[i] === '\n' ? '\n' : fullText[i];
+        typingText.textContent = currentText;
+        i++;
+        setTimeout(type, speed);
+      }
+    }
+    type();
+  }
 </script>
 
 </body>
