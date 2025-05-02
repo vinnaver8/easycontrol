@@ -26,26 +26,88 @@
     <!-- FIRST SVG (Idle) -->
     <div id="svgIdle" class="transition-opacity duration-500 ease-in-out">
       <!-- 🔁 Insert your FIRST SVG here -->
-      <svg class="w-[500px] h-auto opacity-70 transition" viewBox="0 0 488 382" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2.2" y="1.6" width="484.3" height="415.4" stroke="white" />
-        <text x="16" y="30" fill="#FFD700" font-size="20" font-family="Arial" font-weight="bold">INDOX</text>
-        <line x1="486.5" y1="42.5" x2="2.2" y2="42.5" stroke="white" />
+      <svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer window -->
+  <rect x="1" y="1" width="598" height="398" rx="12" ry="12" fill="black" stroke="#ffffff" stroke-width="1"/>
+
+  <!-- Top bar line -->
+  <line x1="1" y1="40" x2="599" y2="40" stroke="#ffffff" stroke-width="1"/>
+
+  <!-- Left sidebar line -->
+  <line x1="120" y1="40" x2="120" y2="400" stroke="white" stroke-width="1"/>
+
+  <!-- Traffic light buttons -->
+  <circle cx="20" cy="20" r="6" fill="#ff5f56"/>
+  <circle cx="40" cy="20" r="6" fill="#ffbd2e"/>
+  <circle cx="60" cy="20" r="6" fill="#27c93f"/>
+
+  <!-- Top right pill and circle -->
+  <rect x="490" y="12" width="60" height="15" rx="7.5" ry="7.5" fill="none" stroke="#ffffff" stroke-width="1"/>
+  <circle cx="570" cy="20" r="10" fill="none" stroke="#ffffff" stroke-width="1"/>
+
+  <!-- INDOX text -->
+  <text x="480" y="25" fill="#ffffff" font-family="sans-serif" font-size="18" text-anchor="end">INDOX</text>
       </svg>
     </div>
 
     <!-- SECOND SVG (Expanded, staged content) -->
     <div id="svgExpanded" class="hidden transition-opacity duration-500 ease-in-out mt-4">
-      <svg class="w-[500px] h-auto transition" viewBox="0 0 488 382" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2.2" y="1.6" width="484.3" height="415.4" stroke="white" />
-        <text x="16" y="30" fill="#FFD700" font-size="20" font-family="Arial" font-weight="bold" class="fade-in" style="animation-delay: 0.2s;">INDOX AI</text>
-        <text x="40" y="100" fill="white" font-size="16" class="fade-in" style="animation-delay: 0.5s;">🤖 Welcome to INDOX API</text>
-        <text x="40" y="140" fill="white" font-size="16" class="fade-in" style="animation-delay: 0.8s;">🧠 Chat, create, and build fast</text>
-        <text x="40" y="180" fill="white" font-size="16" class="fade-in" style="animation-delay: 1.1s;">🚀 Documentation coming in</text>
-        <text x="40" y="220" fill="white" font-size="16" class="fade-in" style="animation-delay: 1.4s;">🌐 API connected to INDOX engine</text>
+      <svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Window background -->
+  <rect x="1" y="1" width="598" height="398" rx="12" ry="12" fill="black" stroke="#ffffff" stroke-width="1"/>
+<!-- Top bar line -->
+  <line x1="1" y1="40" x2="599" y2="40" stroke="#ffffff" stroke-width="1"/>
+<!-- Top bar buttons -->
+  <circle cx="21" cy="20" r="6" fill="#FF5F57"/>
+  <circle cx="39" cy="20" r="6" fill="#FFBD2E"/>
+  <circle cx="57" cy="20" r="6" fill="#28C840"/>
+
+  <!-- Title and Search -->
+  <text x="465" y="24" fill="white" font-size="14" font-family="Arial">INDOX</text>
+  <rect x="520" y="12" width="50" height="16" rx="8" stroke="white" fill="none" stroke-width="1"/>
+  <circle cx="585" cy="20" r="7" stroke="white" fill="none" stroke-width="1"/>
+
+  <!-- Sidebar divider -->
+  <line x1="120" y1="40" x2="120" y2="400" stroke="white" stroke-width="1"/>
+
+  <!-- Sidebar Labels -->
+  <text x="15" y="65" fill="white" font-size="12" font-weight="bold">Today</text>
+  <rect x="10" y="75" width="100" height="25" rx="5" fill="#2C2C2C"/>
+  <text x="17" y="92" fill="white" font-size="12">Image Creation</text>
+
+  <text x="15" y="125" fill="white" font-size="12" font-weight="bold">Yesterday</text>
+  <rect x="10" y="135" width="100" height="25" rx="5" fill="#2C2C2C"/>
+  <text x="17" y="152" fill="white" font-size="12">Resume making</text>
+
+  <!-- User Message -->
+  <rect x="330" y="180" width="230" height="30" rx="10" fill="#444"/>
+  <text x="340" y="200" fill="white" font-size="12">What is the AI Toolkit?</text>
+
+  <!-- AI Message -->
+  <rect x="140" y="220" width="350" height="90" rx="10" fill="#2E2E2E"/>
+  <text x="150" y="240" fill="white" font-size="12">
+    <tspan x="150" dy="0">The AI Toolkit is a collection of advanced tools</tspan>
+    <tspan x="150" dy="18">and frameworks designed to facilitate the</tspan>
+    <tspan x="150" dy="18">development and deployment of artificial</tspan>
+    <tspan x="150" dy="18">intelligence models and applications.</tspan>
+  </text>
+
+  <!-- Input Field with Arrow Inside -->
+  <g>
+    <!-- Input box -->
+    <rect x="140" y="340" width="320" height="25" rx="12" fill="none" stroke="white" stroke-width="1"/>
+    <text x="150" y="356" fill="#888" font-size="12">Ask anything, Indox...</text>
+
+    <!-- Arrow using inline SVG with x/y/width/height -->
+    <svg x="435" y="344" width="16" height="16" viewBox="0 0 24 24"><g style="transform: scale(2); transform-origin: center;">
+      <path fill="red" d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z"/></g>
+    </svg>
+  </g>
       </svg>
     </div>
   </div>
-
+  <div class="relative flex justify-center items-center py-6"><canvas class="absolute inset-0 h-full w-full -top-16 sm:-top-32" width="975" height="295" style="mask: radial-gradient(circle, black, transparent);"></canvas><div class="absolute inset-x-0 -top-16 sm:-top-32 h-px bg-gradient-to-r from-transparent to-transparent via-white opacity-40"></div><div class="absolute -inset-x-[200px] lg:-inset-x-[400px] h-[500px] -top-16 sm:-top-32" style="background: linear-gradient(to right, rgba(255, 99, 8, 0.1), rgba(255, 99, 8, 0.1), rgba(189, 201, 230, 0.1), rgba(151, 196, 255, 0.1), rgba(151, 196, 255, 0.1)); mask: radial-gradient(at center top, black, transparent 60%);"></div>
+  </div>
   <script>
     function transformSVG() {
       const idle = document.getElementById("svgIdle");
