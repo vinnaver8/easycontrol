@@ -15,11 +15,12 @@ const messageLines = [
 
 let animating = false;
 
-svg.addEventListener('click', () => {
+// Click on SVG — toggle animation
+svg.addEventListener('click', (event) => {
+  event.stopPropagation(); // prevent click from bubbling to document
+
   if (animating) {
-    steps.forEach(step => step.classList.remove('visible'));
-    typingContainer.innerHTML = '';
-    animating = false;
+    resetAnimation();
     return;
   }
 
@@ -32,6 +33,19 @@ svg.addEventListener('click', () => {
     }, index * 800);
   });
 });
+
+// Click anywhere else — close animation
+document.addEventListener('click', (event) => {
+  if (!svg.contains(event.target) && animating) {
+    resetAnimation();
+  }
+});
+
+function resetAnimation() {
+  steps.forEach(step => step.classList.remove('visible'));
+  typingContainer.innerHTML = '';
+  animating = false;
+}
 
 function typeAIText() {
   typingContainer.innerHTML = '';
