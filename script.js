@@ -1,4 +1,4 @@
-svg = document.getElementById('indox-svg');
+const svg = document.getElementById('indox-svg');
 const steps = [
   document.getElementById('step1'),
   document.getElementById('step2'),
