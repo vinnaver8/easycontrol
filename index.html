@@ -96,7 +96,8 @@
     <h3 class="text-xl">INDOX API</h3>
     <p class="mt-4 text-secondary">Integrate INDOX AI into your applications with our powerful API.</p>
   </div>
-<div class="flex-1 flex flex-col"><div class="opacity-75 flex-1 pointer-events-none"><div class="relative">
+<div class="flex-1 flex flex-col"><div class="opacity-75 flex-1 pointer-events-none"><div class="relative"><div class="absolute inset-0 -inset-x-8 flex justify-center items-center group-hover:opacity-100 opacity-0 duration-100">
+<canvas width="416" height="150" class="w-full h-auto"></canvas></div>
 <svg id="indox-svg" width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
     <rect x="1" y="1" width="598" height="398" rx="12" ry="12" fill="black" stroke="#ffffff" stroke-width="1"/>
     <line x1="1" y1="40" x2="599" y2="40" stroke="#ffffff" stroke-width="1"/>
@@ -122,23 +123,21 @@
       <g id="step3">
         <rect x="330" y="180" width="230" height="30" rx="10" fill="#444"/>
         <text x="340" y="200" fill="white" font-size="12">What is the AI Toolkit?</text>
-      </g>
-      <g id="step4">
-        <rect x="140" y="220" width="350" height="90" rx="10" fill="#2E2E2E"/>
-        <text id="typing-container" x="150" y="240" class="typing-line"></text>
-      </g>
-      <g id="step5">
-        <rect x="140" y="340" width="320" height="25" rx="12" fill="none" stroke="white" stroke-width="1"/>
-        <text x="150" y="356" fill="#888" font-size="12">Ask anything, Indox...</text>
-        <path transform="translate(440, 344) scale(0.6)" fill="red" d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z"/>
-      </g>
-    </g>
+</g>
+<g id="step4">
+<rect x="140" y="220" width="350" height="90" rx="10" fill="#2E2E2E"/>
+<text id="typing-container" x="150" y="240" class="typing-line"></text>
+</g>
+<g id="step5">
+<rect x="140" y="340" width="320" height="25" rx="12" fill="none" stroke="white" stroke-width="1"/>
+<text x="150" y="356" fill="#888" font-size="12">Ask anything, Indox...</text>
+<path transform="translate(440, 344) scale(0.6)" fill="red" d="M11 16a1 1 0 0 1-.707-1.707L12.586 12l-2.293-2.293a1 1 0 0 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3A1 1 0 0 1 11 16z"/>
+</g>
+</g>
 </svg>
-
-    <!-- Canvas only shows on hover -->
-    <div class="absolute inset-0 flex justify-center items-center group-hover:opacity-100 opacity-0 transition duration-200 pointer-events-none z-20">
-      <canvas width="416" height="150" class="w-full h-auto"></canvas>
-    </div>
+<!-- Canvas only shows on hover -->
+<div class="absolute inset-0 flex justify-center items-center group-hover:opacity-100 opacity-0 transition duration-200 pointer-events-none z-20">
+</div>
   </div></div></div>
 <div class="flex items-center justify-center">
 <button type="button" class="relative isolate inline-flex items-center justify-center border text-base/6 uppercase font-mono tracking-widest shrink-0 focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-blue-500 data-[disabled]:opacity-50 [&>[data-slot=icon]]:-mx-0.5 [&>[data-slot=icon]]:my-0.5 [&>[data-slot=icon]]:shrink-0 [&>[data-slot=icon]]:sm:my-1 px-3.5 py-1.5 sm:text-sm [&>[data-slot=icon]]:size-4 [&>[data-slot=icon]]:sm:size-3 gap-x-2 bg-[--btn-bg] text-[--btn-text] border-[--btn-border] hover:bg-[--btn-hover] rounded-full [--btn-bg:transparent] [--btn-border:theme(colors.primary/25%)] [--btn-text:theme(colors.primary)] [--btn-hover:theme(colors.secondary/20%)] group-hover:bg-[--btn-hover] pointer-events-none">
