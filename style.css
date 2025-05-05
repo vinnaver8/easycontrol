@@ -18,3 +18,42 @@ svg {
   font-size: 12px;
   font-family: sans-serif;
 }
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;           /* Snap horizontally between slides */
+  -webkit-overflow-scrolling: touch;       /* Smooth scrolling on iOS:contentReference[oaicite:4]{index=4} */
+  padding: 2rem;
+}
+.slide {
+  flex: 0 0 80%;
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  margin-right: 2rem;
+  padding: 1rem;
+  color: #fff;
+  scroll-snap-align: start;               /* Snap each slide to container start:contentReference[oaicite:5]{index=5} */
+}
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.item svg {
+  width: 24px;
+  height: 24px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2;
+  margin-right: 0.5rem;
+}
+.item span {
+  font-size: 1rem;
+}
