@@ -111,27 +111,101 @@
   srcset="assets/images/notes-mobile-384.jpg 1x, assets/images/notes-mobile-640.jpg 2x" 
   src="assets/images/notes-mobile-640.jpg"
 /><li class="relative rounded-[30px] outline outline-white/60 md:rounded-3xl sm:m-0 sm:aspect-[1.45] sm:h-auto sm:w-full sm:overflow-hidden sm:rounded-[20px] sm:outline-4 xs:aspect-[1.65] outline-4 xl:w-[515px] md:w-[453px]"><p class="absolute inset-0 bottom-auto z-10 px-6 py-[19px] text-15 font-light leading-tight text-white/65 xl:py-[21px] md:p-4 md:text-14 sm:p-5 sm:text-15 max-w-[425px] xl:px-5 sm:max-w-[290px]">
-<strong class="font-medium text-white">Sync in real time.</strong> <!-- -->Connect with your team instantly to monitor progress and track updates.</p>
-<img 
-  alt="Teammates" 
-  loading="lazy" 
-  width="520" 
-  height="232" 
-  decoding="async" 
-  class="pointer-events-none rounded-[30px] md:rounded-3xl sm:hidden xl:h-full xl:w-full xl:object-cover"
-  srcset="assets/images/teammates.jpg 1x, assets/images/teammates@2x.jpg 2x"
-  src="assets/images/teammates@2x.jpg"
->
-<img 
-  alt="Teammates Mobile" 
-  loading="lazy" 
-  width="320" 
-  height="220" 
-  decoding="async" 
-  class="pointer-events-none absolute left-1/2 top-1/2 hidden min-w-full -translate-x-1/2 -translate-y-1/2 rounded-[20px] sm:block xs:top-[47.5%]"
-  srcset="assets/images/teammates-mobile.jpg 1x, assets/images/teammates-mobile@2x.jpg 2x"
-  src="assets/images/teammates-mobile@2x.jpg"
->
+<section class="py-16 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-4 lg:px-0 relative">
+    <h2 class="text-black text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-4">Huly MetaBrain</h2>
+    <p class="text-gray-600 text-base sm:text-lg max-w-2xl mb-8">
+      Connect every element of your workflow to build a dynamic knowledge base. Soon, Huly AI will turn it into a powerful asset — a second brain for your team.
+    </p>
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Create Tasks Card -->
+      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-1 lg:row-start-1">
+        <img 
+          src="assets/images/tasks-notes.png" 
+          srcset="assets/images/tasks-mobile.jpg 640w, assets/images/tasks-notes.png 1080w" 
+          sizes="(max-width: 640px) 100vw, 50vw" 
+          alt="Create tasks. Schedule your personal events and todos." 
+          class="w-full h-auto">
+        <div class="absolute inset-0 p-6">
+          <h3 class="text-white text-xl font-medium mb-2">Create tasks.</h3>
+          <p class="text-gray-300">Schedule your personal events and todos.</p>
+        </div>
+      </li>
+      <!-- Plan Your Work Card -->
+      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-2 lg:row-start-1">
+        <img 
+          src="assets/images/plan-work.jpg" 
+          srcset="assets/images/plan-work-mobile.jpg 640w, assets/images/plan-work.jpg 1080w" 
+          sizes="(max-width: 640px) 100vw, 50vw" 
+          alt="Plan your work. Visualize your workday in your planner." 
+          class="w-full h-auto">
+        <div class="absolute inset-0 p-6">
+          <h3 class="text-white text-xl font-medium mb-2">Plan your work.</h3>
+          <p class="text-gray-300">Visualize your workday in your planner.</p>
+        </div>
+      </li>
+      <!-- Take Notes Card -->
+      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-1 lg:row-start-2">
+        <img 
+          src="assets/images/notes-mobile.jpg" 
+          srcset="assets/images/notes-mobile.jpg 640w" 
+          sizes="(max-width: 640px) 100vw, 50vw" 
+          alt="Take notes. Create documents to keep track of team resources" 
+          class="w-full h-auto">
+        <div class="absolute inset-0 p-6">
+          <h3 class="text-white text-xl font-medium mb-2">Take notes.</h3>
+          <p class="text-gray-300">Create documents to keep track of team resources</p>
+        </div>
+      </li>
+      <!-- Sync in Real Time Card -->
+      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-2 lg:row-start-2">
+        <img 
+          src="assets/images/teammates.jpg" 
+          srcset="assets/images/teammates-mobile.jpg 640w, assets/images/teammates.jpg 1080w" 
+          sizes="(max-width: 640px) 100vw, 50vw" 
+          alt="Sync in real time. Connect with your team instantly to monitor progress and track updates." 
+          class="w-full h-auto">
+        <div class="absolute inset-0 p-6">
+          <h3 class="text-white text-xl font-medium mb-2">Sync in real time.</h3>
+          <p class="text-gray-300">Connect with your team instantly to monitor progress and track updates.</p>
+        </div>
+      </li>
+      <!-- Calendar Card (08 March) -->
+      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden hidden lg:block lg:col-start-1 lg:row-start-3">
+        <img 
+          src="assets/images/calendar.png" 
+          alt="Calendar (08 March)" 
+          class="w-full h-auto">
+      </li>
+      <!-- Chat with Team Card -->
+      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-2 lg:row-start-3">
+        <img 
+          src="assets/images/collab.jpg" 
+          srcset="assets/images/collab-mobile.jpg 640w, assets/images/collab.jpg 1080w" 
+          sizes="(max-width: 640px) 100vw, 50vw" 
+          alt="Chat with team. Send DM and create group chats." 
+          class="w-full h-auto">
+        <div class="absolute inset-0 p-6">
+          <h3 class="text-white text-xl font-medium mb-2">Chat with team.</h3>
+          <p class="text-gray-300">Send DM and create group chats.</p>
+        </div>
+      </li>
+      <!-- Manage Projects Card -->
+      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-3 lg:row-start-3">
+        <img 
+          src="assets/images/pm.jpg" 
+          srcset="assets/images/pm-mobile.jpg 640w, assets/images/pm.jpg 1080w" 
+          sizes="(max-width: 640px) 100vw, 50vw" 
+          alt="Manage projects. Customize your workspace to fit the needs of your teams." 
+          class="w-full h-auto">
+        <div class="absolute inset-0 p-6">
+          <h3 class="text-white text-xl font-medium mb-2">Manage projects.</h3>
+          <p class="text-gray-300">Customize your workspace to fit the needs of your teams.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
 <ul class="flex flex-1 flex-wrap items-center gap-4.5 xl:flex-nowrap xl:items-end sm:grid sm:grid-cols-2 sm:gap-3 xs:grid-cols-1"><li class="relative rounded-[30px] outline outline-white/60 md:rounded-3xl sm:m-0 sm:aspect-[1.45] sm:h-auto sm:w-full sm:overflow-hidden sm:rounded-[20px] sm:outline-4 xs:aspect-[1.65] h-[236px] w-[236px] rounded-none outline-0 xl:h-[250px] xl:w-[270px] xl:p-2 md:h-[218px] md:w-[235px] sm:hidden"><img alt="" loading="lazy" width="244" height="244" decoding="async" data-nimg="1" class="pointer-events-none rounded-[30px] md:rounded-3xl sm:hidden -m-1 h-[244px] w-[244px] max-w-max rounded-none xl:mx-auto md:h-[218px] md:w-[235px]" style="color:transparent" srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcalendar.74569b09.png&amp;w=256&amp;q=100 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcalendar.74569b09.png&amp;w=640&amp;q=100 2x" src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcalendar.74569b09.png&amp;w=640&amp;q=100"></li>
 <li class="relative rounded-[30px] outline outline-white/60 md:rounded-3xl sm:m-0 sm:aspect-[1.45] sm:h-auto sm:w-full sm:overflow-hidden sm:rounded-[20px] sm:outline-4 xs:aspect-[1.65] outline-4 xl:h-[250px] xl:w-[250px] md:h-[218px] md:w-[218px]"><p class="absolute inset-0 bottom-auto z-10 px-6 py-[19px] text-15 font-light leading-tight text-white/65 xl:py-[21px] md:p-4 md:text-14 sm:p-5 sm:text-15 sm:max-w-60">
 <strong class="font-medium text-white">Chat with team.</strong> <!-- -->Send DM and create group chats.</p><img alt="" loading="lazy" width="264" height="250" decoding="async" data-nimg="1" class="pointer-events-none rounded-[30px] md:rounded-3xl sm:hidden xl:h-full xl:w-full xl:object-cover xl:object-left" style="color:transparent" srcset="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcollab.aa5fcd89.jpg&amp;w=384&amp;q=100 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcollab.aa5fcd89.jpg&amp;w=640&amp;q=100 2x" src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcollab.aa5fcd89.jpg&amp;w=640&amp;q=100">
