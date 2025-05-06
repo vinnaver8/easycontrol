@@ -62,40 +62,18 @@
     <p class="text-gray-600 text-base sm:text-lg max-w-2xl mb-8">
       Connect every element of your workflow to build a dynamic knowledge base. Soon, Huly AI will turn it into a powerful asset — a second brain for your team.
     </p>
-    <ul class="flex w-[808px] flex-wrap items-center gap-4.5 xl:w-full xl:justify-between xl:gap-3.5 md:gap-4 sm:grid sm:grid-cols-2 sm:gap-3 xs:grid-cols-1">
-
-  <li class="relative rounded-[30px] outline outline-white/60 md:rounded-3xl sm:m-0 sm:aspect-[1.45] sm:h-auto sm:w-full sm:overflow-hidden sm:rounded-[20px] sm:outline-4 xs:aspect-[1.65] ml-64 h-[250px] w-[270px] rounded-none outline-0 md:ml-56 md:h-[218px] md:w-[234px]">
-    
-    <!-- Text content -->
-    <p class="absolute inset-0 bottom-auto z-10 px-6 py-[19px] text-15 font-light leading-tight text-white/65 xl:py-[21px] md:p-4 md:text-14 sm:p-5 sm:text-15 sm:max-w-[240px]">
-      <strong class="font-medium text-white">Create tasks.</strong>
-      <!-- -->Schedule your personal events and todos.
+    <ul>
+  <li class="relative rounded-[30px] outline outline-white/60 sm:rounded-[20px] sm:outline-4 overflow-hidden aspect-[1.65]">
+    <p class="absolute inset-0 bottom-auto z-10 px-6 py-[19px] text-[15px] font-light leading-tight text-white/65 sm:top-[-7px] sm:max-w-[280px]">
+      <strong>Take notes.</strong><br class="sm:hidden" />
+      Create documents to keep track of team resources
     </p>
-<!-- Desktop image (only shown on md and above) -->
-    <img 
-      alt="Task desktop"
-      width="534"
-      height="508"
-      data-nimg="1"
-      loading="lazy" 
-      decoding="async" 
-      class="pointer-events-none absolute -right-1 -top-1 h-[508px] w-[534px] rounded-[30px] md:rounded-3xl sm:hidden" 
-      src="assets/images/tasks-notes.png" 
-      srcset="assets/images/tasks-notes.png 1x, assets/images/tasks-notes@2x.png 2x"
-    >
-<!-- Mobile image (only shown on sm and below) -->
-    <img 
-      alt="Task mobile"
-      width="320"
-      height="220"
-      data-nimg="1"
-      loading="lazy" 
-      decoding="async" 
-      class="pointer-events-none absolute left-1/2 top-1/2 hidden min-w-full -translate-x-1/2 -translate-y-1/2 rounded-[20px] sm:block md:hidden" 
-      src="assets/images/tasks-mobile.jpg" 
-      srcset="assets/images/tasks-mobile.jpg 1x, assets/images/tasks-mobile@2x.jpg 2x"
-    >
-</li>
+    <picture>
+      <source media="(min-width: 768px)" srcset="assets/images/tasks-notes.png 1x, assets/images/tasks-notes@2x.png 2x">
+      <img src="assets/images/tasks-mobile.jpg" srcset="assets/images/tasks-mobile.jpg 1x, assets/images/tasks-mobile@2x.jpg 2x" alt="Take notes" class="block w-full h-full object-cover" />
+    </picture>
+  </li>
+    </ul>
       <!-- Plan Your Work Card -->
       <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-2 lg:row-start-1">
         <img 
