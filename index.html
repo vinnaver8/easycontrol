@@ -179,17 +179,26 @@ Create documents to keep track of team resources
   </picture>
       </li>
       <!-- Manage Projects Card -->
-      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-3 lg:row-start-3">
-        <img 
-          src="assets/images/pm.jpg" 
-          srcset="assets/images/pm-mobile.jpg 640w, assets/images/pm.jpg 1080w" 
-          sizes="(max-width: 640px) 100vw, 50vw" 
-          alt="Manage projects. Customize your workspace to fit the needs of your teams." 
-          class="w-full h-auto">
-        <div class="absolute inset-0 p-6">
-          <h3 class="text-white text-xl font-medium mb-2">Manage projects.</h3>
-          <p class="text-gray-300">Customize your workspace to fit the needs of your teams.</p>
-        </div>
+      <li class="relative rounded-[30px] outline outline-white/60 md:rounded-3xl sm:m-0 sm:aspect-[1.45] sm:h-auto sm:w-full sm:overflow-hidden sm:rounded-[20px] sm:outline-4 xs:aspect-[1.65] h-[232px] w-[422px] outline-4 xl:h-[250px] xl:w-[250px] md:h-[218px] md:w-[218px]">
+  <p class="absolute inset-0 bottom-auto z-10 px-6 py-[19px] text-[15px] font-light leading-tight text-white/65 xl:py-[21px] md:p-4 md:text-[14px] sm:p-5 sm:text-[15px] max-w-[85%] xl:max-w-full xl:pr-[5px] md:pr-[9px] sm:max-w-[260px]">
+    <strong class="font-medium text-white">Manage projects.</strong><br class="sm:hidden">
+    Customize your workspace to fit the needs of your teams.
+  </p>
+
+  <picture class="pointer-events-none absolute top-0 left-0 h-full w-full">
+    <!-- Desktop ≥640px -->
+    <source
+      media="(min-width: 640px)"
+      srcset="assets/images/pm.jpg 1x, assets/images/pm@2x.jpg 2x"
+    />
+    <!-- Mobile fallback -->
+    <img
+      src="assets/images/pm-mobile.jpg"
+      srcset="assets/images/pm-mobile.jpg 1x, assets/images/pm-mobile@2x.jpg 2x"
+      alt="Manage projects"
+      class="block w-full h-full object-cover rounded-[30px] sm:hidden md:block"
+    />
+  </picture>
       </li>
     </ul>
   </div>
