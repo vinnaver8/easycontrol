@@ -64,17 +64,25 @@
     </p>
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Create Tasks Card -->
-      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-1 lg:row-start-1">
-        <img 
-          src="assets/images/tasks-notes.png" 
-          srcset="assets/images/tasks-mobile.jpg 640w, assets/images/tasks-notes.png 1080w" 
-          sizes="(max-width: 640px) 100vw, 50vw" 
-          alt="Create tasks. Schedule your personal events and todos." 
-          class="w-full h-auto">
-        <div class="absolute inset-0 p-6">
-          <h3 class="text-white text-xl font-medium mb-2">Create tasks.</h3>
-          <p class="text-gray-300">Schedule your personal events and todos.</p>
-        </div>
+      <li class="relative rounded-[30px] outline outline-white/60 md:rounded-3xl sm:m-0 sm:aspect-[1.45] sm:h-auto sm:w-full sm:overflow-hidden sm:rounded-[20px] sm:outline-4 xs:aspect-[1.65] ml-64 h-[250px] w-[270px] rounded-none outline-0 md:ml-56 md:h-[218px] md:w-[234px]">
+  <p class="absolute inset-0 bottom-auto z-10 px-6 py-[19px] text-[15px] font-light leading-tight text-white/65 xl:py-[21px] md:p-4 md:text-[14px] sm:p-5 sm:text-[15px] sm:max-w-[240px]">
+    <strong class="font-medium text-white">Create tasks.</strong>
+    Schedule your personal events and todos.
+  </p>
+  <!-- Desktop image -->
+  <img alt="Create Tasks Preview Desktop"
+       loading="lazy"
+       width="534"
+       height="508"
+       class="pointer-events-none rounded-[30px] md:rounded-3xl sm:hidden absolute -right-1 -top-1 h-[508px] w-[534px] rounded-none max-w-max md:h-[444px] md:w-[466px]"
+       src="assets/images/tasks-notes.png">
+  <!-- Mobile image -->
+  <img alt="Create Tasks Preview Mobile"
+       loading="lazy"
+       width="320"
+       height="220"
+       class="pointer-events-none absolute left-1/2 top-1/2 hidden min-w-full -translate-x-1/2 -translate-y-1/2 rounded-[20px] sm:block"
+       src="assets/images/tasks-mobile.jpg">
       </li>
       <!-- Plan Your Work Card -->
       <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-2 lg:row-start-1">
