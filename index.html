@@ -160,19 +160,23 @@ Create documents to keep track of team resources
             srcset="assets/images/calendar.png 1x, assets/images/calendar@2x.png 2x"
         >
     </li>
-      </ul>
       <!-- Chat with Team Card -->
-      <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-2 lg:row-start-3">
-        <img 
-          src="assets/images/collab.jpg" 
-          srcset="assets/images/collab-mobile.jpg 640w, assets/images/collab.jpg 1080w" 
-          sizes="(max-width: 640px) 100vw, 50vw" 
-          alt="Chat with team. Send DM and create group chats." 
-          class="w-full h-auto">
-        <div class="absolute inset-0 p-6">
-          <h3 class="text-white text-xl font-medium mb-2">Chat with team.</h3>
-          <p class="text-gray-300">Send DM and create group chats.</p>
-        </div>
+      <li class="relative rounded-[30px] outline outline-white/60 md:rounded-3xl sm:m-0 sm:aspect-[1.45] sm:h-auto sm:w-full sm:overflow-hidden sm:rounded-[20px] sm:outline-4 xs:aspect-[1.65] outline-4 xl:h-[250px] xl:w-[250px] md:h-[218px] md:w-[218px]">
+  <p class="absolute inset-0 bottom-auto z-10 px-6 py-[19px] text-[15px] font-light leading-tight text-white/65 xl:py-[21px] md:p-4 md:text-[14px] sm:p-5 sm:text-[15px] sm:max-w-[240px]">
+    <strong class="font-medium text-white">Chat with team.</strong>
+    Send DM and create group chats.
+  </p>
+
+  <picture class="pointer-events-none absolute -right-1 -top-1 xl:h-full xl:w-full xl:object-cover xl:object-left">
+    <!-- desktop ≥640px -->
+    <source media="(min-width: 640px)"
+            srcset="assets/images/collab.jpg 1x, assets/images/collab@2x.jpg 2x">
+    <!-- mobile fallback -->
+    <img src="assets/images/collab-mobile.jpg"
+         srcset="assets/images/collab-mobile.jpg 1x, assets/images/collab-mobile@2x.jpg 2x"
+         alt="Chat with team"
+         class="block w-full h-auto rounded-[20px] sm:rounded-none" />
+  </picture>
       </li>
       <!-- Manage Projects Card -->
       <li class="relative bg-gray-900 border border-white/20 rounded-[30px] shadow-lg overflow-hidden lg:col-start-3 lg:row-start-3">
