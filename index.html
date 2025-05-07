@@ -65,20 +65,36 @@
       <p class="mt-4 text-lg text-gray-700 text-center md:text-left">
         Connect every element of your workflow to build a dynamic knowledge base. Soon, Huly AI will turn it into a powerful asset — a second brain for your team.
       </p>
-      <!-- Grid of Cards -->
-      <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-        <!-- Create tasks Card -->
-        <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-          <source media="(min-width:768px)" srcset="assets/images/tasks-notes.png 1x, assets/images/tasks-notes-640.png 2x">
-            <img class="pointer-events-none absolute left-1/2 top-1/2 hidden min-w-full -translate-x-1/2 -translate-y-1/2 rounded-[20px] sm:block" style="color:transparent"src="assets/images/tasks-mobile.jpg" srcset="assets/images/tasks-mobile@2x.jpg 2x" alt="Create tasks" class="w-full h-auto">
-          </picture>
-          <div class="absolute top-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">Create tasks.</h3>
-            <p class="mt-2 text-white text-opacity-80">Schedule your personal events and todos.</p>
-          </div>
-        </div>
-        <!-- Plan your work Card -->
+<!-- Grid of Cards -->
+<ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+  <li class="relative rounded-[30px] outline outline-white/60 md:rounded-3xl sm:m-0 sm:aspect-[1.45] sm:h-auto sm:w-full sm:overflow-hidden sm:rounded-[20px] sm:outline-4 xs:aspect-[1.65] ml-64 h-[250px] w-[270px] rounded-none outline-0 md:ml-56 md:h-[218px] md:w-[234px]">
+    <p class="absolute inset-0 bottom-auto z-10 px-6 py-[19px] text-15 font-light leading-tight text-white/65 xl:py-[21px] md:p-4 md:text-14 sm:p-5 sm:text-15 sm:max-w-[240px]">
+      <strong class="font-medium text-white">Create tasks.</strong>
+      Schedule your personal events and todos.
+    </p>
+<!-- Desktop image -->
+    <img 
+      alt="Create tasks desktop" 
+      loading="lazy" 
+      width="534" 
+      height="508" 
+      decoding="async" 
+      class="pointer-events-none rounded-[30px] md:rounded-3xl sm:hidden absolute -right-1 -top-1 h-[508px] w-[534px] rounded-none max-w-max md:h-[444px] md:w-[466px]" 
+      src="images/tasks-notes.png"
+    >
+<!-- Mobile image -->
+    <img 
+      alt="Create tasks mobile" 
+      loading="lazy" 
+      width="320" 
+      height="220" 
+      decoding="async" 
+      class="pointer-events-none absolute left-1/2 top-1/2 hidden min-w-full -translate-x-1/2 -translate-y-1/2 rounded-[20px] sm:block" 
+      src="images/tasks-mobile.jpg"
+    >
+  </li>
+</ul>
+<!-- Plan your work Card -->
 <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
 <li class="relative rounded-[30px] sm:rounded-[20px] sm:overflow-hidden sm:aspect-[1.45] xs:aspect-[1.65] xl:h-[250px] xl:w-[250px] md:h-[218px] md:w-[230px] sm:h-auto sm:w-full">
   <!-- Text Overlay -->
