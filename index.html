@@ -67,27 +67,38 @@
       </p>
       <!-- Grid of Cards -->
       <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-        <!-- Create tasks Card -->
-        <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-          <source media="(min-width:768px)" srcset="assets/images/tasks-notes.png 1x, assets/images/tasks-notes-640.png 2x">
-            <img 
-  alt="Create tasks"
-  loading="lazy"
-  width="534"
-  height="508"
-  decoding="async"
-  data-nimg="1"
-  class="pointer-events-none rounded-[30px] md:rounded-3xl sm:hidden absolute -right-1 -top-1 h-[508px] w-[534px] max-w-max md:h-[444px] md:w-[466px] w-full h-auto"
-  style="color:transparent"
-  src="assets/images/tasks-mobile.jpg"
-  srcset="assets/images/tasks-mobile@2x.jpg 2x"
-/></picture>
-          <div class="absolute top-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">Create tasks.</h3>
-            <p class="mt-2 text-white text-opacity-80">Schedule your personal events and todos.</p>
-          </div>
-        </div>
+  <!-- Create tasks Card -->
+  <div class="relative overflow-hidden rounded-2xl h-[250px] md:h-[220px] w-full">
+    
+    <!-- Desktop image -->
+    <img 
+      src="assets/images/tasks-notes.png"
+      srcset="assets/images/tasks-notes.png 1x, assets/images/tasks-notes-640.png 2x"
+      alt="Create tasks desktop"
+      class="hidden sm:block absolute right-0 top-0 h-full w-auto rounded-[30px] md:rounded-3xl pointer-events-none"
+      loading="lazy"
+      decoding="async"
+    />
+    
+    <!-- Mobile image -->
+    <img 
+      src="assets/images/tasks-mobile.jpg"
+      srcset="assets/images/tasks-mobile@2x.jpg 2x"
+      alt="Create tasks mobile"
+      class="sm:hidden block w-full h-full object-cover rounded-[20px]"
+      loading="lazy"
+      decoding="async"
+    />
+    
+    <!-- Text overlay -->
+    <div class="absolute top-0 left-0 p-6 z-10">
+      <h3 class="text-xl font-bold text-white">Create tasks.</h3>
+      <p class="mt-2 text-white text-opacity-80">
+        Schedule your personal events and todos.
+      </p>
+    </div>
+  </div>
+      </div>
         <!-- Plan your work Card -->
         <div class="relative overflow-hidden rounded-2xl">
           <picture>
