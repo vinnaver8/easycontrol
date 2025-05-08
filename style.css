@@ -18,3 +18,67 @@ svg {
   font-size: 12px;
   font-family: sans-serif;
 }
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #f6f6f6;
+  color: #111;
+}
+
+.metabrain {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.metabrain h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.metabrain h1 span {
+  font-weight: 800;
+  display: block;
+}
+
+.metabrain .subtitle {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.card-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  justify-items: center;
+}
+
+.card-img {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.card-img:hover {
+  transform: translateY(-6px);
+}
+
+/* Show only on mobile */
+.mobile-only {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+}
