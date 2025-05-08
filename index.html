@@ -59,89 +59,99 @@
 <!--2nd section-->
 <div class="bg-[#000000]">
 <section class="py-12 px-4">
-<div class="container mx-auto">
-<!-- Section Title -->
-<h2 class="text-4xl font-bold text-center md:text-left">Huly MetaBrain</h2>
-<p class="mt-4 text-lg text-gray-700 text-center md:text-left">
-Connect every element of your workflow to build a dynamic knowledge base. Soon, Huly AI will turn it into a powerful asset — a second brain for your team.</p>
-<!-- Grid of Cards -->
-<div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
- <!-- Create tasks Card -->
- <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-            <source media="(min-width:768px)" srcset="assets/images/tasks-notes.png 1x, assets/images/tasks-notes-640.png 2x">
-            <img src="assets/images/tasks-mobile.jpg" srcset="assets/images/tasks-mobile@2x.jpg 2x" alt="Create tasks" class="w-full h-auto">
-          </picture>
-          <div class="absolute top-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">Create tasks.</h3>
-            <p class="mt-2 text-white text-opacity-80">Schedule your personal events and todos.</p>
-          </div>
-        </div>
-        <!-- Plan your work Card -->
-        <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-            <source media="(min-width:768px)" srcset="assets/images/plan-work.jpg 1x, assets/images/plan-work@2x.jpg 2x">
-            <img src="assets/images/plan-work-mobile.jpg" srcset="assets/images/plan-work-mobile@2x.jpg 2x" alt="Plan your work" class="w-full h-auto">
-          </picture>
-          <div class="absolute top-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">Plan your work.</h3>
-            <p class="mt-2 text-white text-opacity-80">Visualize your workday in your planner.</p>
-          </div>
-        </div>
-        <!-- Take notes Card -->
-        <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-            <source media="(min-width:768px)" srcset="assets/images/notes.png 1x, assets/images/notes@2x.png 2x">
-            <img src="assets/images/notes-mobile.jpg" srcset="assets/images/notes-mobile@2x.jpg 2x" alt="Take notes" class="w-full h-auto">
-          </picture>
-          <div class="absolute top-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">Take notes.</h3>
-            <p class="mt-2 text-white text-opacity-80">Create documents to keep track of team resources.</p>
-          </div>
-        </div>
-        <!-- Sync in real time Card -->
-        <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-            <source media="(min-width:768px)" srcset="assets/images/teammates.jpg 1x, assets/images/teammates@2x.jpg 2x">
-            <img src="assets/images/teammates-mobile.jpg" srcset="assets/images/teammates-mobile@2x.jpg 2x" alt="Sync in real time" class="w-full h-auto">
-          </picture>
-          <div class="absolute top-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">Sync in real time.</h3>
-            <p class="mt-2 text-white text-opacity-80">Connect with your team instantly to monitor progress and track updates.</p>
-          </div>
-        </div>
-        <!-- Chat with team Card -->
-        <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-            <source media="(min-width:768px)" srcset="assets/images/collab.jpg 1x, assets/images/collab@2x.jpg 2x">
-            <img src="assets/images/collab-mobile.jpg" srcset="assets/images/collab-mobile@2x.jpg 2x" alt="Chat with team" class="w-full h-auto">
-          </picture>
-          <div class="absolute top-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">Chat with team.</h3>
-            <p class="mt-2 text-white text-opacity-80">Send DM and create group chats.</p>
-          </div>
-        </div>
-        <!-- Manage projects Card -->
-        <div class="relative overflow-hidden rounded-2xl">
-          <picture>
-            <source media="(min-width:768px)" srcset="assets/images/pm.jpg 1x, assets/images/pm@2x.jpg 2x">
-            <img src="assets/images/pm-mobile.jpg" srcset="assets/images/pm-mobile@2x.jpg 2x" alt="Manage projects" class="w-full h-auto">
-          </picture>
-          <div class="absolute top-0 left-0 p-6">
-            <h3 class="text-xl font-bold text-white">Manage projects.</h3>
-            <p class="mt-2 text-white text-opacity-80">Customize your workspace to fit the needs of your teams.</p>
-          </div>
-        </div>
-        <!-- Bonus (calendar) Card - Desktop only -->
-        <div class="hidden md:block relative overflow-hidden rounded-full">
-          <picture>
-            <source media="(min-width:768px)" srcset="assets/images/calendar.png 1x, assets/images/calendar@2x.png 2x">
-            <img src="assets/images/calendar.png" srcset="assets/images/calendar@2x.png 2x" alt="Calendar" class="w-full h-auto">
-          </picture>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="container mx-auto">
+    <!-- Section Title -->
+    <h2 class="text-4xl font-bold text-center md:text-left">Huly MetaBrain</h2>
+    <p class="mt-4 text-lg text-gray-700 text-center md:text-left">
+      Connect every element of your workflow to build a dynamic knowledge base. Soon, Huly AI will turn it into a powerful asset — a second brain for your team.
+    </p>
+
+    <!-- Grid of Cards -->
+    <div class="mt-8 relative grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Create tasks Card (Top Left) -->
+      <div class="relative overflow-hidden rounded-2xl md:col-span-1">
+        <picture>
+          <source media="(min-width:768px)" srcset="assets/images/tasks-notes.png 1x, assets/images/tasks-notes-640.png 2x">
+          <img src="assets/images/tasks-mobile.jpg" srcset="assets/images/tasks-mobile@2x.jpg 2x" alt="Create tasks" class="w-full h-auto">
+        </picture>
+        <div class="absolute top-0 left-0 p-6">
+          <h3 class="text-xl font-bold text-white">Create tasks.</h3>
+          <p class="mt-2 text-white text-opacity-80">Schedule your personal events and todos.</p>
+        </div>
+      </div>
+
+      <!-- Plan your work Card (Top Right) -->
+      <div class="relative overflow-hidden rounded-2xl md:col-span-1">
+        <picture>
+          <source media="(min-width:768px)" srcset="assets/images/plan-work.jpg 1x, assets/images/plan-work@2x.jpg 2x">
+          <img src="assets/images/plan-work-mobile.jpg" srcset="assets/images/plan-work-mobile@2x.jpg 2x" alt="Plan your work" class="w-full h-auto">
+        </picture>
+        <div class="absolute top-0 left-0 p-6">
+          <h3 class="text-xl font-bold text-white">Plan your work.</h3>
+          <p class="mt-2 text-white text-opacity-80">Visualize your workday in your planner.</p>
+        </div>
+      </div>
+
+      <!-- Take notes Card (Middle Left) -->
+      <div class="relative overflow-hidden rounded-2xl md:col-span-1 md:row-span-2">
+        <picture>
+          <source media="(min-width:768px)" srcset="assets/images/notes.png 1x, assets/images/notes@2x.png 2x">
+          <img src="assets/images/notes-mobile.jpg" srcset="assets/images/notes-mobile@2x.jpg 2x" alt="Take notes" class="w-full h-auto">
+        </picture>
+        <div class="absolute top-0 left-0 p-6">
+          <h3 class="text-xl font-bold text-white">Take notes.</h3>
+          <p class="mt-2 text-white text-opacity-80">Create documents to keep track of team resources.</p>
+        </div>
+      </div>
+
+      <!-- Sync in real time Card (Middle Center) -->
+      <div class="relative overflow-hidden rounded-2xl md:col-span-2 md:row-span-2">
+        <picture>
+          <source media="(min-width:768px)" srcset="assets/images/teammates.jpg 1x, assets/images/teammates@2x.jpg 2x">
+          <img src="assets/images/teammates-mobile.jpg" srcset="assets/images/teammates-mobile@2x.jpg 2x" alt="Sync in real time" class="w-full h-auto">
+        </picture>
+        <div class="absolute top-0 left-0 p-6">
+          <h3 class="text-xl font-bold text-white">Sync in real time.</h3>
+          <p class="mt-2 text-white text-opacity-80">Connect with your team instantly to monitor progress and track updates.</p>
+        </div>
+      </div>
+
+      <!-- Chat with team Card (Bottom Left) -->
+      <div class="relative overflow-hidden rounded-2xl md:col-span-1">
+        <picture>
+          <source media="(min-width:768px)" srcset="assets/images/collab.jpg 1x, assets/images/collab@2x.jpg 2x">
+          <img src="assets/images/collab-mobile.jpg" srcset="assets/images/collab-mobile@2x.jpg 2x" alt="Chat with team" class="w-full h-auto">
+        </picture>
+        <div class="absolute top-0 left-0 p-6">
+          <h3 class="text-xl font-bold text-white">Chat with team.</h3>
+          <p class="mt-2 text-white text-opacity-80">Send DM and create group chats.</p>
+        </div>
+      </div>
+
+      <!-- Manage projects Card (Bottom Right) -->
+      <div class="relative overflow-hidden rounded-2xl md:col-span-1">
+        <picture>
+          <source media="(min-width:768px)" srcset="assets/images/pm.jpg 1x, assets/images/pm@2x.jpg 2x">
+          <img src="assets/images/pm-mobile.jpg" srcset="assets/images/pm-mobile@2x.jpg 2x" alt="Manage projects" class="w-full h-auto">
+        </picture>
+        <div class="absolute top-0 left-0 p-6">
+          <h3 class="text-xl font-bold text-white">Manage projects.</h3>
+          <p class="mt-2 text-white text-opacity-80">Customize your workspace to fit the needs of your teams.</p>
+        </div>
+      </div>
+
+      <!-- Calendar Card (Bottom Left Circle, Desktop only) -->
+      <div class="hidden md:block absolute bottom-0 left-0 transform -translate-x-1/4 translate-y-1/4">
+        <div class="relative overflow-hidden rounded-full w-32 h-32">
+          <picture>
+            <source media="(min-width:768px)" srcset="assets/images/calendar.png 1x, assets/images/calendar@2x.png 2x">
+            <img src="assets/images/calendar.png" srcset="assets/images/calendar@2x.png 2x" alt="Calendar" class="w-full h-auto">
+          </picture>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </div></div>
 <section class="py-16 sm:py-32">
 <div class="mx-auto w-full px-6 xl:max-w-7xl space-y-16 sm:space-y-32">
