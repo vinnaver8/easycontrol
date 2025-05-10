@@ -64,7 +64,7 @@ body {
   transition: transform 0.3s;
 }
 .card-img1 {
-  width: 700%;
+  width: 600%;
   height: 508%;
   max-width: 100%;
   border-radius: 20px;
