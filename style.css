@@ -63,7 +63,12 @@ body {
   box-shadow: 0 15px 30px rgba(0,0,0,0.2);
   transition: transform 0.3s;
 }
-
+.card-img1 {
+  width: 250%;
+  max-width: 360px;
+  border-radius: 20px;
+  transition: transform 0.3s;
+  
 .card-img:hover {
   transform: translateY(-6px);
 }
