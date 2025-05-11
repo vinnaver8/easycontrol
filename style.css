@@ -24,38 +24,30 @@ body {
   background: #f6f6f6;
   color: #111;
 }
-
 .metabrain {
+  position: relative;
+  overflow: hidden;         
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 40px 20px;
   text-align: center;
 }
-
 .metabrain h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
 }
-
-.metabrain h1 span {
-  font-weight: 800;
-  display: block;
-}
-
+.metabrain h1,
 .metabrain .subtitle {
-  font-size: 1rem;
-  max-width: 600px;
-  margin: auto;
-  margin-bottom: 2rem;
+  position: relative;       /* gives each its own z-context */
+  z-index: 10;              /* sits above the cards */
+  color: #fff;              /* guaranteed white text */
 }
-
 .card-grid {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   justify-items: center;
 }
-
 .card-img {
   width: 100%;
   max-width: 360px;
