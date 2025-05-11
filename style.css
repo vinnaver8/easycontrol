@@ -86,18 +86,15 @@ body {
     display: block;
   }
 }
-.grid-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
-}
-
-.card-img1, .card-img2 {
+.card-img2 {
   width: 100%;
+  max-width: 240px; /* Adjust based on visual need */
+  height: auto;
+  margin-top: -140px;  /* Move upward */
+  margin-left: 140px;  /* Move right */
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   background: #111;
+  z-index: 10;
+  position: relative;
 }
