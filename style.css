@@ -24,23 +24,6 @@ body {
   background: #f6f6f6;
   color: #111;
 }
-.metabrain {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* aligns children to top */
-  height: 100vh; /* optional: fill full screen height */
-  padding: 0 20px;
-}
-.metabrain h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-.metabrain h1,
-.metabrain .subtitle {
-  position: relative;       /* gives each its own z-context */
-  z-index: 10;              /* sits above the cards */
-  color: #fff;              /* guaranteed white text */
-}
 .card-grid {
   display: grid;
   gap: 20px;
