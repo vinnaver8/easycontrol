@@ -25,12 +25,11 @@ body {
   color: #111;
 }
 .metabrain {
-  position: relative;
-  overflow: hidden;         
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* aligns children to top */
+  height: 100vh; /* optional: fill full screen height */
+  padding: 0 20px;
 }
 .metabrain h1 {
   font-size: 3rem;
