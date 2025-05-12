@@ -8,12 +8,14 @@
   <style>
     /* floating animation (optional) */
     @keyframes float {
-      0%   { transform: translateY(0); }
-      50%  { transform: translateY(-5px); }
-      100% { transform: translateY(0); }
-    }
-    .float-pin { animation: float 4s ease-in-out infinite; }
-  </style>
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+.float-pin {
+  animation: float 2s ease-in-out infinite;
+}
+</style>
 </head>
 <body class="relative h-screen bg-gray-900 overflow-hidden">
 
@@ -74,7 +76,7 @@
         const dropY    = textRect.top - pinRect.height;
 
         // animate top only, keep current left
-        pin.style.transition = 'top 0.3s ease';
+        pin.style.transition = 'top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         pin.style.top = dropY + 'px';
 
         pin.addEventListener('transitionend', () => {
