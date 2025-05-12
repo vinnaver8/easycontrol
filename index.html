@@ -2,68 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Draggable Pin</title>
+  <title>Universal Draggable Pin</title>
   <style>
     @keyframes float {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-5px); }
       100% { transform: translateY(0); }
     }
-
-    .float-pin {
-      animation: float 4s ease-in-out infinite;
-    }
+    .float-pin { animation: float 4s ease-in-out infinite; }
   </style>
 </head>
 <body class="relative h-screen bg-gray-900 overflow-hidden">
 
-  <!-- Floating Pin -->
+  <!-- Pin Container -->
   <div
     id="floatingPin"
-    class="absolute z-40 flex flex-col items-center cursor-grab active:cursor-grabbing group float-pin"
-    style="top: 100px; left: 100px;"
+    class="absolute z-40 flex flex-col items-center cursor-grab active:cursor-grabbing select-none float-pin"
+    style="top:100px; left:100px;"
   >
     <img
       src="pin.jpg"
       alt="pin"
-      class="pointer-events-none z-10 max-w-none rounded-full border-2 border-blue-500 
-             shadow-[0px_6px_25px_0px_rgba(0,0,0,0.5)] transition-all duration-200 
-             group-active:-translate-y-4 group-active:scale-[1.05] 
-             group-active:shadow-[0px_14px_30px_0px_rgba(0,0,0,0.5)] 
-             w-[66px] md:w-[45px] sm:w-[36px]"
+      class="pointer-events-none rounded-full border-2 border-blue-500 shadow-[0px_6px_25px_rgba(0,0,0,0.5)] 
+             transition-all duration-200 active:-translate-y-4 active:scale-105 active:shadow-[0px_14px_30px_rgba(0,0,0,0.5)]
+             w-16 md:w-12 sm:w-9"
     />
     <div class="h-8 w-0.5 bg-blue-500 mx-auto"></div>
     <div class="h-2 w-2 rounded-full bg-blue-500 mx-auto"></div>
   </div>
 
-  <!-- JavaScript -->
   <script>
-    const pin = document.getElementById('floatingPin');
-    let isDragging = false;
-    let offset = { x: 0, y: 0 };
+    (function() {
+      const pin = document.getElementById('floatingPin');
+      let active = false, startX, startY, origX, origY;
+      
+      // Unified handler for both mouse and touch
+      const down = (e) => {
+        active = true;
+        pin.classList.remove('float-pin');
+        const touch = e.touches ? e.touches[0] : e;
+        startX = touch.clientX;
+        startY = touch.clientY;
+        const rect = pin.getBoundingClientRect();
+        origX = rect.left;
+        origY = rect.top;
+        e.preventDefault();
+      };
+      const move = (e) => {
+        if (!active) return;
+        const touch = e.touches ? e.touches[0] : e;
+        const dx = touch.clientX - startX;
+        const dy = touch.clientY - startY;
+        pin.style.left = origX + dx + 'px';
+        pin.style.top  = origY + dy + 'px';
+      };
+      const up = () => {
+        if (!active) return;
+        active = false;
+        pin.classList.add('float-pin');
+      };
 
-    pin.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      const rect = pin.getBoundingClientRect();
-      offset.x = e.clientX - rect.left;
-      offset.y = e.clientY - rect.top;
-      pin.classList.remove('float-pin');
-    });
-
-    document.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      const newLeft = e.clientX - offset.x;
-      const newTop = e.clientY - offset.y;
-      pin.style.left = `${newLeft}px`;
-      pin.style.top = `${newTop}px`;
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
-      pin.classList.add('float-pin');
-    });
+      pin.addEventListener('mousedown', down);
+      pin.addEventListener('touchstart', down, {passive:false});
+      window.addEventListener('mousemove', move);
+      window.addEventListener('touchmove', move, {passive:false});
+      window.addEventListener('mouseup', up);
+      window.addEventListener('touchend', up);
+    })();
   </script>
 </body>
 </html>
