@@ -72,3 +72,12 @@ body {
   z-index: 10;
   position: relative;
 }
+@keyframes float {
+    0% { transform: translateX(30px) translateY(-79px); }
+    50% { transform: translateX(30px) translateY(-84px); }
+    100% { transform: translateX(30px) translateY(-79px); }
+  }
+
+  .float-pin {
+    animation: float 4s ease-in-out infinite;
+  }
