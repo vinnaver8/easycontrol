@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Floating Pin</title>
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .float-pin {
+      animation: float 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="relative h-screen bg-gray-100 overflow-hidden">
+
+  <!-- Floating Pin Start -->
+  <div
+    id="floatingPin"
+    class="absolute z-40 flex flex-col items-center cursor-grab active:cursor-grabbing group 
+           right-[-38px] top-[-38px] lg:-right-10 lg:-top-10 md:-right-7 md:-top-8 sm:right-[-22px] 
+           select-none float-pin"
+    aria-hidden="true"
+    draggable="false"
+    style="transform: translateX(30px) translateY(-79px);"
+  >
+    <img
+      src="pin.jpg"
+      alt="pin"
+      class="pointer-events-none z-10 max-w-none rounded-full border-2 border-blue-500 
+             shadow-[0px_6px_25px_0px_rgba(0,0,0,0.5)] transition-all duration-200 
+             group-active:-translate-y-4 group-active:scale-[1.05] 
+             group-active:shadow-[0px_14px_30px_0px_rgba(0,0,0,0.5)] 
+             w-[66px] md:w-[45px] sm:w-[36px]"
+    />
+    <div class="h-8 w-0.5 bg-blue-500 mx-auto"></div>
+    <div class="h-2 w-2 rounded-full bg-blue-500 mx-auto"></div>
+  </div>
+  <!-- Floating Pin End -->
+
+  <script>
+    const pin = document.getElementById('floatingPin');
+    let isDragging = false;
+    let offset = { x: 0, y: 0 };
+
+    pin.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offset.x = e.clientX - pin.getBoundingClientRect().left;
+      offset.y = e.clientY - pin.getBoundingClientRect().top;
+      pin.classList.remove('float-pin'); // stop animation while dragging
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      pin.style.left = `${e.clientX - offset.x}px`;
+      pin.style.top = `${e.clientY - offset.y}px`;
+      pin.style.right = 'auto'; // override Tailwind right
+      pin.style.bottom = 'auto'; // override Tailwind bottom
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+      pin.classList.add('float-pin'); // resume animation
+    });
+  </script>
+</body>
+</html>
