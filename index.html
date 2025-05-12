@@ -4,8 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Snap-Back Draggable Pin</title>
+  <title>Drop‐Down Draggable Pin</title>
   <style>
+    /* floating animation (optional) */
     @keyframes float {
       0%   { transform: translateY(0); }
       50%  { transform: translateY(-5px); }
@@ -16,25 +17,25 @@
 </head>
 <body class="relative h-screen bg-gray-900 overflow-hidden">
 
-  <!-- Your text -->
-  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-4xl font-semibold text-white">
-    <span id="textWrap" class="relative inline-block">
+  <!-- SAMPLE TEXT -->
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <span id="textWrap" class="relative inline-block text-4xl font-semibold text-white">
       Sample Text
     </span>
   </div>
 
-  <!-- Pin Container -->
+  <!-- PIN -->
   <div
     id="floatingPin"
     class="absolute z-40 flex flex-col items-center cursor-grab active:cursor-grabbing select-none float-pin"
-    style="top: calc(50% - 1.5rem); left: calc(50% + 4.5rem);" 
-    <!-- adjust these so the pin sits over the “s” in “Sample Text” -->
+    style="top: calc(50% - 1.5rem); left: calc(50% + 4.5rem);"
   >
     <img
       src="pin.jpg"
       alt="pin"
-      class="pointer-events-none rounded-full border-2 border-blue-500 shadow-[0px_6px_25px_rgba(0,0,0,0.5)] 
-             transition-all duration-200 active:-translate-y-4 active:scale-105 active:shadow-[0px_14px_30px_rgba(0,0,0,0.5)]
+      class="pointer-events-none rounded-full border-2 border-blue-500 
+             shadow-[0px_6px_25px_rgba(0,0,0,0.5)] transition-all duration-200 
+             active:-translate-y-4 active:scale-105 active:shadow-[0px_14px_30px_rgba(0,0,0,0.5)]
              w-16 md:w-12 sm:w-9"
     />
     <div class="h-8 w-0.5 bg-blue-500 mx-auto"></div>
@@ -43,54 +44,49 @@
 
   <script>
     (function() {
-      const pin = document.getElementById('floatingPin');
-      // record its initial position
-      const origin = {
-        left: pin.offsetLeft,
-        top:  pin.offsetTop
-      };
-      let active = false, startX, startY, origX, origY;
+      const pin     = document.getElementById('floatingPin');
+      const textElm = document.getElementById('textWrap');
+      let active=false, startX, startY, origX, origY;
 
-      const down = (e) => {
+      const down = e => {
         active = true;
         pin.classList.remove('float-pin');
-        const touch = e.touches ? e.touches[0] : e;
-        startX = touch.clientX;
-        startY = touch.clientY;
-        origX  = pin.offsetLeft;
-        origY  = pin.offsetTop;
-        // disable transition while dragging
+        const t = e.touches ? e.touches[0] : e;
+        startX = t.clientX; startY = t.clientY;
+        origX  = pin.offsetLeft; origY = pin.offsetTop;
         pin.style.transition = 'none';
         e.preventDefault();
       };
 
-      const move = (e) => {
+      const move = e => {
         if (!active) return;
-        const touch = e.touches ? e.touches[0] : e;
-        const dx = touch.clientX - startX;
-        const dy = touch.clientY - startY;
-        pin.style.left = origX + dx + 'px';
-        pin.style.top  = origY + dy + 'px';
+        const t = e.touches ? e.touches[0] : e;
+        pin.style.left = origX + (t.clientX - startX) + 'px';
+        pin.style.top  = origY + (t.clientY - startY) + 'px';
       };
 
       const up = () => {
         if (!active) return;
         active = false;
-        // snap-back transition
-        pin.style.transition = 'left 0.3s ease, top 0.3s ease';
-        pin.style.left = origin.left + 'px';
-        pin.style.top  = origin.top  + 'px';
-        // when done, re-enable float animation
+        // compute drop target: text top minus pin container height
+        const textRect = textElm.getBoundingClientRect();
+        const pinRect  = pin.getBoundingClientRect();
+        const dropY    = textRect.top - pinRect.height;
+
+        // animate top only, keep current left
+        pin.style.transition = 'top 0.3s ease';
+        pin.style.top = dropY + 'px';
+
         pin.addEventListener('transitionend', () => {
           pin.classList.add('float-pin');
-          pin.style.transition = '';  // clear inline
+          pin.style.transition = '';
         }, { once: true });
       };
 
       pin.addEventListener('mousedown', down);
-      pin.addEventListener('touchstart', down, { passive:false });
+      pin.addEventListener('touchstart', down, {passive:false});
       window.addEventListener('mousemove', move);
-      window.addEventListener('touchmove', move, { passive:false });
+      window.addEventListener('touchmove', move, {passive:false});
       window.addEventListener('mouseup', up);
       window.addEventListener('touchend', up);
     })();
