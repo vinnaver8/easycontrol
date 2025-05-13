@@ -40,21 +40,22 @@ function onDrag(e) {
 
   let newLeft = clientX - offsetX;
   let newTop = clientY - offsetY;
-  const margin = 300;
-  const minX = textRect.left-200;
-  const maxX = textRect.right - pin.offsetWidth + 200;
-  const minY = textRect.top - 100;
-  const maxY = textRect.bottom - pin.offsetHeight + 100;
+  
+const margin = 300; // Increase drag boundary space
+const minX = textRect.left - margin;
+const maxX = textRect.right - pin.offsetWidth + margin;
+const minY = textRect.top - margin;
+const maxY = textRect.bottom - pin.offsetHeight + margin;
+  
+newLeft = Math.max(minX, Math.min(maxX, newLeft));
+newTop = Math.max(minY, Math.min(maxY, newTop));
 
-  newLeft = Math.max(minX, Math.min(maxX, newLeft));
-  newTop = Math.max(minY, Math.min(maxY, newTop));
+pin.style.position = 'absolute';
+pin.style.left = `${newLeft - textRect.left}px`;
+pin.style.top = `${newTop - textRect.top}px`;
+pin.style.transition = 'none';
 
-  pin.style.position = 'absolute';
-  pin.style.left = `${newLeft - textRect.left}px`;
-  pin.style.top = `${newTop - textRect.top}px`;
-  pin.style.transition = 'none';
-
-  if (e.cancelable) e.preventDefault(); // block page scroll during drag
+if (e.cancelable) e.preventDefault(); // block page scroll during drag
 }
 
 function stopDrag(e) {
