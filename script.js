@@ -14,11 +14,21 @@ document.addEventListener('touchend', stopDrag);
 
 function startDrag(e) {
   isDragging = true;
+
+  // Lock scroll behavior
+  document.body.style.overflow = 'hidden';
+  document.body.style.touchAction = 'none';
+
+  pin.classList.remove('float-pin');
+
   const rect = pin.getBoundingClientRect();
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
   offsetX = clientX - rect.left;
   offsetY = clientY - rect.top;
+
+  // Prevent default scroll
+  if (e.cancelable) e.preventDefault();
 }
 
 function onDrag(e) {
@@ -28,15 +38,13 @@ function onDrag(e) {
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-  const margin = -200; // negative = expand drag area
-
   let newLeft = clientX - offsetX;
   let newTop = clientY - offsetY;
 
-  const minX = textRect.left + margin;
-  const maxX = textRect.right - pin.offsetWidth - margin;
-  const minY = textRect.top + margin;
-  const maxY = textRect.bottom - pin.offsetHeight - margin;
+  const minX = textRect.left - 100;
+  const maxX = textRect.right - pin.offsetWidth + 100;
+  const minY = textRect.top - 100;
+  const maxY = textRect.bottom - pin.offsetHeight + 100;
 
   newLeft = Math.max(minX, Math.min(maxX, newLeft));
   newTop = Math.max(minY, Math.min(maxY, newTop));
@@ -45,16 +53,21 @@ function onDrag(e) {
   pin.style.left = `${newLeft - textRect.left}px`;
   pin.style.top = `${newTop - textRect.top}px`;
   pin.style.transition = 'none';
+
+  if (e.cancelable) e.preventDefault(); // block page scroll during drag
 }
 
-function stopDrag() {
+function stopDrag(e) {
   if (!isDragging) return;
   isDragging = false;
 
-  const finalY = pin.offsetTop + 50;
-  const maxDrop = textBlock.offsetHeight - pin.offsetHeight;
-  const dropY = Math.min(finalY, maxDrop);
+  // Re-enable scroll
+  document.body.style.overflow = '';
+  document.body.style.touchAction = '';
 
+  const dropY = Math.min(pin.offsetTop + 50, textBlock.offsetHeight - pin.offsetHeight);
   pin.style.transition = 'top 1s ease-in-out';
   pin.style.top = `${dropY}px`;
+
+  if (e && e.cancelable) e.preventDefault();
 }
