@@ -11,21 +11,36 @@ document.addEventListener('DOMContentLoaded', () => {
   // hide the text until we animate it
   header.style.visibility    = 'hidden';
   paragraph.style.visibility = 'hidden';
-
+// Before starting typing
+pin.style.left = '10px';
+pin.style.top = '50%';
   // typing animation function
-  function typeText(el, text, speed = 40, cb) {
-    el.style.visibility = 'visible';
-    el.textContent      = '';
-    let idx = 0;
-    (function typeChar() {
-      if (idx < text.length) {
-        el.textContent += text[idx++];
-        setTimeout(typeChar, speed);
-      } else if (cb) {
-        cb();
-      }
-    })();
-  }
+  function updatePinPositionForEl(el) {
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  range.collapse(false); // Collapse to the end
+  const rect = range.getBoundingClientRect();
+  const textBlockRect = textBlock.getBoundingClientRect();
+  const pinLeft = rect.left - textBlockRect.left;
+  const pinTop = rect.top - textBlockRect.top;
+  pin.style.left = `${pinLeft}px`;
+  pin.style.top = `${pinTop}px`;
+}
+
+function typeText(el, text, speed = 40, cb) {
+  el.style.visibility = 'visible';
+  el.textContent = '';
+  let idx = 0;
+  (function typeChar() {
+    if (idx < text.length) {
+      el.textContent += text[idx++];
+      updatePinPositionForEl(el); // Update pin position after each character
+      setTimeout(typeChar, speed);
+    } else if (cb) {
+      cb();
+    }
+  })();
+}
 
   // trigger typing once #text-block enters viewport
   new IntersectionObserver((entries, obs) => {
@@ -47,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function startDrag(e) {
     if (!typingStarted) return;
     isDragging = true;
-    document.body.style.overflow    = 'hidden';
+    document.body.style.overflow = 'auto';
     document.body.style.touchAction = 'none';
     pin.classList.remove('float-pin');
     const rect    = pin.getBoundingClientRect();
@@ -74,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxX = bounds.width  - pin.offsetWidth  - padding;
     const minY = padding;
     const maxY = bounds.height - pin.offsetHeight - padding;
-
+    const padding = window.innerWidth < 600 ? 10 : 80;
     newLeft = Math.max(minX, Math.min(maxX, newLeft));
     newTop  = Math.max(minY, Math.min(maxY, newTop));
 
