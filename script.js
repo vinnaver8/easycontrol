@@ -69,11 +69,11 @@
     let newTop  = clientY - bounds.top  - offsetY;
 
     // clamp within fixed boundaries
-    const minX = -100;
-    const maxX = bounds.width  - pin.offsetWidth + 1;
-    const minY = -100;
-    const maxY = bounds.height - pin.offsetHeight + 500;
-
+const padding = 40;
+const minX = padding;
+const maxX = bounds.width  - pin.offsetWidth - padding;
+const minY = padding;
+const maxY = bounds.height - pin.offsetHeight - padding;
     newLeft = Math.max(minX, Math.min(maxX, newLeft));
     newTop  = Math.max(minY, Math.min(maxY, newTop));
 
