@@ -34,7 +34,7 @@ function onDrag(e) {
   let newTop = clientY - offsetY - textRect.top;
 
   const minX = 0; // Prevent dragging beyond the left boundary
-  const maxX = textRect.width - pin.offsetWidth; // Prevent dragging beyond the right boundary
+  const maxX = textRect.width - pin.offsetWidth + 0; // Prevent dragging beyond the right boundary
   const minY = 0; // Prevent dragging beyond the top boundary
   const maxY = textRect.height - pin.offsetHeight; // Prevent dragging beyond the bottom boundary
 
