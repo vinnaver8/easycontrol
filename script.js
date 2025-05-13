@@ -14,6 +14,7 @@ document.addEventListener('touchend', stopDrag);
 
 function startDrag(e) {
   isDragging = true;
+  e.preventDefault(); // Prevent scrolling while dragging
   const rect = pin.getBoundingClientRect();
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -23,27 +24,26 @@ function startDrag(e) {
 
 function onDrag(e) {
   if (!isDragging) return;
+  e.preventDefault(); // Prevent scrolling while dragging
 
   const textRect = textBlock.getBoundingClientRect();
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-  const margin = -200; // negative = expand drag area
+  let newLeft = clientX - offsetX - textRect.left;
+  let newTop = clientY - offsetY - textRect.top;
 
-  let newLeft = clientX - offsetX;
-  let newTop = clientY - offsetY;
-
-  const minX = textRect.left + margin;
-  const maxX = textRect.right - pin.offsetWidth - margin;
-  const minY = textRect.top + margin;
-  const maxY = textRect.bottom - pin.offsetHeight - margin;
+  const minX = 0; // Prevent dragging beyond the left boundary
+  const maxX = textRect.width - pin.offsetWidth; // Prevent dragging beyond the right boundary
+  const minY = 0; // Prevent dragging beyond the top boundary
+  const maxY = textRect.height - pin.offsetHeight; // Prevent dragging beyond the bottom boundary
 
   newLeft = Math.max(minX, Math.min(maxX, newLeft));
   newTop = Math.max(minY, Math.min(maxY, newTop));
 
   pin.style.position = 'absolute';
-  pin.style.left = `${newLeft - textRect.left}px`;
-  pin.style.top = `${newTop - textRect.top}px`;
+  pin.style.left = `${newLeft}px`;
+  pin.style.top = `${newTop}px`;
   pin.style.transition = 'none';
 }
 
