@@ -35,13 +35,13 @@ const pin = document.getElementById('pin');
     let newTop = clientY - offsetY;
 
     // Clamp X within text block
-    const minX = textRect.left;
-    const maxX = textRect.right - pin.offsetWidth;
+    const minX = textRect.left - 100;
+    const maxX = textRect.right - pin.offsetWidth + 100;
     newLeft = Math.max(minX, Math.min(maxX, newLeft));
 
     // Clamp Y within text block
-    const minY = textRect.top;
-    const maxY = textRect.bottom - pin.offsetHeight;
+    const minY = textRect.top - 100;
+    const maxY = textRect.bottom - pin.offsetHeight + 100;
     newTop = Math.max(minY, Math.min(maxY, newTop));
 
     // Apply position
