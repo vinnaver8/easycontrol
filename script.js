@@ -1,4 +1,3 @@
-<script>
   (function() {
     const bold = "Documents in Huly";
     const rest = " can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.";
@@ -32,4 +31,3 @@
 
     obs.observe(document.getElementById("huly-container"));
   })();
-</script>
