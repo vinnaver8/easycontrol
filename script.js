@@ -21,11 +21,11 @@ function startDrag(e) {
 
   pin.classList.remove('float-pin');
 
-  const rect = pin.getBoundingClientRect();
-  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-  offsetX = clientX - rect.left;
-  offsetY = clientY - rect.top;
+const margin = 400;
+const minX = secRect.left - margin;
+const maxX = secRect.right - pin.offsetWidth + margin;
+const minY = secRect.top - margin;
+const maxY = secRect.bottom - pin.offsetHeight + margin;
 
   if (e.cancelable) e.preventDefault();
 }
