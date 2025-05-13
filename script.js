@@ -41,10 +41,10 @@ function onDrag(e) {
   let newLeft = clientX - offsetX;
   let newTop = clientY - offsetY;
 
-  const minX = textRect.left - 300;
+  const minX = textRect.left - 200;
   const maxX = textRect.right - pin.offsetWidth + 100;
   const minY = textRect.top - 100;
-  const maxY = textRect.bottom - pin.offsetHeight + 300;
+  const maxY = textRect.bottom - pin.offsetHeight + 1500;
 
   newLeft = Math.max(minX, Math.min(maxX, newLeft));
   newTop = Math.max(minY, Math.min(maxY, newTop));
