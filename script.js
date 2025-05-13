@@ -1,7 +1,9 @@
-  (function() {
+(function() {
     const bold = "Documents in Huly";
     const rest = " can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.";
     const out = document.getElementById("typing-text");
+    const highlight = document.getElementById("highlight-overlay");
+    const cursor = document.getElementById("cursor-overlay");
     let done = false;
 
     function typeIt() {
@@ -15,6 +17,10 @@
           }
           i++;
           setTimeout(step, 20);
+        } else {
+          // Typing done — fade in highlight and cursor
+          highlight.classList.remove("opacity-0");
+          cursor.classList.remove("opacity-0");
         }
       })();
     }
@@ -31,3 +37,4 @@
 
     obs.observe(document.getElementById("huly-container"));
   })();
+</script>
