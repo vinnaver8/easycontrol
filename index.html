@@ -122,16 +122,45 @@
   <div class="h-2 w-2 rounded-full bg-red-500 mx-auto"></div>
 </div></div></div>
     <!-- Mini Toolbar -->
-      <div class="mt-6 flex items-center space-x-2 bg-gray-100 p-2 rounded-md shadow-lg w-fit">
-        <button class="bg-blue-500 text-white text-sm px-2 py-1 rounded flex items-center">
-          <svg class="w-3 h-3 mr-1" viewBox="0 0 12 12"><path d="M6 1v10M1 6h10" stroke="white" /></svg> Link
-        </button>
-        <button class="text-gray-600 hover:text-black">
-          <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M9 4v16h6" fill="currentColor"/></svg>
-        </button>
-        <button class="text-gray-600 hover:text-black">
-          <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" fill="currentColor"/></svg>
-        </button>
+<div class="relative w-full max-w-xl">
+  <!-- Toolbar -->
+  <div class="flex flex-wrap items-center space-x-2 p-2 bg-white rounded-md shadow-md md:absolute md:top-[100px] md:left-0">
+    <!-- Link -->
+    <button id="linkBtn" class="p-2 hover:bg-gray-200 rounded">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
+    </button>
+    <!-- Bold -->
+    <button id="boldBtn" class="p-2 hover:bg-gray-200 rounded">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" /><path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" /></svg>
+    </button>
+    <!-- Italic -->
+    <button id="italicBtn" class="p-2 hover:bg-gray-200 rounded">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M11 5l6 0" /><path d="M7 19l6 0" /><path d="M14 5l-4 14" /></svg>
+    </button>
+    <!-- Underline -->
+    <button id="underlineBtn" class="p-2 hover:bg-gray-200 rounded">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M7 5v5a5 5 0 0 0 10 0v-5" /><path d="M5 19h14" /></svg>
+    </button>
+    <!-- Strikethrough -->
+    <button id="strikeBtn" class="p-2 hover:bg-gray-200 rounded">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 12l14 0" /><path d="M16 6.5a4 2 0 0 0 -4 -1.5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1 -4 -1.5" /></svg>
+    </button>
+    <!-- Up arrow -->
+    <button id="upBtn" class="p-2 hover:bg-gray-200 rounded">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 5l0 14" /><path d="M18 11l-6 -6" /><path d="M6 11l6 -6" /></svg>
+    </button>
+    <!-- Down arrow -->
+    <button id="downBtn" class="p-2 hover:bg-gray-200 rounded">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 5l0 14" /><path d="M18 13l-6 6" /><path d="M6 13l6 6" /></svg>
+    </button>
+  </div>
+
+  <!-- Editable paragraph -->
+  <div id="editor" contenteditable="true"
+       class="mt-4 p-4 min-h-[150px] border rounded bg-gray-50 focus:outline-none">
+    Edit this text...
+  </div>
+</div>
 <!-- Add more icons as needed -->
 </div></div></div></div>     </div>
 </section>
