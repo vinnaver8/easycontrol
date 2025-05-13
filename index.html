@@ -12,14 +12,14 @@
 <!-- Gradient Background (hidden with opacity 0 initially) -->
 <div class="pointer-events-none absolute inset-x-0 h-32 lg:h-24 duration-200 bg-gradient-to-b from-black lg:from-black/75 opacity-100" style="mask: linear-gradient(black, black, transparent); backdrop-filter: blur(8px);"></div>
 <div class="
-          hidden lg:block
-          fixed inset-x-0 top-0 bg-background/25 backdrop-blur
-          pointer-events-none opacity-0 
-          lg:pt-16">
+hidden lg:block
+fixed inset-x-0 top-0 bg-background/25 backdrop-blur
+pointer-events-none opacity-0 
+lg:pt-16">
 <div class="border-y border-primary/10 h-full py-4">
 <div class="mx-auto w-full px-6 xl:max-w-7xl relative">
 <div class="flex gap-1.5 -mx-3"></div></div></div></div></header>
-          <!--user preview-->
+<!--user preview-->
 <div class="relative h-full mix-blend-overlay [clip-path:circle(var(--hero-mask-size)_at_var(--hero-mask-x)_var(--hero-mask-y))] lg:-top-2 lg:left-28 lg:w-[93%] md:hidden">
 <img alt="" loading="lazy" width="1574" height="1474" decoding="async" data-nimg="1" class="absolute w-full max-w-none [mask-image:radial-gradient(var(--hero-mask-size)_at_var(--hero-mask-x)_var(--hero-mask-y),black_20%,transparent)]" style="color:transparent" src="assets/box.svg"><img alt="" loading="lazy" width="1574" height="1474" decoding="async" data-nimg="1" class="absolute z-10 w-full max-w-none [mask-image:radial-gradient(var(--hero-mask-size)_at_var(--hero-mask-x)_var(--hero-mask-y),black_20%,transparent)]" style="color:transparent" src="assets/chat.svg"></div>
 <div class="relative h-svh w-full border-b border-border pb-px overflow-hidden md:overflow-x-hidden">
@@ -58,128 +58,161 @@
 </div></div></div></div></div></div>
 <!--2nd section-->
 <section class="metabrain relative min-h-[2000px] md:min-h-[2000px] overflow-visible pt-32">
- <!-- Wrapper becomes absolute on desktop -->
+<!-- Wrapper becomes absolute on desktop -->
 <div class="relative md:absolute md:top-[100px] md:left-[300px] md:text-left text-80 text-center w-full md:w-auto">
-  <h1 class="text-4xl font-bold mb-4" style="color: #FFFFFF;">
-    INDOX <span style="color: #FFFFFF;">MetaBrain</span>
-  </h1>
-  <p class="max-w-xl mx-auto md:mx-0 mb-12" style="color: #ffffff;">
-    Connect every element of your workflow to build a dynamic knowledge base. Soon, Huly AI will turn it into a powerful asset — a second brain for your team.
-  </p>
+<h1 class="text-4xl font-bold mb-4" style="color: #FFFFFF;">
+INDOX <span style="color: #FFFFFF;">MetaBrain</span>
+</h1>
+<p class="max-w-xl mx-auto md:mx-0 mb-12" style="color: #ffffff;">
+Connect every element of your workflow to build a dynamic knowledge base. Soon, Huly AI will turn it into a powerful asset — a second brain for your team.
+</p>
 </div>
- <!-- Use a flex layout for mobile, absolute for md+ -->
+<!-- Use a flex layout for mobile, absolute for md+ -->
 <div class="card-grid relative flex flex-col items-center gap-6 md:block">
 <!-- Image 1 -->
 <div class="md:absolute md:top-[120px] md:left-[100px]">
 <img src="create-task.png" alt="create tasks"
-        class="w-[360px] h-[240px] md:w-[534px] md:h-[508px] rounded-[20px] " />
+class="w-[360px] h-[240px] md:w-[534px] md:h-[508px] rounded-[20px] " />
 </div>
-    <!-- Image 2 -->
-    <div class="md:absolute md:top-[140px] md:left-[670px]">
-      <img src="take-notes.png" alt="take notes"
-        class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg-[#111]" />
-    </div>
-    <!-- Image 3 -->
-    <div class="md:absolute md:top-[400px] md:left-[400px]">
-      <img src="sync.png" alt="Sync"
-        class="w-[360px] h-[240px] md:w-[520px] md:h-[232px] rounded-[20px] shadow-xl bg-[#111]" />
-    </div>
-    <!-- Image 4 -->
-    <div class="md:absolute md:top-[650px] md:left-[400px]">
-      <img src="chat.png" alt="chat"
-        class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg-[#111]" />
-    </div>
-    <!-- Image 5 -->
-    <div class="md:absolute md:top-[650px] md:left-[670px]">
-      <img src="manage.png" alt="manage"
-        class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg-[#111]" />
-    </div>
-     <!--drag events-->
+<!-- Image 2 -->
+<div class="md:absolute md:top-[140px] md:left-[670px]">
+<img src="take-notes.png" alt="take notes"
+class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg-[#111]" />
+</div>
+<!-- Image 3 -->
+<div class="md:absolute md:top-[400px] md:left-[400px]">
+<img src="sync.png" alt="Sync"
+class="w-[360px] h-[240px] md:w-[520px] md:h-[232px] rounded-[20px] shadow-xl bg-[#111]" />
+</div>
+<!-- Image 4 -->
+<div class="md:absolute md:top-[650px] md:left-[400px]">
+<img src="chat.png" alt="chat"
+class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg-[#111]" />
+</div>
+<!-- Image 5 -->
+<div class="md:absolute md:top-[650px] md:left-[670px]">
+<img src="manage.png" alt="manage"
+class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg-[#111]" />
+</div>
+<!--drag events-->
 <div id="text-block" id="pin" class="relative md:absolute md:top-[900px] md:left-[300px] md:text-left text-80 text-center w-full md:w-auto relative min-h-[1500px] md:min-h-[1500px] overflow-visible pt-32">
-  <h1 class="text-4xl font-bold mb-4 text-white">Knowledge at <span class="text-white">Your Fingertips</span></h1>
-  <p class="max-w-xl mx-auto md:mx-0 mb-12 text-white">
-    Huly offers a wide range of features to create and manage your project documentation. Huly's suite of collaborative editing tools boosts team efficiency.
-  </p>
- <!-- Floating Pin -->
+<h1 class="text-4xl font-bold mb-4 text-white">Knowledge at <span class="text-white">Your Fingertips</span></h1>
+<p class="max-w-xl mx-auto md:mx-0 mb-12 text-white">
+Huly offers a wide range of features to create and manage your project documentation. Huly's suite of collaborative editing tools boosts team efficiency.
+</p>
+<!-- Floating Pin -->
 <div
-  class="absolute flex flex-col items-start cursor-grab active:cursor-grabbing select-none float-pin"
-  style="left:1px; top:-20px;">
-  <div class="relative w-[66px] h-[66px] md:w-[45px] md:h-[45px] sm:w-[50px] sm:h-[50px] md:top-[900px] md:left-[100px]">
-    <!-- Pulsing glow -->
-    <div class="absolute inset-0 rounded-full bg-red-500 opacity-50 animate-ping"></div>
-    <!-- Solid ring -->
-    <div class="absolute inset-0 rounded-full border-3 border-red-500"></div>
-    <img
-      src="pin.jpg"
-      alt="pin"
-      class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full object-cover pointer-events-none"
-    />
-  </div>
-  <!-- Stem -->
-  <div class="h-8 w-0.5 bg-red-500 mx-auto"></div>
-  <div class="h-2 w-2 rounded-full bg-red-500 mx-auto"></div>
-</div></div></div></div>
-    <!-- Mini Toolbar -->
-<div class="relative md:absolute md:top-[1500px] md:left-[300px] overflow-visible w-full max-w-xl">
-  <!-- Toolbar -->
-  <div class="flex flex-wrap items-center space-x-2 p-2 bg-gray-200 rounded-md shadow-md md:absolute md:top-[100px] md:left-0">
-    <!-- Link -->
-    <button id="linkBtn" class="p-2 hover:bg-gray-200 rounded">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
-    </button>
-    <!-- Bold -->
-    <button id="boldBtn" class="p-2 hover:bg-gray-200 rounded">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M7 5h6a3.5 3.5 0 0 1 0 7h-6z" /><path d="M13 12h1a3.5 3.5 0 0 1 0 7h-7v-7" /></svg>
-    </button>
-    <!-- Italic -->
-    <button id="italicBtn" class="p-2 hover:bg-gray-200 rounded">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M11 5l6 0" /><path d="M7 19l6 0" /><path d="M14 5l-4 14" /></svg>
-    </button>
-    <!-- Underline -->
-    <button id="underlineBtn" class="p-2 hover:bg-gray-200 rounded">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M7 5v5a5 5 0 0 0 10 0v-5" /><path d="M5 19h14" /></svg>
-    </button>
-    <!-- Strikethrough -->
-    <button id="strikeBtn" class="p-2 hover:bg-gray-200 rounded">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 12l14 0" /><path d="M16 6.5a4 2 0 0 0 -4 -1.5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1 -4 -1.5" /></svg>
-    </button>
-    <!-- Up arrow -->
-    <button id="upBtn" class="p-2 hover:bg-gray-200 rounded">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 5l0 14" /><path d="M18 11l-6 -6" /><path d="M6 11l6 -6" /></svg>
-    </button>
-    <!-- Down arrow -->
-    <button id="downBtn" class="p-2 hover:bg-gray-200 rounded">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 5l0 14" /><path d="M18 13l-6 6" /><path d="M6 13l6 6" /></svg>
-    </button>
-<!-- Editable paragraph -->
-  <div id="huly-paragraph" class="relative w-full max-w-xl mx-auto mt-20 overflow-hidden">
-  <!-- Typing container -->
-  <p id="typing-text" class="relative z-10 text-black font-normal leading-relaxed whitespace-pre-wrap"></p>
-
-  <!-- Highlight layer -->
-  <div class="absolute top-0 scale-x-[1.02] pointer-events-none" style="--highlight-position: 1; opacity: 1;">
-    <span class="bg-no-repeat py-0.5 pr-3 text-transparent md:pr-2"
-      style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat; background-position:calc((1 - var(--highlight-position)) * 100%) 0"
-      aria-hidden="true">
-      <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-    </span>
-  </div>
-
-  <!-- Cursor SVG pin layer -->
-  <div class="absolute left-4 top-0 w-full scale-[1.02] pointer-events-none md:left-1" style="--cursor-position: 1; opacity: 1;">
-    <span class="!bg-[length:10px_36px] bg-no-repeat py-2.5 text-transparent md:!bg-[length:8px_26px] md:pr-2 sm:!bg-[length:7px_25px]"
-      style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==) 100% 0 no-repeat; background-position:calc(var(--cursor-position) * 100%) 8px"
-      aria-hidden="true">
-      <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-    </span>
-  </div>
-  </div>
+class="absolute flex flex-col items-start cursor-grab active:cursor-grabbing select-none float-pin"
+style="left:1px; top:-20px;">
+<div class="relative w-[66px] h-[66px] md:w-[45px] md:h-[45px] sm:w-[50px] sm:h-[50px] md:top-[900px] md:left-[100px]">
+<!-- Pulsing glow -->
+<div class="absolute inset-0 rounded-full bg-red-500 opacity-50 animate-ping"></div>
+<!-- Solid ring -->
+<div class="absolute inset-0 rounded-full border-3 border-red-500"></div>
+<img
+src="pin.jpg"
+alt="pin"
+class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full object-cover pointer-events-none"/>
 </div>
-<!-- Add more icons as needed -->
-</div></div></div></div>     </div>
+<!-- Stem -->
+<div class="h-8 w-0.5 bg-red-500 mx-auto"></div>
+<div class="h-2 w-2 rounded-full bg-red-500 mx-auto"></div>
+</div></div>
+<!-- Mini Toolbar -->
+<div id="huly-container" class="relative mt-[26px] lg:mt-[23px] md:mt-[20px] sm:mt-[22px]">
+<!-- Toolbar -->
+<div
+class="absolute -left-4 -top-10 right-0 z-50 mx-auto flex h-10 w-fit min-w-[290px] items-center rounded-md bg-grey-20 px-2.5 shadow-[0px_10px_20px_0px_#00000080]
+lg:-top-10 lg:left-11
+md:-top-8 md:left-7 md:h-[30px] md:min-w-[218px] md:px-2
+sm:-top-6 sm:left-0 sm:h-[27px] sm:min-w-[190px]"
+style="opacity: 1; transform: none;">
+<!-- Link -->
+<button class="transition-all duration-200 flex h-6 cursor-default items-center rounded bg-blue pl-2 pr-2.5 text-14 tracking-snugger text-white
+md:h-[19px] md:px-1 md:text-11 sm:text-10">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 12" class="mr-1.5 h-3 w-3 stroke-white">
+<path d="M6 1v10M1 6h10"></path>
+</svg>
+Link
+</button>
+<span class="ml-3 h-full w-px bg-grey-30 md:ml-2.5 sm:ml-2" aria-hidden="true"></span>
+<!-- Bold -->
+<button class="transition-all duration-200 ml-1 md:ml-0.5">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60">
+<path d="M9.197 19.5V7.621h4.756q1.31 0 2.186.389t1.317 1.079q.44.684.44 1.577 0 .696-.278 1.224-.277.522-.765.859-.482.33-1.102.47v.115q.678.03 1.27.383.597.354.969.992.37.633.37 1.508 0 .945-.469 1.688-.465.737-1.375 1.166t-2.244.429zm2.511-2.053h2.047q1.05 0 1.532-.4.48-.406.481-1.08 0-.492-.238-.87a1.6 1.6 0 0 0-.678-.591q-.435-.215-1.039-.215h-2.105zm0-4.855h1.862q.517 0 .916-.18.406-.186.638-.522.238-.336.238-.806 0-.644-.458-1.038-.452-.395-1.288-.395h-1.908z"></path>
+</svg>
+<span class="sr-only">Bold</span>
+</button>
+<!-- Italic -->
+<button class="transition-all duration-200 ml-1 md:ml-0.5 sm:ml-0">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60">
+<path d="M21 8.556V7H10.889v1.556h3.998l-3.4 10.888H7V21h10.111v-1.556h-3.998l3.4-10.888z"></path>
+</svg>
+<span class="sr-only">Italic</span>
+</button>
+<!-- Underline -->
+<button class="transition-all duration-200 ml-1 md:ml-0.5 sm:ml-0">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60">
+<path d="M15.944 7.621h1.798v7.813q0 1.247-.586 2.21-.586.957-1.647 1.508-1.062.545-2.488.545-1.421 0-2.483-.545-1.062-.55-1.647-1.508-.585-.963-.586-2.21V7.621h1.792v7.668q0 .806.354 1.433.36.626 1.015.986.655.354 1.555.354.905 0 1.56-.354a2.5 2.5 0 0 0 1.01-.986q.353-.627.353-1.433zM7 22.164h12.833v1.167H7z"></path>
+</svg>
+<span class="sr-only">Underline</span>
+</button>
+<!-- Strikethrough -->
+<button class="transition-all duration-200 ml-1 md:ml-0.5 sm:ml-0">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60">
+<path d="M5 12l14 0" />
+<path d="M16 6.5a4 2 0 0 0 -4 -1.5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1 -4 -1.5" />
+</svg>
+<span class="sr-only">Line through</span>
+</button>
+<span class="ml-1 h-full w-px bg-grey-30 md:ml-1" aria-hidden="true"></span>
+<!-- Mention -->
+<button class="transition-all duration-200 ml-2.5 cursor-default md:ml-1.5 sm:ml-1">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]">
+<path d="M9.866 13.335c1.765 0 3.195-1.555 3.195-3.472S11.63 6.39 9.866 6.39 6.672 7.945 6.672 9.863s1.43 3.472 3.194 3.472"></path>
+<path d="M13.059 6.39v5.758c0 1.727 2.595 2.025 3.968-.31 1.165-1.975.88-4.988-.575-6.97C14.312 1.947 9.364.857 5.77 3.27 2.467 5.487 1.29 9.973 3.116 13.598c1.806 3.588 6.045 5.327 9.881 4.03"></path>
+</svg>
+<span class="sr-only">Mention</span>
+</button>
+<!-- Highlight -->
+<button class="transition-all duration-200 ml-3 cursor-default md:ml-2">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]">
+<g clip-path="url(#clip)">
+<path d="M10 .836v1.111M16.489 3.516l-.786.785M19.174 10h-1.111M3.523 3.516l.786.785M.836 10h1.111M15.282 10.004a5.283 5.283 0 0 0-6.419-5.158c-2.08.436-3.722 2.175-4.064 4.272A5.27 5.27 0 0 0 8.06 14.9v2.603c0 .613.498 1.111 1.111 1.111h1.667c.613 0 1.11-.497 1.11-1.107V14.9a5.27 5.27 0 0 0 3.334-4.897M7.664 14.727h4.673"></path>
+</g>
+<defs><clipPath id="clip"><path d="M0 0h20v20H0z"/></clipPath></defs>
+</svg>
+<span class="sr-only">Highlight</span>
+</button>
+</div>
+<!-- Paragraph & overlays -->
+<div class="relative">
+<!-- Typing text (filled by JS) -->
+<span id="typing-text" class="relative z-10 md:pr-2 whitespace-pre-wrap leading-relaxed"></span>
+<!-- Yellow highlight overlay -->
+<div class="absolute top-0 scale-x-[1.02]" style="--highlight-position: 1; opacity: 1;">
+<span class="pointer-events-none bg-no-repeat py-0.5 pr-3 text-transparent md:pr-2"
+style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
+background-position:calc((1 - var(--highlight-position)) * 100%) 0"
+aria-hidden="true">
+<span class="font-semibold">Documents in Huly</span>
+can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+</span>
+</div>
+<!-- Cursor-pin overlay -->
+<div class="absolute left-4 top-0 w-full scale-[1.02] md:left-1" style="--cursor-position: 1; opacity: 1;">
+<span class="pointer-events-none !bg-[length:10px_36px] bg-no-repeat py-2.5 text-transparent md:!bg-[length:8px_26px] md:pr-2 sm:!bg-[length:7px_25px]"
+style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==) 100% 0 no-repeat;
+background-position:calc(var(--cursor-position) * 100%) 8px"
+aria-hidden="true">
+<span class="font-semibold">Documents in Huly</span>
+can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+</span>
+</div>
+</div>
+</div>
+</div></div>
 </section>
-          
-<!--section 3-->
   <!--section 3 end-->
 <section class="py-16 sm:py-32">
 <div class="mx-auto w-full px-6 xl:max-w-7xl space-y-16 sm:space-y-32">
