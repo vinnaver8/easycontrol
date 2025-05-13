@@ -72,12 +72,6 @@ body {
   z-index: 10;
   position: relative;
 }
-/* container must be relative & hide overflow */
-#text-block {
-  position: relative;
-  overflow: hidden;
-}
-
 /* optional idle float effect */
 .float-pin {
   animation: float 2s ease-in-out infinite;
