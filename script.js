@@ -1,37 +1,35 @@
-const editor = document.getElementById('editor');
+<script>
+  (function() {
+    const bold = "Documents in Huly";
+    const rest = " can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.";
+    const out = document.getElementById("typing-text");
+    let done = false;
 
-  document.getElementById('boldBtn').addEventListener('click', () => {
-    document.execCommand('bold', false, null);
-    editor.focus();
-  });
+    function typeIt() {
+      let i = 0;
+      (function step() {
+        if (i <= bold.length + rest.length) {
+          if (i <= bold.length) {
+            out.innerHTML = `<span class="font-semibold">${bold.slice(0,i)}</span>`;
+          } else {
+            out.innerHTML = `<span class="font-semibold">${bold}</span>${rest.slice(0,i-bold.length)}`;
+          }
+          i++;
+          setTimeout(step, 20);
+        }
+      })();
+    }
 
-  document.getElementById('italicBtn').addEventListener('click', () => {
-    document.execCommand('italic', false, null);
-    editor.focus();
-  });
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !done) {
+          done = true;
+          setTimeout(typeIt, 500);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
 
-  document.getElementById('underlineBtn').addEventListener('click', () => {
-    document.execCommand('underline', false, null);
-    editor.focus();
-  });
-
-  document.getElementById('strikeBtn').addEventListener('click', () => {
-    document.execCommand('strikeThrough', false, null);
-    editor.focus();
-  });
-
-  document.getElementById('linkBtn').addEventListener('click', () => {
-    const url = prompt('Enter the URL:', 'https://');
-    if (url) document.execCommand('createLink', false, url);
-    editor.focus();
-  });
-
-  document.getElementById('upBtn').addEventListener('click', () => {
-    editor.focus();
-    document.execCommand('selectAll', false, null);
-  });
-
-  document.getElementById('downBtn').addEventListener('click', () => {
-    editor.focus();
-    document.execCommand('selectAll', false, null);
-  });
+    obs.observe(document.getElementById("huly-container"));
+  })();
+</script>
