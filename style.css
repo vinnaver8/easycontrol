@@ -73,10 +73,11 @@ body {
   position: relative;
 }
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
   }
 
   .float-pin {
-    animation: float 2.5s ease-in-out infinite;
+    animation: float 2s ease-in-out infinite;
   }
