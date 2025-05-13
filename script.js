@@ -41,7 +41,7 @@ function onDrag(e) {
   let newLeft = clientX - offsetX;
   let newTop = clientY - offsetY;
   
-const margin = -100; // negative margin expands area
+const margin = -300; // negative margin expands area
 const minX = textRect.left + margin;
 const maxX = textRect.right - pin.offsetWidth - margin;
 const minY = textRect.top + margin;
