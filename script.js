@@ -14,6 +14,11 @@ document.addEventListener('touchend', stopDrag);
 
 function startDrag(e) {
   isDragging = true;
+   // Lock scroll behavior
+  document.body.style.overflow = 'hidden';
+  document.body.style.touchAction = 'none';
+  pin.classList.remove('float-pin');
+  
   const rect = pin.getBoundingClientRect();
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
