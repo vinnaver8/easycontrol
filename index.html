@@ -151,12 +151,28 @@
     <button id="downBtn" class="p-2 hover:bg-gray-200 rounded">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 5l0 14" /><path d="M18 13l-6 6" /><path d="M6 13l6 6" /></svg>
     </button>
+<!-- Editable paragraph -->
+  <div id="huly-paragraph" class="relative w-full max-w-xl mx-auto mt-20 overflow-hidden">
+  <!-- Typing container -->
+  <p id="typing-text" class="relative z-10 text-black font-normal leading-relaxed whitespace-pre-wrap"></p>
+
+  <!-- Highlight layer -->
+  <div class="absolute top-0 scale-x-[1.02] pointer-events-none" style="--highlight-position: 1; opacity: 1;">
+    <span class="bg-no-repeat py-0.5 pr-3 text-transparent md:pr-2"
+      style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat; background-position:calc((1 - var(--highlight-position)) * 100%) 0"
+      aria-hidden="true">
+      <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+    </span>
   </div>
 
-  <!-- Editable paragraph -->
-  <div id="editor" contenteditable="true"
-       class="mt-4 p-4 min-h-[150px] border rounded bg-gray-50 text-white focus:outline-none">
-    Edit this text...
+  <!-- Cursor SVG pin layer -->
+  <div class="absolute left-4 top-0 w-full scale-[1.02] pointer-events-none md:left-1" style="--cursor-position: 1; opacity: 1;">
+    <span class="!bg-[length:10px_36px] bg-no-repeat py-2.5 text-transparent md:!bg-[length:8px_26px] md:pr-2 sm:!bg-[length:7px_25px]"
+      style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==) 100% 0 no-repeat; background-position:calc(var(--cursor-position) * 100%) 8px"
+      aria-hidden="true">
+      <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+    </span>
+  </div>
   </div>
 </div>
 <!-- Add more icons as needed -->
