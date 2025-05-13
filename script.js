@@ -27,7 +27,6 @@ function startDrag(e) {
   offsetX = clientX - rect.left;
   offsetY = clientY - rect.top;
 
-  // Prevent default scroll
   if (e.cancelable) e.preventDefault();
 }
 
@@ -42,7 +41,7 @@ function onDrag(e) {
   let newTop = clientY - offsetY;
 
   const minX = textRect.left - 100;
-  const maxX = textRect.right - pin.offsetWidth + 100;
+  const maxX = textRect.right - pin.offsetWidth + 80;
   const minY = textRect.top - 100;
   const maxY = textRect.bottom - pin.offsetHeight + 100;
 
@@ -54,7 +53,7 @@ function onDrag(e) {
   pin.style.top = `${newTop - textRect.top}px`;
   pin.style.transition = 'none';
 
-  if (e.cancelable) e.preventDefault(); // block page scroll during drag
+  if (e.cancelable) e.preventDefault();
 }
 
 function stopDrag(e) {
