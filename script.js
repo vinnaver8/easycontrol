@@ -14,51 +14,60 @@ document.addEventListener('touchend', stopDrag);
 
 function startDrag(e) {
   isDragging = true;
-  // lock page scroll
+
+  // Lock scroll behavior
   document.body.style.overflow = 'hidden';
+  document.body.style.touchAction = 'none';
 
   pin.classList.remove('float-pin');
-  const rect    = pin.getBoundingClientRect();
+
+  const rect = pin.getBoundingClientRect();
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
   offsetX = clientX - rect.left;
   offsetY = clientY - rect.top;
+
+  // Prevent default scroll
+  if (e.cancelable) e.preventDefault();
 }
 
 function onDrag(e) {
   if (!isDragging) return;
 
   const textRect = textBlock.getBoundingClientRect();
-  const clientX  = e.touches ? e.touches[0].clientX : e.clientX;
-  const clientY  = e.touches ? e.touches[0].clientY : e.clientY;
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-  // Calculate new pin position
   let newLeft = clientX - offsetX;
-  let newTop  = clientY - offsetY;
+  let newTop = clientY - offsetY;
 
-  // Expand draggable area by 100px around textBlock
-  const minX = textRect.left  - 100;
+  const minX = textRect.left - 100;
   const maxX = textRect.right - pin.offsetWidth + 100;
-  const minY = textRect.top   - 100;
-  const maxY = textRect.bottom- pin.offsetHeight+ 100;
+  const minY = textRect.top - 100;
+  const maxY = textRect.bottom - pin.offsetHeight + 100;
 
   newLeft = Math.max(minX, Math.min(maxX, newLeft));
-  newTop  = Math.max(minY, Math.min(maxY, newTop));
+  newTop = Math.max(minY, Math.min(maxY, newTop));
 
-  // Apply position (relative to textBlock)
-  pin.style.position  = 'absolute';
-  pin.style.left      = `${newLeft - textRect.left}px`;
-  pin.style.top       = `${newTop  - textRect.top }px`;
-  pin.style.transition= 'none';
+  pin.style.position = 'absolute';
+  pin.style.left = `${newLeft - textRect.left}px`;
+  pin.style.top = `${newTop - textRect.top}px`;
+  pin.style.transition = 'none';
+
+  if (e.cancelable) e.preventDefault(); // block page scroll during drag
 }
 
-function stopDrag() {
+function stopDrag(e) {
   if (!isDragging) return;
   isDragging = false;
-  // restore page scroll
-  document.body.style.overflow = '';
 
-  const dropY   = Math.min(pin.offsetTop + 50, textBlock.offsetHeight - pin.offsetHeight);
+  // Re-enable scroll
+  document.body.style.overflow = '';
+  document.body.style.touchAction = '';
+
+  const dropY = Math.min(pin.offsetTop + 50, textBlock.offsetHeight - pin.offsetHeight);
   pin.style.transition = 'top 1s ease-in-out';
-  pin.style.top        = `${dropY}px`;
+  pin.style.top = `${dropY}px`;
+
+  if (e && e.cancelable) e.preventDefault();
 }
