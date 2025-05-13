@@ -42,10 +42,10 @@ function onDrag(e) {
   let newTop = clientY - offsetY;
   
 const margin = -300; // negative margin expands area
-const minX = textRect.left + margin;
-const maxX = textRect.right - pin.offsetWidth - margin;
-const minY = textRect.top + margin;
-const maxY = textRect.bottom - pin.offsetHeight - margin;
+const minX = textRect.left + 0 margin;
+const maxX = textRect.right - pin.offsetWidth - 100;
+const minY = textRect.top + 0;
+const maxY = textRect.bottom - pin.offsetHeight - 0;
   
   newLeft = Math.max(minX, Math.min(maxX, newLeft));
   newTop = Math.max(minY, Math.min(maxY, newTop));
