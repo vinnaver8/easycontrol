@@ -1,3 +1,47 @@
+const pin = document.getElementById('pin');
+  const textBlock = document.getElementById('text-block');
+
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  pin.addEventListener('mousedown', startDrag);
+  document.addEventListener('mousemove', onDrag);
+  document.addEventListener('mouseup', stopDrag);
+
+  pin.addEventListener('touchstart', startDrag, { passive: false });
+  document.addEventListener('touchmove', onDrag, { passive: false });
+  document.addEventListener('touchend', stopDrag);
+
+  function startDrag(e) {
+    isDragging = true;
+    pin.classList.remove('float-pin');
+    const rect = pin.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+  }
+
+  function onDrag(e) {
+    if (!isDragging) return;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    pin.style.left = `${clientX - offsetX}px`;
+    pin.style.top = `${clientY - offsetY}px`;
+    pin.style.transition = 'none';
+  }
+
+  function stopDrag() {
+    if (!isDragging) return;
+    isDragging = false;
+
+    const pinRect = pin.getBoundingClientRect();
+    const textRect = textBlock.getBoundingClientRect();
+    const finalY = textRect.top + window.scrollY - pin.offsetHeight - 10;
+
+    pin.style.transition = 'top 1s ease-in-out';
+    pin.style.top = `${finalY}px`;
+  }
 const svg = document.getElementById('indox-svg');
 const steps = [
   document.getElementById('step1'),
@@ -84,47 +128,3 @@ function typeAIText() {
 
   typeChar();
 }
-  const pin = document.getElementById('pin');
-  const textBlock = document.getElementById('text-block');
-
-  let isDragging = false;
-  let offsetX, offsetY;
-
-  pin.addEventListener('mousedown', startDrag);
-  document.addEventListener('mousemove', onDrag);
-  document.addEventListener('mouseup', stopDrag);
-
-  pin.addEventListener('touchstart', startDrag, { passive: false });
-  document.addEventListener('touchmove', onDrag, { passive: false });
-  document.addEventListener('touchend', stopDrag);
-
-  function startDrag(e) {
-    isDragging = true;
-    pin.classList.remove('float-pin');
-    const rect = pin.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    offsetX = clientX - rect.left;
-    offsetY = clientY - rect.top;
-  }
-
-  function onDrag(e) {
-    if (!isDragging) return;
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    pin.style.left = `${clientX - offsetX}px`;
-    pin.style.top = `${clientY - offsetY}px`;
-    pin.style.transition = 'none';
-  }
-
-  function stopDrag() {
-    if (!isDragging) return;
-    isDragging = false;
-
-    const pinRect = pin.getBoundingClientRect();
-    const textRect = textBlock.getBoundingClientRect();
-    const finalY = textRect.top + window.scrollY - pin.offsetHeight - 10;
-
-    pin.style.transition = 'top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    pin.style.top = `${finalY}px`;
-  }
