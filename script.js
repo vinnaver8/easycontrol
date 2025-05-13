@@ -33,10 +33,10 @@ function onDrag(e) {
   let newLeft = clientX - offsetX - textRect.left;
   let newTop = clientY - offsetY - textRect.top;
 
-  const minX = 0; // Prevent dragging beyond the left boundary
+  const minX = 100; // Prevent dragging beyond the left boundary
   const maxX = textRect.width - pin.offsetWidth + 1; // Prevent dragging beyond the right boundary
-  const minY = 0; // Prevent dragging beyond the top boundary
-  const maxY = textRect.height - pin.offsetHeight +10; // Prevent dragging beyond the bottom boundary
+  const minY = 100; // Prevent dragging beyond the top boundary
+  const maxY = textRect.height - pin.offsetHeight +100; // Prevent dragging beyond the bottom boundary
 
   newLeft = Math.max(minX, Math.min(maxX, newLeft));
   newTop = Math.max(minY, Math.min(maxY, newTop));
