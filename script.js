@@ -1,74 +1,74 @@
-const pin = document.getElementById('pin');
-const textBlock = document.getElementById('text-block');
+const pin       = document.getElementById('pin');
+const sectionEl = document.getElementById('metabrain');
 
-let isDragging = false;
-let offsetX, offsetY;
+let isDragging = false, offsetX, offsetY;
 
 pin.addEventListener('mousedown', startDrag);
 document.addEventListener('mousemove', onDrag);
-document.addEventListener('mouseup', stopDrag);
+document.addEventListener('mouseup',   stopDrag);
 
-pin.addEventListener('touchstart', startDrag, { passive: false });
-document.addEventListener('touchmove', onDrag, { passive: false });
-document.addEventListener('touchend', stopDrag);
+pin.addEventListener('touchstart', startDrag, { passive:false });
+document.addEventListener('touchmove',  onDrag,   { passive:false });
+document.addEventListener('touchend',   stopDrag);
 
 function startDrag(e) {
   isDragging = true;
-
-  // Lock scroll behavior
   document.body.style.overflow = 'hidden';
   document.body.style.touchAction = 'none';
-
   pin.classList.remove('float-pin');
 
-  const rect = pin.getBoundingClientRect();
+  const rect    = pin.getBoundingClientRect();
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
   offsetX = clientX - rect.left;
   offsetY = clientY - rect.top;
 
-  // Prevent default scroll
   if (e.cancelable) e.preventDefault();
 }
 
 function onDrag(e) {
   if (!isDragging) return;
 
-  const textRect = textBlock.getBoundingClientRect();
+  const secRect = sectionEl.getBoundingClientRect();
   const clientX = e.touches ? e.touches[0].clientX : e.clientX;
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
+  // raw new coords
   let newLeft = clientX - offsetX;
-  let newTop = clientY - offsetY;
-  
-const margin = 300; // Increase drag boundary space
-const minX = textRect.left - margin;
-const maxX = textRect.right - pin.offsetWidth + margin;
-const minY = textRect.top - margin;
-const maxY = textRect.bottom - pin.offsetHeight + margin;
-  
-newLeft = Math.max(minX, Math.min(maxX, newLeft));
-newTop = Math.max(minY, Math.min(maxY, newTop));
+  let newTop  = clientY - offsetY;
 
-pin.style.position = 'absolute';
-pin.style.left = `${newLeft - textRect.left}px`;
-pin.style.top = `${newTop - textRect.top}px`;
-pin.style.transition = 'none';
+  // clamp inside section (no extra margin):
+  const minX = secRect.left;
+  const maxX = secRect.right - pin.offsetWidth;
+  const minY = secRect.top;
+  const maxY = secRect.bottom - pin.offsetHeight;
 
-if (e.cancelable) e.preventDefault(); // block page scroll during drag
+  newLeft = Math.max(minX, Math.min(maxX, newLeft));
+  newTop  = Math.max(minY, Math.min(maxY, newTop));
+
+  // set relative to section container
+  pin.style.position = 'absolute';
+  pin.style.left     = `${newLeft - secRect.left}px`;
+  pin.style.top      = `${newTop  - secRect.top }px`;
+  pin.style.transition = 'none';
+
+  if (e.cancelable) e.preventDefault();
 }
 
 function stopDrag(e) {
   if (!isDragging) return;
   isDragging = false;
 
-  // Re-enable scroll
-  document.body.style.overflow = '';
-  document.body.style.touchAction = '';
+  document.body.style.overflow   = '';
+  document.body.style.touchAction= '';
 
-  const dropY = Math.min(pin.offsetTop + 50, textBlock.offsetHeight - pin.offsetHeight);
-  pin.style.transition = 'top 1s ease-in-out';
-  pin.style.top = `${dropY}px`;
+  // drop‐down animation:
+  const dropY = Math.min(
+    pin.offsetTop + 50,
+    sectionEl.clientHeight - pin.offsetHeight
+  );
+  pin.style.transition = 'top 1s cubic-bezier(0.25,0.46,0.45,0.94)';
+  pin.style.top        = `${dropY}px`;
 
-  if (e && e.cancelable) e.preventDefault();
+  if (e?.cancelable) e.preventDefault();
 }
