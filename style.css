@@ -81,4 +81,17 @@ body {
   .float-pin {
     animation: float 2s ease-in-out infinite;
   }
+#text-block {
+  position: relative;
+  overflow: hidden;
+}
 
+#pin {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: red; /* Customize as needed */
+  border-radius: 50%;
+  cursor: grab;
+  z-index: 10;
+}
