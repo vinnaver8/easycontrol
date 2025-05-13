@@ -41,11 +41,11 @@ function onDrag(e) {
   let newLeft = clientX - offsetX;
   let newTop = clientY - offsetY;
   
-const margin = -100; // Increase drag boundary space
-const minX = textRect.left - margin;
-const maxX = textRect.right - pin.offsetWidth + margin;
-const minY = textRect.top - margin;
-const maxY = textRect.bottom - pin.offsetHeight + margin;
+const margin = -100; // negative margin expands area
+const minX = textRect.left + margin;
+const maxX = textRect.right - pin.offsetWidth - margin;
+const minY = textRect.top + margin;
+const maxY = textRect.bottom - pin.offsetHeight - margin;
   
   newLeft = Math.max(minX, Math.min(maxX, newLeft));
   newTop = Math.max(minY, Math.min(maxY, newTop));
