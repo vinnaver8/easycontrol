@@ -103,8 +103,10 @@
  <!-- Floating Pin -->
 <div
   id="pin"
-  class="absolute flex flex-col items-start cursor-grab active:cursor-grabbing select-none float-pin"
-  style="left:1px; top:-10px;"
+  class="sm:absolute relative flex flex-col items-start cursor-grab active:cursor-grabbing group 
+         left-4 top-4 sm:left-[1px] sm:top-[-10px] sm:float-pin
+  absolute flex flex-col items-start cursor-grab active:cursor-grabbing select-none float-pin" draggable="false"
+  style="left:1px; top:-5px;"
 >
   <!-- Container for pin + outline -->
   <div class="relative w-[66px] h-[66px] md:w-[45px] md:h-[45px] sm:w-[36px] sm:h-[36px]">
@@ -116,7 +118,7 @@
     <img
       src="pin.jpg"
       alt="pin"
-      class="relative rounded-full rounded-red border-4 border-red shadow-lg w-full h-full object-cover pointer-events-none"
+      class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full object-cover pointer-events-none"
     />
   </div>
   <!-- Stem -->
