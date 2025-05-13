@@ -81,14 +81,3 @@ body {
     50%  { transform: translateY(-12px); }
     100% { transform: translateY(0); }
 }
-#text-block {
-  position: relative;
-}
-
-#pin {
-  animation: blink 1s step-end infinite;
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
