@@ -77,21 +77,30 @@ body {
     50%  { transform: translateY(-12px); }
     100% { transform: translateY(0); }
   }
-
-  .float-pin {
-    animation: float 2s ease-in-out infinite;
-  }
+/* container must be relative & hide overflow */
 #text-block {
   position: relative;
   overflow: hidden;
 }
 
+/* pin styling */
 #pin {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  background: red; /* Customize as needed */
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
   cursor: grab;
+  user-select: none;
   z-index: 10;
+}
+
+/* optional idle float effect */
+.float-pin {
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
 }
