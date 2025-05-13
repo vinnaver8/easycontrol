@@ -1,114 +1,110 @@
-const pin = document.getElementById('pin');
-const textBlock = document.getElementById('text-block');
-const header = textBlock.querySelector('h1');
-const paragraph = textBlock.querySelector('p');
+  const pin        = document.getElementById('pin');
+  const textBlock  = document.getElementById('text-block');
+  const header     = textBlock.querySelector('h1');
+  const paragraph  = textBlock.querySelector('p');
 
-let isDragging = false;
-let offsetX, offsetY;
-let typingFinished = false;
+  let isDragging    = false;
+  let offsetX       = 0, offsetY = 0;
+  let typingStarted = false;
 
-// Typing animation function
-function typeText(element, text, speed = 40, callback) {
-  element.textContent = "";
-  let index = 0;
-  function typeChar() {
-    if (index < text.length) {
-      element.textContent += text.charAt(index);
-      index++;
-      setTimeout(typeChar, speed);
-    } else {
-      if (callback) callback();
-    }
-  }
-  typeChar();
-}
+  // Hide text until we type it
+  header.style.visibility    = 'hidden';
+  paragraph.style.visibility = 'hidden';
 
-// Observe when text-block enters the viewport
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !typingFinished) {
-        typingFinished = true;
-
-        // Save original text
-        const headerText = header.textContent;
-        const paragraphText = paragraph.textContent;
-
-        // Start typing animation
-        typeText(header, headerText, 40, () => {
-          typeText(paragraph, paragraphText, 20);
-        });
+  // Typing animation
+  function typeText(el, text, speed = 40, cb) {
+    el.style.visibility = 'visible';
+    el.textContent      = '';
+    let idx = 0;
+    (function typeChar() {
+      if (idx < text.length) {
+        el.textContent += text[idx++];
+        setTimeout(typeChar, speed);
+      } else if (cb) {
+        cb();
       }
-    });
-  },
-  { threshold: 0.6 }
-);
+    })();
+  }
 
-observer.observe(textBlock);
+  // Observe when textBlock becomes visible
+  new IntersectionObserver((entries, obs) => {
+    for (let entry of entries) {
+      if (entry.isIntersecting && !typingStarted) {
+        typingStarted = true;
+        const hText = header.textContent;
+        const pText = paragraph.textContent;
 
-// Dragging events
-pin.addEventListener('mousedown', startDrag);
-document.addEventListener('mousemove', onDrag);
-document.addEventListener('mouseup', stopDrag);
+        typeText(header, hText, 50, () => {
+          typeText(paragraph, pText, 25);
+        });
+        obs.disconnect();
+      }
+    }
+  }, { threshold: 0.5 }).observe(textBlock);
 
-pin.addEventListener('touchstart', startDrag, { passive: false });
-document.addEventListener('touchmove', onDrag, { passive: false });
-document.addEventListener('touchend', stopDrag);
+  // Drag handlers
+  function startDrag(e) {
+    if (!typingStarted) return;
+    isDragging = true;
+    document.body.style.overflow    = 'hidden';
+    document.body.style.touchAction = 'none';
+    pin.classList.remove('float-pin');
 
-function startDrag(e) {
-  if (!typingFinished) return;
+    const rect    = pin.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+    if (e.cancelable) e.preventDefault();
+  }
 
-  isDragging = true;
-  document.body.style.overflow = 'hidden';
-  document.body.style.touchAction = 'none';
+  function onDrag(e) {
+    if (!isDragging) return;
+    const bounds  = textBlock.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-  const rect = pin.getBoundingClientRect();
-  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-  offsetX = clientX - rect.left;
-  offsetY = clientY - rect.top;
+    // compute raw pos relative to block
+    let newLeft = clientX - bounds.left - offsetX;
+    let newTop  = clientY - bounds.top  - offsetY;
 
-  if (e.cancelable) e.preventDefault();
-}
+    // clamp within fixed boundaries
+    const minX = 100;
+    const maxX = bounds.width  - pin.offsetWidth + 1;
+    const minY = 100;
+    const maxY = bounds.height - pin.offsetHeight + 100;
 
-function onDrag(e) {
-  if (!isDragging) return;
+    newLeft = Math.max(minX, Math.min(maxX, newLeft));
+    newTop  = Math.max(minY, Math.min(maxY, newTop));
 
-  const textRect = textBlock.getBoundingClientRect();
-  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    // apply
+    pin.style.position   = 'absolute';
+    pin.style.left       = `${newLeft}px`;
+    pin.style.top        = `${newTop}px`;
+    pin.style.transition = 'none';
 
-  const margin = -200;
+    if (e.cancelable) e.preventDefault();
+  }
 
-  let newLeft = clientX - offsetX;
-  let newTop = clientY - offsetY;
+  function stopDrag(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    document.body.style.overflow    = '';
+    document.body.style.touchAction = '';
 
-  const minX = 100; // Prevent dragging beyond the left boundary
-  const maxX = textRect.width - pin.offsetWidth + 1; // Prevent dragging beyond the right boundary
-  const minY = 100; // Prevent dragging beyond the top boundary
-  const maxY = textRect.height - pin.offsetHeight +100; // Prevent dragging beyond the bottom boundary
+    const finalY = pin.offsetTop + 50;
+    const dropY  = Math.min(finalY, textBlock.offsetHeight - pin.offsetHeight);
+    pin.style.transition = 'top 1s ease-in-out';
+    pin.style.top        = `${dropY}px`;
 
-  newLeft = Math.max(minX, Math.min(maxX, newLeft));
-  newTop = Math.max(minY, Math.min(maxY, newTop));
+    if (e && e.cancelable) e.preventDefault();
+  }
 
-  pin.style.position = 'absolute';
-  pin.style.left = `${newLeft - textRect.left}px`;
-  pin.style.top = `${newTop - textRect.top}px`;
-  pin.style.transition = 'none';
+  // Attach events
+  pin.addEventListener('mousedown', startDrag);
+  document.addEventListener('mousemove', onDrag);
+  document.addEventListener('mouseup',   stopDrag);
 
-  if (e.cancelable) e.preventDefault();
-}
-
-function stopDrag() {
-  if (!isDragging) return;
-  isDragging = false;
-  document.body.style.overflow = '';
-  document.body.style.touchAction = '';
-
-  const finalY = pin.offsetTop + 50;
-  const maxDrop = textBlock.offsetHeight - pin.offsetHeight;
-  const dropY = Math.min(finalY, maxDrop);
-
-  pin.style.transition = 'top 1s ease-in-out';
-  pin.style.top = `${dropY}px`;
-}
+  pin.addEventListener('touchstart', startDrag, { passive: false });
+  document.addEventListener('touchmove',  onDrag,    { passive: false });
+  document.addEventListener('touchend',   stopDrag);
