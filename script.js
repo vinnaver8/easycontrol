@@ -1,56 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const editor   = document.getElementById('editor');
-  const hl       = document.getElementById('highlight-overlay');
-  const cu       = document.getElementById('cursor-overlay');
-  const btnLink  = document.getElementById('btn-link');
-  const btnBold  = document.getElementById('btn-bold');
-  const btnItalic= document.getElementById('btn-italic');
-  const btnUnder = document.getElementById('btn-underline');
-  const btnStrike= document.getElementById('btn-strike');
-  const btnHigh  = document.getElementById('btn-highlight');
+  const editor       = document.getElementById('editor');
+  const hlOverlay    = document.getElementById('highlight-overlay');
+  const cuOverlay    = document.getElementById('cursor-overlay');
+  const btnLink      = document.getElementById('btn-link');
+  const btnBold      = document.getElementById('btn-bold');
+  const btnItalic    = document.getElementById('btn-italic');
+  const btnUnderline = document.getElementById('btn-underline');
+  const btnStrike    = document.getElementById('btn-strike');
+  const btnHighlight = document.getElementById('btn-highlight');
+  let manualToggle = false;
 
-  // 1) Formatting actions
-  btnBold.addEventListener('click',   () => { document.execCommand('bold');   editor.focus(); });
-  btnItalic.addEventListener('click', () => { document.execCommand('italic'); editor.focus(); });
-  btnUnder.addEventListener('click',  () => { document.execCommand('underline'); editor.focus(); });
-  btnStrike.addEventListener('click', () => { document.execCommand('strikeThrough'); editor.focus(); });
+  // --- Formatting buttons ---
+  const exec = (cmd, arg = null) => {
+    document.execCommand(cmd, false, arg);
+    editor.focus();
+  };
+
+  btnBold.addEventListener('click',   () => exec('bold'));
+  btnItalic.addEventListener('click', () => exec('italic'));
+  btnUnderline.addEventListener('click', () => exec('underline'));
+  btnStrike.addEventListener('click', () => exec('strikeThrough'));
   btnLink.addEventListener('click', () => {
-    const url = prompt('URL:', 'https://');
-    if(url) { document.execCommand('createLink', false, url); editor.focus(); }
+    const url = prompt('Enter URL:', 'https://');
+    if (url) exec('createLink', url);
   });
 
-  // 2) Highlight toggle animation
-  let manualToggle = false, animating = false;
-  function animateHighlight(show) {
-    if(animating) return;
-    animating = true;
-    let pos = show ? 0 : 1, end = show ? 1 : 0;
-    const step = () => {
-      if((show && pos <= end) || (!show && pos >= end)) {
-        hl.style.setProperty('--highlight-position', pos);
-        hl.style.opacity = show ? 1 : 0;
-        cu.style.opacity = show ? 1 : 0;
-        pos += show ? 0.02 : -0.02;
-        requestAnimationFrame(step);
-      } else {
-        animating = false;
-      }
-    };
-    step();
+  // --- Highlight toggle function ---
+  function setHighlight(on) {
+    if (on) {
+      hlOverlay.style.setProperty('--highlight-position', 1);
+      hlOverlay.classList.remove('opacity-0');
+      cuOverlay.classList.remove('opacity-0');
+      editor.classList.replace('text-white', 'text-black');
+    } else {
+      hlOverlay.classList.add('opacity-0');
+      cuOverlay.classList.add('opacity-0');
+      editor.classList.replace('text-black', 'text-white');
+    }
   }
-  btnHigh.addEventListener('click', () => {
+
+  btnHighlight.addEventListener('click', () => {
     manualToggle = true;
-    animateHighlight(hl.style.opacity ==  '0');
+    const isOn = !hlOverlay.classList.contains('opacity-0');
+    setHighlight(!isOn);
   });
 
-  // 3) Auto‐show on scroll (only once, unless manually toggled off)
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if(e.isIntersecting && !manualToggle) {
-        animateHighlight(true);
+  // --- Auto-show highlight on scroll 50% ---
+  const obs = new IntersectionObserver((entries) => {
+    for (let e of entries) {
+      if (e.isIntersecting && !manualToggle) {
+        setHighlight(true);
         obs.disconnect();
       }
-    });
+    }
   }, { threshold: 0.5 });
-  obs.observe(document.querySelector('#editor'));
+
+  obs.observe(document.getElementById('editor-container'));
 });
