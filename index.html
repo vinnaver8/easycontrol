@@ -177,30 +177,39 @@ class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full 
       <span class="sr-only">Toggle Highlight</span>
     </button>
   </div>
-<!-- Edtable paragraph + overlays -->
-  <div class="relative mt-12">
+<!-- Editor & overlays -->
+  <div class="relative mt-16" id="editor-container">
     <!-- Editable text -->
-    <div id="editor" class="relative">
-    <span class="relative z-10 md:pr-2 whitespace-pre-wrap leading-relaxed"></span>
-<!-- Yellow highlight overlay -->
-<div class="absolute top-0 scale-x-[1.02] opacity-0 transition-opacity duration-300" id="highlight-overlay" style="--highlight-position: 1;">
-  <span class="pointer-events-none bg-no-repeat py-0.5 pr-3 text-transparent md:pr-2"
-        style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
-               background-position:calc((1 - var(--highlight-position)) * 100%) 0"
-        aria-hidden="true">
-    <span class="font-semibold">Documents in Indox</span>
-    can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-  </span>
-</div>
-   <!-- Cursor-pin overlay (hidden initially) -->
+    <div
+      id="editor"
+      contenteditable="true"
+      class="relative z-10 p-4 min-h-[120px] border rounded bg-transparent text-white focus:outline-none leading-relaxed"
+    >
+      <span class="font-semibold">Documents in Huly</span>
+      can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+    </div>
+
+    <!-- Yellow highlight overlay (hidden) -->
+    <div
+      id="highlight-overlay"
+      class="absolute inset-0 scale-x-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none"
+      style="--highlight-position:1;
+             background:
+               linear-gradient(90deg,#ffeba4 50%,transparent 50%)
+               calc((1 - var(--highlight-position)) * 100%) 0/200% 100% no-repeat;"
+    ></div>
+
+    <!-- Cursor pin overlay (hidden) -->
     <div
       id="cursor-overlay"
-      class="absolute left-4 top-0 w-full scale-[1.02] opacity-0"
-      style="--cursor-position:1; background:
-             url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==') calc(var(--cursor-position)*100%) 8px no-repeat;"
+      class="absolute left-4 top-0 w-full scale-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none"
+      style="--cursor-position:1;
+             background:
+               url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')
+               calc(var(--cursor-position) * 100%) 8px no-repeat;"
     ></div>
   </div>
-</div></div></div></div></div>
+</div>
 </section>
   <!--section 3 end-->
 <section class="py-16 sm:py-32">
