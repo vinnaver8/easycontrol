@@ -81,16 +81,3 @@ body {
     50%  { transform: translateY(-12px); }
     100% { transform: translateY(0); }
 }
-.highlight-word {
-  display: inline-block;
-  animation: highlightAnim 0.5s ease-in-out forwards;
-}
-
-@keyframes highlightAnim {
-  from {
-    background-color: transparent;
-  }
-  to {
-    background-color: yellow; /* Adjust color as needed */
-  }
-}
