@@ -117,81 +117,93 @@ class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full 
 <div class="h-2 w-2 rounded-full bg-red-500 mx-auto"></div>
 </div></div></div>
 <!-- Container -->
+<!-- Container -->
 <div class="relative sm:mt-[22px] md:absolute md:top-[1300px] md:left-[330px]">
- <!-- Floating toolbar -->
+  <!-- Toolbar -->
   <div
     class="absolute -left-4 -top-10 right-0 z-50 mx-auto flex h-10 w-fit min-w-[290px] items-center
            rounded-md px-3 shadow-[0px_10px_20px_0px_#00000080]
            lg:-top-10 lg:left-11
            md:-top-8 md:left-7 md:h-[30px] md:min-w-[218px] md:px-2
            sm:-top-6 sm:left-0 sm:h-[27px] sm:min-w-[190px]"
-    style="opacity:1; transform:none; background-color: #a53e00;">
+    style="background-color:#a53e00;"
+  >
     <!-- Link -->
-    <button class="flex items-center h-6 bg-blue pl-2 pr-2.5 text-white text-14 tracking-snugger rounded cursor-default
-                   transition-all duration-200 md:h-[19px] md:px-1 md:text-11 sm:text-10">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 12 12"
+    <button id="btn-link" class="flex items-center h-6 bg-blue px-2.5 text-white text-14 rounded cursor-pointer transition-all duration-200">
+      <!-- your SVG -->
+     <svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 12 12"
            class="mr-1.5 h-3 w-3 stroke-white">
         <path d="M6 1v10M1 6h10"></path>
       </svg>
       Link
     </button>
-    <span class="mx-3 h-full w-px bg-grey-30 md:mx-2.5 sm:mx-2" aria-hidden="true"></span>
-<!-- Bold -->
-    <button class="ml-1 md:ml-0.5 transition-all duration-200">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M9.197 19.5V7.621h4.756q1.31 0 2.186.389t1.317 1.079q.44.684.44 1.577 0 .696-.278 1.224-.277.522-.765.859-.482.33-1.102.47v.115q.678.03 1.27.383.597.354.969.992.37.633.37 1.508 0 .945-.469 1.688-.465.737-1.375 1.166t-2.244.429zm2.511-2.053h2.047q1.05 0 1.532-.4.48-.406.481-1.08 0-.492-.238-.87a1.6 1.6 0 0 0-.678-.591q-.435-.215-1.039-.215h-2.105zm0-4.855h1.862q.517 0 .916-.18.406-.186.638-.522.238-.336.238-.806 0-.644-.458-1.038-.452-.395-1.288-.395h-1.908z"></path></svg>
+    <span class="mx-3 h-full w-px bg-grey-30"></span>
+
+    <!-- Bold -->
+    <button id="btn-bold" class="ml-1 transition-all duration-200">
+      <!-- your Bold SVG -->
+     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M9.197 19.5V7.621h4.756q1.31 0 2.186.389t1.317 1.079q.44.684.44 1.577 0 .696-.278 1.224-.277.522-.765.859-.482.33-1.102.47v.115q.678.03 1.27.383.597.354.969.992.37.633.37 1.508 0 .945-.469 1.688-.465.737-1.375 1.166t-2.244.429zm2.511-2.053h2.047q1.05 0 1.532-.4.48-.406.481-1.08 0-.492-.238-.87a1.6 1.6 0 0 0-.678-.591q-.435-.215-1.039-.215h-2.105zm0-4.855h1.862q.517 0 .916-.18.406-.186.638-.522.238-.336.238-.806 0-.644-.458-1.038-.452-.395-1.288-.395h-1.908z"></path></svg>
+     
       <span class="sr-only">Bold</span>
     </button>
-  <!-- Italic -->
-    <button class="ml-1 md:ml-0.5 sm:ml-0 transition-all duration-200">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M21 8.556V7H10.889v1.556h3.998l-3.4 10.888H7V21h10.111v-1.556h-3.998l3.4-10.888z"></path></svg>
-      <span class="sr-only">Italic</span>
+    <!-- Italic -->
+    <button id="btn-italic" class="ml-1 transition-all duration-200">
+      <!-- your Italic SVG -->
+     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M21 8.556V7H10.889v1.556h3.998l-3.4 10.888H7V21h10.111v-1.556h-3.998l3.4-10.888z"></path></svg>
+    <span class="sr-only">Italic</span>
     </button>
-  <!-- Underline -->
-    <button class="ml-1 md:ml-0.5 sm:ml-0 transition-all duration-200">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M15.944 7.621h1.798v7.813q0 1.247-.586 2.21-.586.957-1.647 1.508-1.062.545-2.488.545-1.421 0-2.483-.545-1.062-.55-1.647-1.508-.585-.963-.586-2.21V7.621h1.792v7.668q0 .806.354 1.433.36.626 1.015.986.655.354 1.555.354.905 0 1.56-.354a2.5 2.5 0 0 0 1.01-.986q.353-.627.353-1.433zM7 22.164h12.833v1.167H7z"></path></svg>
+    <!-- Underline -->
+    <button id="btn-underline" class="ml-1 transition-all duration-200">
+      <!-- your Underline SVG -->
+     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M15.944 7.621h1.798v7.813q0 1.247-.586 2.21-.586.957-1.647 1.508-1.062.545-2.488.545-1.421 0-2.483-.545-1.062-.55-1.647-1.508-.585-.963-.586-2.21V7.621h1.792v7.668q0 .806.354 1.433.36.626 1.015.986.655.354 1.555.354.905 0 1.56-.354a2.5 2.5 0 0 0 1.01-.986q.353-.627.353-1.433zM7 22.164h12.833v1.167H7z"></path></svg>
       <span class="sr-only">Underline</span>
     </button>
- <!-- Strikethrough -->
-    <button class="ml-1 md:ml-0.5 sm:ml-0 transition-all duration-200">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M15.944 7.621h1.798v7.813q0 1.247-.586 2.21-.586.957-1.647 1.508-1.062.545-2.488.545-1.421 0-2.483-.545-1.062-.55-1.647-1.508-.585-.963-.586-2.21V7.621h1.792v7.668q0 .806.354 1.433.36.626 1.015.986.655.354 1.555.354.905 0 1.56-.354a2.5 2.5 0 0 0 1.01-.986q.353-.627.353-1.433z"></path><path d="M7 14h12.833v1.167H7z"></path></svg>
-      <span class="sr-only">Line through</span>
+    <!-- Strikethrough -->
+    <button id="btn-strike" class="ml-1 transition-all duration-200">
+      <!-- your Line-through SVG -->
+     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M15.944 7.621h1.798v7.813q0 1.247-.586 2.21-.586.957-1.647 1.508-1.062.545-2.488.545-1.421 0-2.483-.545-1.062-.55-1.647-1.508-.585-.963-.586-2.21V7.621h1.792v7.668q0 .806.354 1.433.36.626 1.015.986.655.354 1.555.354.905 0 1.56-.354a2.5 2.5 0 0 0 1.01-.986q.353-.627.353-1.433z"></path><path d="M7 14h12.833v1.167H7z"></path></svg>
+      <span class="sr-only">Strikethrough</span>
     </button>
- <span class="ml-1 h-full w-px bg-grey-30 md:ml-1" aria-hidden="true"></span>
-  <!-- Mention -->
+<span class="ml-1 h-full w-px bg-grey-30"></span>
+<!-- Mention (no action) -->
     <button class="ml-2.5 md:ml-1.5 sm:ml-1 cursor-default transition-all duration-200">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 20 20" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="M9.866 13.335c1.765 0 3.195-1.555 3.195-3.472S11.63 6.39 9.866 6.39 6.672 7.945 6.672 9.863s1.43 3.472 3.194 3.472"></path><path d="M13.059 6.39v5.758c0 1.727 2.595 2.025 3.968-.31 1.165-1.975.88-4.988-.575-6.97C14.312 1.947 9.364.857 5.77 3.27 2.467 5.487 1.29 9.973 3.116 13.598c1.806 3.588 6.045 5.327 9.881 4.03"></path></svg>
+      <!-- your Mention SVG -->
+     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 20 20" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="M9.866 13.335c1.765 0 3.195-1.555 3.195-3.472S11.63 6.39 9.866 6.39 6.672 7.945 6.672 9.863s1.43 3.472 3.194 3.472"></path><path d="M13.059 6.39v5.758c0 1.727 2.595 2.025 3.968-.31 1.165-1.975.88-4.988-.575-6.97C14.312 1.947 9.364.857 5.77 3.27 2.467 5.487 1.29 9.973 3.116 13.598c1.806 3.588 6.045 5.327 9.881 4.03"></path></svg>
       <span class="sr-only">Mention</span>
     </button>
-  <!-- Highlight -->
-   <button id="highlightBtn" class="ml-3 md:ml-2 cursor-default transition-all duration-200">
-   <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="20px" height="20px" viewBox="0 0 24 24" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="m20.707 5.826-3.535-3.533a.999.999 0 0 0-1.408-.006L7.096 10.82a1.01 1.01 0 0 0-.273.488l-1.024 4.437L4 18h2.828l1.142-1.129 3.588-.828c.18-.042.345-.133.477-.262l8.667-8.535a1 1 0 0 0 .005-1.42zm-9.369 7.833-2.121-2.12 7.243-7.131 2.12 2.12-7.242 7.131zM4 20h16v2H4z"/></svg>
-   <span class="sr-only">Toggle Highlight</span>
-  </button>
+
+    <!-- Highlight toggle -->
+    <button id="btn-highlight" class="ml-3 md:ml-2 cursor-pointer transition-all duration-200">
+      <!-- your Highlight SVG -->
+     <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="20px" height="20px" viewBox="0 0 24 24" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="m20.707 5.826-3.535-3.533a.999.999 0 0 0-1.408-.006L7.096 10.82a1.01 1.01 0 0 0-.273.488l-1.024 4.437L4 18h2.828l1.142-1.129 3.588-.828c.18-.042.345-.133.477-.262l8.667-8.535a1 1 0 0 0 .005-1.42zm-9.369 7.833-2.121-2.12 7.243-7.131 2.12 2.12-7.242 7.131zM4 20h16v2H4z"/></svg>
+      <span class="sr-only">Toggle Highlight</span>
+    </button>
   </div>
-<!-- Paragraph & overlays -->
-  <div id="huly-container" class="relative">
-    <span id="typing-text" class="relative z-10 md:pr-2 whitespace-pre-wrap leading-relaxed"></span>
-<!-- Yellow highlight overlay -->
-<div class="absolute top-0 scale-x-[1.02] opacity-0 transition-opacity duration-300" id="highlight-overlay" style="--highlight-position: 1;">
-  <span class="pointer-events-none bg-no-repeat py-0.5 pr-3 text-transparent md:pr-2"
-        style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
-               background-position:calc((1 - var(--highlight-position)) * 100%) 0"
-        aria-hidden="true">
-    <span class="font-semibold">Documents in Indox</span>
-    can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-  </span>
+<!-- Editable paragraph + overlays -->
+  <div class="relative mt-12">
+    <!-- Editable text -->
+    <div
+      id="editor"
+      contenteditable="true"
+      class="relative z-10 p-4 min-h-[120px] border rounded bg-white focus:outline-none leading-relaxed">
+      Documents in Huly can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+    </div>
+ <!-- Yellow highlight overlay (hidden initially) -->
+    <div
+      id="highlight-overlay"
+      class="absolute inset-0 scale-x-[1.02] opacity-0"
+      style="--highlight-position:0; background:
+             linear-gradient(90deg,#ffeba4 50%,transparent 50%) calc((1 - var(--highlight-position)) * 100%) 0/200% 100% no-repeat;">
+     </div>
+   <!-- Cursor-pin overlay (hidden initially) -->
+    <div
+      id="cursor-overlay"
+      class="absolute left-4 top-0 w-full scale-[1.02] opacity-0"
+      style="--cursor-position:1; background:
+             url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==') calc(var(--cursor-position)*100%) 8px no-repeat;"
+    ></div>
+  </div>
 </div>
-<!-- Cursor pin overlay -->
-<div class="absolute left-4 top-0 w-full scale-[1.02] md:left-1 opacity-0 transition-opacity duration-300" id="cursor-overlay" style="--cursor-position: 1;">
-  <span class="pointer-events-none !bg-[length:10px_36px] bg-no-repeat py-2.5 text-transparent md:!bg-[length:8px_26px] md:pr-2 sm:!bg-[length:7px_25px]"
-        style="background:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==) 100% 0 no-repeat;
-               background-position:calc(var(--cursor-position) * 100%) 8px"
-        aria-hidden="true">
-    <span class="font-semibold">Documents in Huly</span>
-    can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-  </span>
-</div>
-</div></div></div>
 </section>
   <!--section 3 end-->
 <section class="py-16 sm:py-32">
