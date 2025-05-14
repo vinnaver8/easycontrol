@@ -37,4 +37,3 @@
 
     obs.observe(document.getElementById("huly-container"));
   })();
-</script>
