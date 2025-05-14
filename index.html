@@ -178,36 +178,31 @@ class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full 
     </button>
   </div>
 <!-- Editor & overlays -->
-  <div class="relative mt-16" id="editor-container">
-    <!-- Editable text -->
-    <div
-      id="editor"
-      contenteditable="true"
-      class="relative z-10 p-4 min-h-[120px] border rounded bg-transparent text-white focus:outline-none leading-relaxed"
-    >
-      <span class="font-semibold">Documents in Huly</span>
-      can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-    </div>
-
-    <!-- Yellow highlight overlay (hidden) -->
-    <div
-      id="highlight-overlay"
-      class="absolute inset-0 scale-x-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none"
-      style="--highlight-position:1;
-             background:
-               linear-gradient(90deg,#ffeba4 50%,transparent 50%)
-               calc((1 - var(--highlight-position)) * 100%) 0/200% 100% no-repeat;"
-    ></div>
-
-    <!-- Cursor pin overlay (hidden) -->
-    <div
-      id="cursor-overlay"
-      class="absolute left-4 top-0 w-full scale-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none"
-      style="--cursor-position:1;
-             background:
-               url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')
-               calc(var(--cursor-position) * 100%) 8px no-repeat;"
-    ></div>
+  <div class="relative mt-12" id="editor-container">
+  <!-- 1. Actual visible text (topmost) -->
+  <div id="editor" contenteditable="true" 
+       class="relative z-10 whitespace-pre-wrap leading-relaxed text-white font-normal p-2 focus:outline-none">
+    <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+  </div>
+  <!-- 2. Yellow highlight layer (middle) -->
+  <div id="highlight-overlay"
+       class="absolute inset-0 scale-x-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none z-0"
+       style="--highlight-position: 1;">
+    <span class="pointer-events-none bg-no-repeat text-transparent whitespace-pre-wrap leading-relaxed block p-2"
+          style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
+                 background-position:calc((1 - var(--highlight-position)) * 100%) 0">
+      <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+    </span>
+  </div>
+  <!-- 3. Cursor pin overlay (bottom) -->
+  <div id="cursor-overlay"
+       class="absolute left-4 top-0 w-full scale-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none z-0"
+       style="--cursor-position: 1;">
+    <span class="pointer-events-none bg-no-repeat text-transparent whitespace-pre-wrap leading-relaxed block p-2"
+          style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==') calc(var(--cursor-position)*100%) 8px no-repeat;">
+      <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+    </span>
+  </div>
   </div>
 </div>
 </section>
