@@ -165,51 +165,44 @@ class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full 
     </button>
 <span class="ml-1 h-full w-px bg-white-30"></span>
 <!-- Mention (no action) -->
-    <button class="ml-2.5 md:ml-1.5 sm:ml-1 cursor-default transition-all duration-200">
-      <!-- your Mention SVG -->
-     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 20 20" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="M9.866 13.335c1.765 0 3.195-1.555 3.195-3.472S11.63 6.39 9.866 6.39 6.672 7.945 6.672 9.863s1.43 3.472 3.194 3.472"></path><path d="M13.059 6.39v5.758c0 1.727 2.595 2.025 3.968-.31 1.165-1.975.88-4.988-.575-6.97C14.312 1.947 9.364.857 5.77 3.27 2.467 5.487 1.29 9.973 3.116 13.598c1.806 3.588 6.045 5.327 9.881 4.03"></path></svg>
-      <span class="sr-only">Mention</span>
-    </button>
-  <!-- Highlight toggle -->
-    <button id="btn-highlight" class="ml-3 md:ml-2 cursor-pointer transition-all duration-200">
-      <!-- your Highlight SVG -->
-     <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="20px" height="20px" viewBox="0 0 24 24" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="m20.707 5.826-3.535-3.533a.999.999 0 0 0-1.408-.006L7.096 10.82a1.01 1.01 0 0 0-.273.488l-1.024 4.437L4 18h2.828l1.142-1.129 3.588-.828c.18-.042.345-.133.477-.262l8.667-8.535a1 1 0 0 0 .005-1.42zm-9.369 7.833-2.121-2.12 7.243-7.131 2.12 2.12-7.242 7.131zM4 20h16v2H4z"/></svg>
-      <span class="sr-only">Toggle Highlight</span>
-    </button>
-  </div>
-<!-- Editor wrapper must be relative and width-constrained -->
-<div id="editor-container" class="relative max-w-2xl mx-auto p-4">
-  <!-- Your visible text -->
-  <div id="editor" contenteditable="true"
-       class="relative z-10 whitespace-pre-wrap leading-relaxed text-white bg-transparent">
-    <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials…
-  </div>
- <!-- 2. Yellow highlight layer (middle) -->
-  <div id="highlight-overlay"
-       class="absolute top-0 left-0 opacity-0 transition-opacity duration-300 pointer-events-none"
-       style="--highlight-position:1;">
-    <span class="pointer-events-none bg-no-repeat text-transparent whitespace-pre-wrap leading-relaxed
-                 inline-block px-4 py-2"
-          style="
-            background:
-              linear-gradient(90deg, #ffeba4 50%, transparent 50%)
-              100% 0/200% 100% no-repeat;
-            background-position:
-              calc((1 - var(--highlight-position)) * 100%) 0;
-          ">
-      <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials…
-    </span>
-  </div>
-  <!-- 3. Cursor pin overlay (bottom) -->
-  <div id="cursor-overlay"
-       class="absolute left-4 top-0 w-full scale-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none z-0"
-       style="--cursor-position: 1;">
-    <span class="pointer-events-none !bg-[length:10px_36px] bg-no-repeat text-transparent md:!bg-[length:8px_26px] whitespace-pre-wrap leading-relaxed block p-2 md:pr-2 sm:!bg-[length:7px_25px]"
-          style="background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==)100%0 no-repeat;background-position:calc(var(--cursor-position)*100%) 8px" aria-hidden="true">
-      <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
-    </span>
-  </div>
-  </div>
+<button class="ml-2.5 md:ml-1.5 sm:ml-1 cursor-default transition-all duration-200">
+<!-- your Mention SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 20 20" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="M9.866 13.335c1.765 0 3.195-1.555 3.195-3.472S11.63 6.39 9.866 6.39 6.672 7.945 6.672 9.863s1.43 3.472 3.194 3.472"></path><path d="M13.059 6.39v5.758c0 1.727 2.595 2.025 3.968-.31 1.165-1.975.88-4.988-.575-6.97C14.312 1.947 9.364.857 5.77 3.27 2.467 5.487 1.29 9.973 3.116 13.598c1.806 3.588 6.045 5.327 9.881 4.03"></path></svg>
+<span class="sr-only">Mention</span>
+</button>
+<!-- Highlight toggle -->
+<button id="btn-highlight" class="ml-3 md:ml-2 cursor-pointer transition-all duration-200">
+<!-- your Highlight SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" fill="white" width="20px" height="20px" viewBox="0 0 24 24" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="m20.707 5.826-3.535-3.533a.999.999 0 0 0-1.408-.006L7.096 10.82a1.01 1.01 0 0 0-.273.488l-1.024 4.437L4 18h2.828l1.142-1.129 3.588-.828c.18-.042.345-.133.477-.262l8.667-8.535a1 1 0 0 0 .005-1.42zm-9.369 7.833-2.121-2.12 7.243-7.131 2.12 2.12-7.242 7.131zM4 20h16v2H4z"/></svg>
+<span class="sr-only">Toggle Highlight</span>
+</button>
+</div>
+<div class="relative mt-12" id="editor-container">
+<!-- 1. Actual visible text (topmost) -->
+<div id="editor" contenteditable="true" 
+class="relative z-10 whitespace-pre-wrap leading-relaxed text-white font-normal p-2 focus:outline-none">
+<span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+</div>
+<!-- 2. Yellow highlight layer (middle) -->
+<div id="highlight-overlay"
+class="absolute inset-0 scale-x-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none z-0"
+style="--highlight-position: 1;">
+<span class="pointer-events-none bg-no-repeat text-transparent whitespace-pre-wrap leading-relaxed block p-2"
+style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
+background-position:calc((1 - var(--highlight-position)) * 100%) 0">
+<span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+</span>
+</div>
+<!-- 3. Cursor pin overlay (bottom) -->
+<div id="cursor-overlay"
+class="absolute left-4 top-0 w-full scale-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none z-0"
+style="--cursor-position: 1;">
+<span class="pointer-events-none !bg-[length:10px_36px] bg-no-repeat text-transparent md:!bg-[length:8px_26px] whitespace-pre-wrap leading-relaxed block p-2 md:pr-2 sm:!bg-[length:7px_25px]"
+style="background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==)100%0 no-repeat;background-position:calc(var(--cursor-position)*100%) 8px" aria-hidden="true">
+<span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
+</span>
+</div>
+</div>
 </div>
 </section>
   <!--section 3 end-->
