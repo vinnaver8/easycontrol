@@ -117,7 +117,7 @@ class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full 
 <div class="h-2 w-2 rounded-full bg-red-500 mx-auto"></div>
 </div></div></div>
 <!-- Container -->
-<div class="relative mt-12 sm:mt-[22px] md:absolute md:top-[1200px] md:left-[250px]">
+<div class="relative mt-12 sm:mt-[22px] md:absolute md:top-[1200px] md:left-[300px]">
   <!-- Toolbar -->
   <div id="toolbar"
     class="absolute -left-4 -top-10 right-0 z-50 mx-auto flex h-10 w-fit min-w-[290px] items-center
@@ -180,12 +180,12 @@ class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full 
 <div class="relative mt-12" id="editor-container">
 <!-- 1. Actual visible text (topmost) -->
 <div id="editor" contenteditable="true" 
-class="relative z-10 whitespace-pre-wrap leading-relaxed text-white font-normal p-2 focus:outline-none md:absolute md:top-[1050px] md:left-[350px]">
+class="relative z-10 whitespace-pre-wrap leading-relaxed text-white font-normal p-2 focus:outline-none md:absolute md:top-[1030px] md:left-[350px]">
 <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
 </div>
 <!-- 2. Yellow highlight layer (middle) -->
 <div id="highlight-overlay"
-class="absolute top-0 scale-[1.02] inset-0 opacity-0 z-0 transition-opacity duration-300 pointer-events-none md:w-[625px] md:h-[10px] md:top-[10px] md:left-[10px] md:absolute md:top-[1050px] md:left-[350px]"
+class="absolute top-0 scale-[1.02] inset-0 opacity-0 z-0 transition-opacity duration-300 pointer-events-none md:w-[625px] md:h-[10px] md:top-[10px] md:left-[10px] md:absolute md:top-[1030px] md:left-[350px]"
 style="--highlight-position: 1;">
 <span class="pointer-events-none bg-no-repeat text-transparent whitespace-pre-wrap leading-relaxed block p-2"
 style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
@@ -194,7 +194,7 @@ background-position:calc((1 - var(--highlight-position)) * 100%) 0">
 </span></div>
 <!-- 3. Cursor pin overlay (bottom) -->
 <div id="cursor-overlay"
-class="absolute w-full scale-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none z-0 md:absolute md:top-[1000px] md:left-[350px]"
+class="relative absolute w-full scale-[1.02] opacity-0 transition-opacity duration-300 pointer-events-none z-0 md:absolute md:top-[1000px] md:left-[350px]"
 style="--cursor-position: 1;">
 <span class="pointer-events-none !bg-[length:10px_36px] bg-no-repeat text-transparent md:!bg-[length:8px_26px] whitespace-pre-wrap leading-relaxed block p-2 md:pr-2 sm:!bg-[length:7px_25px]"
 style="background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAxMCAzNiI+PHBhdGggZmlsbD0iIzMwMzIzNiIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNNCAyNi4xQTUuMDAyIDUuMDAyIDAgMCAwIDUgMzZhNSA1IDAgMCAwIDEtOS45VjBINHoiIGNsaXAtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==)100%0 no-repeat;background-position:calc(var(--cursor-position)*100%) 8px" aria-hidden="true">
