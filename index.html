@@ -63,7 +63,7 @@ lg:pt-16">
 <!--2nd section-->
 <section
   class="metabrain relative
-         min-h-[2600px] md:min-h-[2600px]
+         min-h-[2900px] md:min-h-[2900px]
          overflow-hidden
          pt-32">
 <div class="relative md:absolute md:top-[100px] md:left-[360px] md:text-left text-80 text-center w-full md:w-auto">
@@ -235,19 +235,15 @@ real-time collaboration, remote teams are able to work together to bring a unifi
 available within the Huly document editor.
 </p>
 </div>
-<!-- 1) Container with relative positioning -->
 <div
   class="relative flex items-center justify-center
          top-0 md:absolute md:top-[2000px] md:left-[365px]"
 >
-  <!-- 2) Your code‐screenshot image -->
   <img
     src="code.webp"
     alt="code screenshot"
     class="w-[360px] h-[240px] md:w-[570px] md:h-[450px] rounded-[20px]"
   />
-
-  <!-- 3) Hidden <pre> that holds the raw code you want to copy -->
   <pre id="codeBlock" class="hidden">
 async function fetchData() {
   const response = await fetch('/api/data');
@@ -279,15 +275,6 @@ navigator.clipboard
  .then(() => { alert('Code copied to clipboard!'); })
  .catch((err) => {  console.error('Copy failed:', err);}); });
 </script>
-<div class="relative">
-<div class="relative flex flex-col items-center text-center w-full max-w-[800px] mx-auto px-4
-md:absolute md:top-[2400px] md:left-[230px]">
-<p class="text-[#A0A0A0] leading-relaxed">
-Bring your documents to life with text styling, images, files,</p>
-<p class="text-[#A0A0A0] leading-relaxed">
-and code—perfect for planning, documenting, and aligning your team.</p>
-</div>
-</div>
 <div class="relative">
 <div class="relative flex flex-wrap items-center justify-center w-full mx-auto md:absolute md:top-[2100px] md:left-[230px]">
 <span class="text-slate-700">Tap here to continue...</span>
