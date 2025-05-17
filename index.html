@@ -1,0 +1,66 @@
+<html>
+<body style="margin:0; overflow:hidden;">
+  <canvas id="three-canvas"></canvas>
+</body>
+  <div class="bg-[#000000] items-center ">
+  </div>
+  <script type="module">
+  import * as THREE from 'https://cdn.skypack.dev/three';
+
+  const canvas = document.getElementById('three-canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.z = 5;
+
+  const lineCount = 12;
+  const lines = [];
+
+  for (let i = 0; i < lineCount; i++) {
+    const material = new THREE.ShaderMaterial({
+      transparent: true,
+      vertexShader: `
+        varying vec2 vUv;
+        void main() {
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        varying vec2 vUv;
+        void main() {
+          float glow = 1.0 - abs(vUv.x - 0.5) * 2.0;
+          glow = pow(glow, 10.0);
+          gl_FragColor = vec4(glow, 0.0, 0.0, glow);
+        }
+      `
+    });
+
+    const geometry = new THREE.PlaneGeometry(0.02, 3);
+    const line = new THREE.Mesh(geometry, material);
+    line.position.x = (i - lineCount / 2) * 0.2;
+    line.position.y = 0;
+    scene.add(line);
+    lines.push(line);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    lines.forEach((line, i) => {
+      line.position.y = Math.sin(Date.now() * 0.001 + i) * 0.2;
+    });
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+  </script>
+</html>
