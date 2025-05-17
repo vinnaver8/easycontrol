@@ -2,167 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-  <title>Scroll-Synced Card Overlay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Scroll-Traveling Image</title>
   <style>
-    /* —— Global Resets —— */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { background:#333; color:#fff; font-family:sans-serif; }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: black;
+      color: white;
+      overflow-x: hidden;
+    }
 
-    /* —— Three.js Canvas (fixed gutter) —— */
-    #three-canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 150px;
+    .section {
+      position: relative;
+      height: 300vh; /* Long scroll */
+      background: linear-gradient(to bottom, #111, #333);
+    }
+
+    .sticky-wrapper {
+      position: sticky;
+      top: 0;
       height: 100vh;
       pointer-events: none;
     }
 
-    /* —— Main content —— */
-    .content {
-      margin-left: 150px;
-      padding: 2rem;
-    }
-
-    /* —— The scroll-triggered section —— */
-    .scroll-section {
-      position: relative;
-      height: 200vh;       /* Twice the viewport height so you can scroll */
-      border: 2px dashed #555;
-      margin-top: 2rem;
-    }
-
-    /* —— Your Card Overlay —— */
-    .card {
+    .moving-image {
       position: absolute;
-      width: 300px;
-      /* start it at 20% down from the top of the section */
       top: 20%;
       left: 50%;
       transform: translateX(-50%);
-      will-change: transform;
-      transition: transform 0.1s linear;
+      width: 300px;
+      pointer-events: auto;
     }
 
-    /* demo placeholder for card */
-    .card img {
-      display: block;
+    .moving-image img {
       width: 100%;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.4);
     }
   </style>
 </head>
 <body>
 
-  <!-- 1) Three.js Canvas (same as before) -->
-  <canvas id="three-canvas"></canvas>
-
-  <!-- 2) Your normal page content -->
-  <div class="content">
-    <h1>Scroll Down to See the Card Move</h1>
-    <p>When this section enters your viewport, the card will slide up as you scroll, then stop at the bottom of the section.</p>
-
-    <!-- 3) The scroll-trigger section -->
-    <div class="scroll-section" id="scrollSection">
-      <!-- 4) The overlay card -->
-      <div class="card" id="scrollCard">
-        <!-- Replace this with your actual card/image markup -->
-        <img src="leftbox.png" alt="Card">
+  <div class="section" id="scrollSection">
+    <!-- Sticky area where card lives -->
+    <div class="sticky-wrapper">
+      <div class="moving-image" id="movingImage">
+        <!-- Replace with your image -->
+        <img src="leftbox.png" alt="Team Collaboration Card"/>
       </div>
     </div>
-
-    <p>…and here’s the rest of your page content below.</p>
   </div>
 
-  <!-- 5) Three.js UMD (unchanged) -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
-
-  <!-- 6) Three.js Setup (same as before) -->
   <script>
-    const canvas   = document.getElementById('three-canvas');
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    const scene  = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-    camera.position.z = 5;
-
-    const lines = [];
-    const lineCount = 4;
-    for (let i = 0; i < lineCount; i++) {
-      const mat = new THREE.ShaderMaterial({
-        transparent: true,
-        vertexShader: `
-          varying vec2 vUv;
-          void main() {
-            vUv = uv;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.);
-          }
-        `,
-        fragmentShader: `
-          varying vec2 vUv;
-          void main() {
-            float glow = 1.0 - abs(vUv.x - 0.5)*2.;
-            glow = pow(glow, 12.);
-            gl_FragColor = vec4(glow, 0., 0.2*glow, glow);
-          }
-        `,
-      });
-      const geo = new THREE.PlaneGeometry(0.02, 5);
-      const mesh = new THREE.Mesh(geo, mat);
-      mesh.position.x = (i - (lineCount-1)/2)*0.05;
-      scene.add(mesh);
-      lines.push(mesh);
-    }
-
-    // no longer tying line motion to scroll, so omit scroll-handler here
-    function animate() {
-      requestAnimationFrame(animate);
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', ()=>{
-      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-      camera.aspect = canvas.clientWidth / canvas.clientHeight;
-      camera.updateProjectionMatrix();
-    });
-  </script>
-
-  <!-- 7) Scroll-sync script for the card -->
-  <script>
+    const image = document.getElementById('movingImage');
     const section = document.getElementById('scrollSection');
-    const card    = document.getElementById('scrollCard');
 
-    function onScroll() {
-      const { top: secTop, height: secH } = section.getBoundingClientRect();
-      const viewportH = window.innerHeight;
+    window.addEventListener('scroll', () => {
+      const rect = section.getBoundingClientRect();
+      const scrollProgress = Math.min(Math.max(0, -rect.top / rect.height), 1);
 
-      // Only run while section is partially on screen:
-      if (secTop < viewportH && secTop + secH > 0) {
-        // how far into the section we are, 0→1
-        const scrollProgress = Math.min(
-          Math.max((viewportH - secTop) / (viewportH + secH), 0),
-          1
-        );
-
-        // Map 0→1 to a translateY range: e.g. from 0 (start) to -(sectionHeight-cardHeight) px
-        const travel = secH * 0.6; // you can tune this multiplier
-        const yOffset = -scrollProgress * travel;
-
-        card.style.transform = `translate(-50%, ${yOffset}px)`;
-      }
-    }
-
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', onScroll);
-    // initialize position
-    onScroll();
+      // Adjust 200 = travel distance (in px)
+      image.style.transform = `translate(-50%, ${scrollProgress * 200}px)`;
+    });
   </script>
 </body>
 </html>
