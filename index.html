@@ -12,9 +12,46 @@
   <!-- CSS3DRenderer ES module -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/renderers/CSS3DRenderer.js"></script>
   <style>
-    html, body { margin: 0; height: 100%; overflow: hidden; }
-    #container { width: 100%; height: 100%; }
-    /* (Your card & pointer CSS here, same as before) */
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  #container { width: 100%; height: 100%; }
+
+  .card {
+    min-width: 220px;
+    min-height: 140px;
+    background: white;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.15);
+    border-radius: 18px;
+    padding: 24px 28px 18px 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #222;
+    position: relative;
+    transition: box-shadow 0.3s;
+    margin: 0 8px;
+  }
+  .card h2 {
+    font-size: 1.35rem;
+    margin-bottom: 1.1rem;
+    font-weight: 700;
+    color: #1780e7;
+    letter-spacing: 0.01em;
+  }
+  .pointer {
+    position: absolute;
+    background: #1780e7;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 12px rgba(23,128,231,0.08);
+    white-space: nowrap;
+  }
+  .pointer--left {
+    left: -72px;
+    top: 40px;
+    transform: rotate(-15deg);
+  }
   </style>
 </head>
 <body class="bg-gray-50">
