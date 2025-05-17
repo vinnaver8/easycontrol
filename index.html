@@ -8,13 +8,11 @@
   />
   <title>Glowing Lines Background</title>
   <style>
-    /* Make body dark and remove scrollbars */
     body {
       margin: 0;
       overflow: hidden;
       background-color: #333333;
     }
-    /* Ensure the canvas covers the full window */
     #three-canvas {
       display: block;
       width: 100vw;
@@ -25,10 +23,11 @@
 <body>
   <canvas id="three-canvas"></canvas>
 
-  <!-- Three.js via Skypack CDN -->
-  <script type="module">
-    import * as THREE from 'https://cdn.skypack.dev/three';
+  <!-- 1) Load Three.js UMD build from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 
+  <!-- 2) Your animation script, no type="module" needed -->
+  <script>
     // Renderer
     const canvas = document.getElementById('three-canvas');
     const renderer = new THREE.WebGLRenderer({
@@ -65,7 +64,6 @@
         fragmentShader: `
           varying vec2 vUv;
           void main() {
-            // central glow
             float glow = 1.0 - abs(vUv.x - 0.5) * 2.0;
             glow = pow(glow, 10.0);
             gl_FragColor = vec4(glow, 0.0, 0.0, glow);
