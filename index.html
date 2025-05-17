@@ -6,53 +6,72 @@
     name="viewport"
     content="width=device-width, initial-scale=1.0"
   />
-  <title>Glowing Lines Background</title>
+  <title>Scroll-Linked Lines</title>
   <style>
     body {
       margin: 0;
-      overflow: hidden;
+      padding: 0;
       background-color: #333333;
+      display: flex;
     }
+
+    /* 1) The Three.js canvas lives in a fixed left column */
     #three-canvas {
-      display: block;
-      width: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 150px;       /* adjust to your desired gutter width */
       height: 100vh;
+      pointer-events: none; /* allow clicks through to content */
+    }
+
+    /* 2) Main content sits to the right of the canvas */
+    .content {
+      margin-left: 150px;  /* same as canvas width */
+      padding: 2rem;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .spacer {
+      height: 150vh;       /* enough scrollable space for demo */
     }
   </style>
 </head>
 <body>
+
   <canvas id="three-canvas"></canvas>
 
-  <!-- 1) Load Three.js UMD build from CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+  <div class="content">
+    <h1>My Section</h1>
+    <p>Scroll down to see lines move in sync.</p>
+    <div class="spacer"></div>
+    <h2>End of Section</h2>
+  </div>
 
-  <!-- 2) Your animation script, no type="module" needed -->
+  <!-- UMD build of Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
   <script>
-    // Renderer
-    const canvas = document.getElementById('three-canvas');
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      antialias: true,
-      alpha: true,
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    // ————————————————
+    // 1) Setup renderer & scene
+    // ————————————————
+    const canvas   = document.getElementById('three-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    // Scene & Camera
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      50,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      100
-    );
+    const scene    = new THREE.Scene();
+    const camera   = new THREE.PerspectiveCamera(50, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
     camera.position.z = 5;
 
-    // Create multiple glowing lines
-    const lineCount = 12;
-    const lines = [];
+    // ————————————————
+    // 2) Create only 4 glowing lines
+    // ————————————————
+    const lineCount = 4;
+    const lines     = [];
+
     for (let i = 0; i < lineCount; i++) {
-      const material = new THREE.ShaderMaterial({
+      const mat = new THREE.ShaderMaterial({
         transparent: true,
         vertexShader: `
           varying vec2 vUv;
@@ -65,35 +84,48 @@
           varying vec2 vUv;
           void main() {
             float glow = 1.0 - abs(vUv.x - 0.5) * 2.0;
-            glow = pow(glow, 10.0);
-            gl_FragColor = vec4(glow, 0.0, 0.0, glow);
+            glow = pow(glow, 12.0);
+            gl_FragColor = vec4(glow, 0.0, 0.2 * glow, glow);
           }
         `,
       });
 
-      const geometry = new THREE.PlaneGeometry(0.02, 3);
-      const line = new THREE.Mesh(geometry, material);
-      line.position.x = (i - lineCount / 2) * 0.2;
-      scene.add(line);
-      lines.push(line);
+      const geo  = new THREE.PlaneGeometry(0.02, 5); 
+      const mesh = new THREE.Mesh(geo, mat);
+
+      // Spread them vertically centered, small X offset
+      mesh.position.x = (i - (lineCount - 1) / 2) * 0.05;
+      scene.add(mesh);
+      lines.push(mesh);
     }
 
-    // Animate wave motion
+    // ———————————————————————
+    // 3) Sync vertical offset to scroll
+    // ———————————————————————
+    let maxScroll = document.body.scrollHeight - window.innerHeight;
+    function onScroll() {
+      const scrollY = window.scrollY / maxScroll;  // 0 → 1
+      // Map scroll to world-space Y (e.g. -1.5 → +1.5)
+      const worldY = (scrollY * 3) - 1.5;
+      lines.forEach(line => line.position.y = worldY);
+    }
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', () => {
+      maxScroll = document.body.scrollHeight - window.innerHeight;
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+    });
+
+    // ————————
+    // 4) Render
+    // ————————
     function animate() {
       requestAnimationFrame(animate);
-      lines.forEach((line, i) => {
-        line.position.y = Math.sin(Date.now() * 0.001 + i) * 0.2;
-      });
       renderer.render(scene, camera);
     }
     animate();
 
-    // Handle resizing
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
   </script>
 </body>
 </html>
