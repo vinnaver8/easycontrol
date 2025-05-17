@@ -192,10 +192,10 @@ class="relative z-10 whitespace-pre-wrap leading-relaxed text-white font-normal 
 <!-- 2. Yellow highlight layer (middle) -->
 <div id="highlight-overlay"
 class="absolute top-0 scale-[1.02] inset-0 opacity-0 z-0 transition-opacity duration-300 pointer-events-none md:w-[625px] md:h-[10px] md:left-[10px] md:absolute md:top-[1030px] md:left-[350px]"
-style="--highlight-position: 0;">
+style="--highlight-position: 1;">
 <span class="pointer-events-none bg-no-repeat text-transparent whitespace-pre-wrap leading-relaxed block p-2"
 style="background:linear-gradient(90deg, #ffeba4 50%, transparent 50%) 100% 0 / 200% 100% no-repeat;
-background-position:calc((1 - var(--highlight-position)) * 100%) 0">
+background-position:calc((1 - var(--highlight-position)) * 100%) 1">
 <span class="font-semibold">Documents in Huly</span> can be used for sharing reference materials among team members, collaborating on plans and roadmaps, storing meeting notes and assigning action items.
 </span></div>
 <!-- 3. Cursor pin overlay (bottom) -->
@@ -299,22 +299,10 @@ navigator.clipboard
 </div></div>
 <!-- line 1 -->
 <div
-  class="hidden md:block absolute top-[1px] left-[1px] w-[320px] h-[2400px] rounded-[20px] z-0"
+  class="hidden md:block absolute top-[100px] left-[5px] w-[100px] h-[2400px] rounded-[20px] z-0"
   style="background-image: url('line1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;"
 ></div>
 <!--line box -->
-<div class="hidden md:block absolute top-[1px] left-[1px] relative max-w-sm mx-auto mt-20 rounded-2xl overflow-hidden shadow-xl bg-gradient-to-br from-purple-200 to-pink-200 p-6">
-  <!-- Name tag: Aether -->
-  <div class="absolute -top-4 -left-4 bg-blue-500 text-white text-sm px-3 py-1 rounded-full shadow-md">
-    Aether
-    <div class="absolute -bottom-2 left-3 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-blue-500"></div>
-  </div>
-
-  <!-- Name tag: Nova -->
-  <div class="absolute -top-4 -right-4 bg-orange-400 text-white text-sm px-3 py-1 rounded-full shadow-md">
-    Nova
-    <div class="absolute -bottom-2 right-3 w-0 h-0 border-l-8 border-r-8 border-t-8 border-transparent border-t-orange-400"></div>
-  </div>
 
   <!-- Content -->
   <h2 class="text-4xl font-bold text-gray-900 mb-2">Team</h2>
