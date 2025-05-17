@@ -299,10 +299,11 @@ navigator.clipboard
 </div></div>
 <!-- line 1 -->
 <div
-  class="hidden md:block absolute top-[100px] left-[30px] w-[100px] h-[2400px] rounded-[20px] z-0"
-  style="background-image: url('line1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;"
-></div>
+class="hidden md:block absolute top-[100px] left-[30px] w-[100px] h-[2400px] rounded-[20px] z-0"
+style="background-image: url('line1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+</div>
 <!--line box -->
+        
           
 
 </section>
@@ -430,5 +431,50 @@ style="fill:white"/><path d="M1443 1080.1c-34 3.7-54.7 8.1-82.1 17.4-47.8 16.2-9
 <div class="flex items-center justify-center"><button type="button" class="relative isolate inline-flex items-center justify-center border text-base/6 uppercase font-mono tracking-widest shrink-0 focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-blue-500 data-[disabled]:opacity-50 [&amp;>[data-slot=icon]]:-mx-0.5 [&amp;>[data-slot=icon]]:my-0.5 [&amp;>[data-slot=icon]]:shrink-0 [&amp;>[data-slot=icon]]:sm:my-1 px-3.5 py-1.5 sm:text-sm [&amp;>[data-slot=icon]]:size-4 [&amp;>[data-slot=icon]]:sm:size-3 gap-x-2 bg-[--btn-bg] text-[--btn-text] border-[--btn-border] hover:bg-[--btn-hover] rounded-full [--btn-bg:transparent] [--btn-border:theme(colors.primary/25%)] [--btn-text:theme(colors.primary)] [--btn-hover:theme(colors.secondary/20%)] group-hover:bg-[--btn-hover] pointer-events-none"><span class="absolute left-1/2 top-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden" aria-hidden="true">
 </span>Learn more<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"></path></svg></button></div></div></div></div></div></section>       
 <script src="script.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+.arrow-tl {
+  width: 0;
+  height: 0;
+  border-left: 12px solid black;
+  border-top: 12px solid black;
+}
+.arrow-br {
+  width: 0;
+  height: 0;
+  border-right: 12px solid black;
+  border-bottom: 12px solid black;
+}
+</style>
+
+<section id="team-section" class="min-h-screen flex items-center justify-center">
+  <div id="team-box" class="relative p-6 bg-white bg-opacity-80 rounded shadow-lg opacity-0 -translate-y-10 transition-opacity transition-transform duration-700 ease-out">
+    <div class="absolute -top-3 -left-3 arrow-tl animate-bounce"></div>
+    <span id="team-text" class="inline-block text-2xl font-bold text-black transform transition-transform duration-300 cursor-pointer">Team</span>
+    <div class="absolute -bottom-3 -right-3 arrow-br animate-bounce"></div>
+  </div>
+</section>
+
+<script>
+// Scroll-triggered animation: fade in and slide up when in view
+document.addEventListener('DOMContentLoaded', function() {
+  const teamBox = document.getElementById('team-box');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        teamBox.classList.remove('opacity-0','-translate-y-10');
+        teamBox.classList.add('opacity-100','translate-y-0');
+      }
+    });
+  }, { threshold: 0.5 });
+  observer.observe(teamBox);
+
+  // Click/touch effect: change color to blue and scale up
+  const teamText = document.getElementById('team-text');
+  teamText.addEventListener('click', function() {
+    this.classList.add('text-blue-500','scale-125');
+  });
+});
+</script>
 </body>
 </html>
