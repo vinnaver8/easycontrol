@@ -1,69 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Scroll-Traveling Image</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: black;
-      color: white;
-      overflow-x: hidden;
-    }
-
-    .section {
-      position: relative;
-      height: 300vh; /* Long scroll */
-      background: linear-gradient(to bottom, #111, #333);
-    }
-
-    .sticky-wrapper {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      pointer-events: none;
-    }
-
-    .moving-image {
-      position: absolute;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 300px;
-      pointer-events: auto;
-    }
-
-    .moving-image img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    }
-  </style>
+<meta charset="UTF-8">
+<title>3D UI Cards with Three.js and CSS3DRenderer</title>
+<!-- Include Three.js, CSS3DRenderer, GSAP, and Tailwind via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/renderers/CSS3DRenderer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  #container { width: 100%; height: 100%; }
+  .card {
+    width: 300px;
+    height: 200px;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    padding: 1rem;
+    position: relative;
+  }
+  .card h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .pointer {
+    position: absolute;
+    background: #1E3A8A;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  /* Base arrow styling: zero size + one colored border */
+  .pointer:after {
+    content: '';
+    width: 0; height: 0;
+    border: 0.375rem solid transparent;
+    position: absolute;
+  }
+  /* Arrow variants */
+  .pointer--left:after {
+    border-right-color: #1E3A8A;
+    top: 50%; right: 100%;
+    transform: translateY(-50%);
+  }
+  /* (Other directions could be defined similarly.) */
+</style>
 </head>
-<body>
-
-  <div class="section" id="scrollSection">
-    <!-- Sticky area where card lives -->
-    <div class="sticky-wrapper">
-      <div class="moving-image" id="movingImage">
-        <!-- Replace with your image -->
-        <img src="leftbox.png" alt="Team Collaboration Card"/>
-      </div>
-    </div>
-  </div>
-
+<body class="bg-gray-50">
+  <div id="container"></div>
   <script>
-    const image = document.getElementById('movingImage');
-    const section = document.getElementById('scrollSection');
+    // Setup Three.js scene and CSS3D renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 1, 2000);
+    camera.position.set(0, 0, 600);
+    const renderer = new THREE.CSS3DRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('container').appendChild(renderer.domElement);
 
-    window.addEventListener('scroll', () => {
-      const rect = section.getBoundingClientRect();
-      const scrollProgress = Math.min(Math.max(0, -rect.top / rect.height), 1);
+    // Create Team card element
+    const teamElem = document.createElement('div');
+    teamElem.className = 'card';
+    teamElem.innerHTML = `
+      <h2>Team</h2>
+      <div class="mb-1">John S. (You) - Owner</div>
+      <div>Lilianna - Member</div>
+    `;
+    // Pointer tag for John on Team card (arrow pointing to card)
+    const johnPointer = document.createElement('div');
+    johnPointer.className = 'pointer pointer--left';
+    johnPointer.style.top = '45px';
+    johnPointer.style.left = '-60px';
+    johnPointer.textContent = 'John S.';
+    teamElem.appendChild(johnPointer);
 
-      // Adjust 200 = travel distance (in px)
-      image.style.transform = `translate(-50%, ${scrollProgress * 200}px)`;
+    // Create Version History card element
+    const versionElem = document.createElement('div');
+    versionElem.className = 'card';
+    versionElem.innerHTML = `
+      <h2>Version History</h2>
+      <div class="mb-1">v1.0.0 - Initial release</div>
+      <div>v1.1.0 - Lilianna added feature</div>
+    `;
+    // Pointer tag for Lilianna on Version card
+    const liliPointer = document.createElement('div');
+    liliPointer.className = 'pointer pointer--left';
+    liliPointer.style.top = '60px';
+    liliPointer.style.left = '-60px';
+    liliPointer.textContent = 'Lilianna';
+    versionElem.appendChild(liliPointer);
+
+    // Convert these HTML elements into CSS3DObjects
+    const teamObject = new THREE.CSS3DObject(teamElem);
+    teamObject.position.set(-200, 0, 0);
+    teamObject.rotation.y = 0.25;
+    scene.add(teamObject);
+
+    const versionObject = new THREE.CSS3DObject(versionElem);
+    versionObject.position.set(200, 0, 0);
+    versionObject.rotation.y = -0.25;
+    scene.add(versionObject);
+
+    // Animate cards into view
+    gsap.from(teamObject.position, { x: -600, duration: 1.5, ease: "back.out(1.7)" });
+    gsap.from(versionObject.position, { x: 600, duration: 1.5, ease: "back.out(1.7)" });
+
+    // Interactivity: hover (scale) and click (camera focus)
+    let focusTarget = new THREE.Vector3(0, 0, 0);
+    function addInteraction(elem, obj3D) {
+      elem.addEventListener('mouseenter', () => {
+        gsap.to(obj3D.scale, { x:1.05, y:1.05, z:1.05, duration:0.3 });
+      });
+      elem.addEventListener('mouseleave', () => {
+        gsap.to(obj3D.scale, { x:1, y:1, z:1, duration:0.3 });
+      });
+      elem.addEventListener('click', () => {
+        const targetPos = obj3D.position.clone();
+        focusTarget.copy(targetPos);
+        gsap.to(camera.position, { 
+          x: targetPos.x, 
+          y: targetPos.y, 
+          z: targetPos.z + 300, 
+          duration: 1.5, 
+          ease: "power2.inOut" 
+        });
+      });
+    }
+    addInteraction(teamElem, teamObject);
+    addInteraction(versionElem, versionObject);
+
+    // Render loop
+    function animate() {
+      requestAnimationFrame(animate);
+      camera.lookAt(focusTarget);
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>3D UI Cards with Three.js and CSS3DRenderer</title>
+<!-- Include Three.js, CSS3DRenderer, GSAP, and Tailwind via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/js/renderers/CSS3DRenderer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; }
+  #container { width: 100%; height: 100%; }
+  .card {
+    width: 300px;
+    height: 200px;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    padding: 1rem;
+    position: relative;
+  }
+  .card h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .pointer {
+    position: absolute;
+    background: #1E3A8A;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  /* Base arrow styling: zero size + one colored border */
+  .pointer:after {
+    content: '';
+    width: 0; height: 0;
+    border: 0.375rem solid transparent;
+    position: absolute;
+  }
+  /* Arrow variants */
+  .pointer--left:after {
+    border-right-color: #1E3A8A;
+    top: 50%; right: 100%;
+    transform: translateY(-50%);
+  }
+  /* (Other directions could be defined similarly.) */
+</style>
+</head>
+<body class="bg-gray-50">
+  <div id="container"></div>
+  <script>
+    // Setup Three.js scene and CSS3D renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 1, 2000);
+    camera.position.set(0, 0, 600);
+    const renderer = new THREE.CSS3DRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('container').appendChild(renderer.domElement);
+
+    // Create Team card element
+    const teamElem = document.createElement('div');
+    teamElem.className = 'card';
+    teamElem.innerHTML = `
+      <h2>Team</h2>
+      <div class="mb-1">John S. (You) - Owner</div>
+      <div>Lilianna - Member</div>
+    `;
+    // Pointer tag for John on Team card (arrow pointing to card)
+    const johnPointer = document.createElement('div');
+    johnPointer.className = 'pointer pointer--left';
+    johnPointer.style.top = '45px';
+    johnPointer.style.left = '-60px';
+    johnPointer.textContent = 'John S.';
+    teamElem.appendChild(johnPointer);
+
+    // Create Version History card element
+    const versionElem = document.createElement('div');
+    versionElem.className = 'card';
+    versionElem.innerHTML = `
+      <h2>Version History</h2>
+      <div class="mb-1">v1.0.0 - Initial release</div>
+      <div>v1.1.0 - Lilianna added feature</div>
+    `;
+    // Pointer tag for Lilianna on Version card
+    const liliPointer = document.createElement('div');
+    liliPointer.className = 'pointer pointer--left';
+    liliPointer.style.top = '60px';
+    liliPointer.style.left = '-60px';
+    liliPointer.textContent = 'Lilianna';
+    versionElem.appendChild(liliPointer);
+
+    // Convert these HTML elements into CSS3DObjects
+    const teamObject = new THREE.CSS3DObject(teamElem);
+    teamObject.position.set(-200, 0, 0);
+    teamObject.rotation.y = 0.25;
+    scene.add(teamObject);
+
+    const versionObject = new THREE.CSS3DObject(versionElem);
+    versionObject.position.set(200, 0, 0);
+    versionObject.rotation.y = -0.25;
+    scene.add(versionObject);
+
+    // Animate cards into view
+    gsap.from(teamObject.position, { x: -600, duration: 1.5, ease: "back.out(1.7)" });
+    gsap.from(versionObject.position, { x: 600, duration: 1.5, ease: "back.out(1.7)" });
+
+    // Interactivity: hover (scale) and click (camera focus)
+    let focusTarget = new THREE.Vector3(0, 0, 0);
+    function addInteraction(elem, obj3D) {
+      elem.addEventListener('mouseenter', () => {
+        gsap.to(obj3D.scale, { x:1.05, y:1.05, z:1.05, duration:0.3 });
+      });
+      elem.addEventListener('mouseleave', () => {
+        gsap.to(obj3D.scale, { x:1, y:1, z:1, duration:0.3 });
+      });
+      elem.addEventListener('click', () => {
+        const targetPos = obj3D.position.clone();
+        focusTarget.copy(targetPos);
+        gsap.to(camera.position, { 
+          x: targetPos.x, 
+          y: targetPos.y, 
+          z: targetPos.z + 300, 
+          duration: 1.5, 
+          ease: "power2.inOut" 
+        });
+      });
+    }
+    addInteraction(teamElem, teamObject);
+    addInteraction(versionElem, versionObject);
+
+    // Render loop
+    function animate() {
+      requestAnimationFrame(animate);
+      camera.lookAt(focusTarget);
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth/window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
   </script>
 </body>
