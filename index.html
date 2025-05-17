@@ -1,156 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>3D UI Cards with Three.js & CSS3DRenderer</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Three.js ES module build (r150) -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js"></script>
-  <!-- CSS3DRenderer ES module (r150) -->
-  <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/renderers/CSS3DRenderer.js"></script>
-  <!-- GSAP ES module (v3.13.0) -->
-  <script type="module" src="https://unpkg.com/gsap@3.13.0/dist/gsap.esm.js"></script>
-  <style>
-    html, body { margin: 0; height: 100%; overflow: hidden; }
-    #container { width: 100%; height: 100%; }
+  <meta charset="UTF-8" />
+  <title>GSAP DrawSVG on GitHub</title>
 
-    .card {
-      min-width: 220px;
-      min-height: 140px;
-      background: white;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.15);
-      border-radius: 18px;
-      padding: 24px 28px 18px 28px;
-      font-family: 'Inter', sans-serif;
-      font-size: 1.1rem;
-      color: #222;
+  <!-- Tailwind (optional, but if you prefer plain CSS you can remove) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- DrawSVGPlugin (from unpkg) -->
+  <script src="https://unpkg.com/gsap@3.12.2/dist/DrawSVGPlugin.min.js"></script>
+
+  <style>
+    /* -------- your CSS -------- */
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0e100f;
+      overflow: hidden;
+    }
+    .container {
       position: relative;
-      transition: box-shadow 0.3s;
-      margin: 0 8px;
+      width: 90vw;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      border-radius: 9px;
     }
-    .card h2 {
-      font-size: 1.35rem;
-      margin-bottom: 1.1rem;
-      font-weight: 700;
-      color: #1780e7;
-      letter-spacing: 0.01em;
+    #svg-stage {
+      width: 60%;
+      max-width: 750px;
+      overflow: visible;
     }
-    .pointer {
-      position: absolute;
-      background: #1780e7;
-      color: white;
-      padding: 4px 14px;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      box-shadow: 0 2px 12px rgba(23,128,231,0.08);
-      white-space: nowrap;
-    }
-    .pointer--left {
-      left: -72px;
-      top: 40px;
-      transform: rotate(-15deg);
+    /* ensure the path is ready to be drawn */
+    #svg-stage path {
+      stroke-dasharray: 0 1000;
     }
   </style>
 </head>
-<body class="bg-gray-50">
-  <div id="container"></div>
+<body>
+  <div class="container">
+    <svg
+      id="svg-stage"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="-1 -1 103 103"
+      fill="none"
+      stroke-width="2.2"
+      opacity="0"
+    >
+      <defs>
+        <linearGradient
+          id="grad-1"
+          x1="0"
+          y1="0"
+          x2="100"
+          y2="100"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.2" stop-color="rgb(255, 135, 9)"></stop>
+          <stop offset="0.8" stop-color="rgb(247, 189, 248)"></stop>
+        </linearGradient>
+      </defs>
+      <path
+        stroke="url(#grad-1)"
+        d="M50.5 50.5h50v50s-19.2 1.3-37.2-16.7S56 35.4 35.5 15.5C18.5-1 .5.5.5.5v50h50s25.6-.6 38-18 12-32 12-32h-50v100H.5S.2 80.7 11.8 68.2 40 49.7 50.5 50.5Z"
+      />
+    </svg>
+  </div>
 
-  <!-- Main script with ES modules -->
-  <script type="module">
-    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.150.1/build/three.module.js';
-    import { CSS3DRenderer, CSS3DObject } from 'https://cdn.jsdelivr.net/npm/three@0.150.1/examples/jsm/renderers/CSS3DRenderer.js';
-    import { gsap } from 'https://unpkg.com/gsap@3.13.0/dist/gsap.esm.js';
-
-    // —————— Three.js + CSS3D Setup ——————
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 1, 2000);
-    camera.position.set(0, 0, 600);
-
-    const renderer = new CSS3DRenderer();
-    renderer.setSize(innerWidth, innerHeight);
-    document.getElementById('container').appendChild(renderer.domElement);
-
-    // —————— Create a card helper ——————
-    function makeCard({ title, items, pointerText, x, rotY }) {
-      const el = document.createElement('div');
-      el.className = 'card';
-      let inner = `<h2>${title}</h2>`;
-      items.forEach(i => inner += `<div class="mb-1">${i}</div>`);
-      el.innerHTML = inner;
-
-      // pointer tag
-      if (pointerText) {
-        const p = document.createElement('div');
-        p.className = 'pointer pointer--left';
-        p.style.top = '45px';
-        p.style.left = '-60px';
-        p.textContent = pointerText;
-        el.appendChild(p);
-      }
-
-      const obj = new CSS3DObject(el);
-      obj.position.set(x, 0, 0);
-      obj.rotation.y = rotY;
-      scene.add(obj);
-      return { el, obj };
-    }
-
-    // —————— Add Team & Version cards ——————
-    const team = makeCard({
-      title: 'Team',
-      items: ['John S. (You) – Owner', 'Lilianna – Member'],
-      pointerText: 'John S.',
-      x: -200,
-      rotY: 0.25
-    });
-    const version = makeCard({
-      title: 'Version History',
-      items: ['v1.0.0 – Initial release', 'v1.1.0 – Lilianna added feature'],
-      pointerText: 'Lilianna',
-      x: 200,
-      rotY: -0.25
-    });
-
-    // —————— Entry animation ——————
-    gsap.from(team.obj.position, { x: -800, duration: 1.5, ease: 'back.out(1.7)' });
-    gsap.from(version.obj.position, { x: 800, duration: 1.5, ease: 'back.out(1.7)' });
-
-    // —————— Interactivity ——————
-    const focusTarget = new THREE.Vector3();
-    function addInteract(el, obj) {
-      el.addEventListener('mouseenter', () =>
-        gsap.to(obj.scale, { x:1.05, y:1.05, z:1.05, duration:0.3 }));
-      el.addEventListener('mouseleave', () =>
-        gsap.to(obj.scale, { x:1, y:1, z:1, duration:0.3 }));
-      el.addEventListener('click', () => {
-        focusTarget.copy(obj.position);
-        gsap.to(camera.position, {
-          x: focusTarget.x,
-          y: focusTarget.y,
-          z: focusTarget.z + 300,
-          duration: 1.5,
-          ease: 'power2.inOut'
-        });
-      });
-    }
-    addInteract(team.el, team.obj);
-    addInteract(version.el, version.obj);
-
-    // —————— Render loop ——————
-    function animate() {
-      requestAnimationFrame(animate);
-      camera.lookAt(focusTarget);
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    // —————— Resize ——————
-    window.addEventListener('resize', () => {
-      camera.aspect = innerWidth / innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(innerWidth, innerHeight);
+  <script>
+    // wait until SVG is in the DOM
+    window.addEventListener('load', () => {
+      const tl = gsap
+        .timeline({
+          repeat: -1,
+          defaults: { duration: 3, ease: 'power1.inOut' },
+        })
+        .set('#svg-stage', { opacity: 1 })
+        .from('path', { drawSVG: '0% 0%' })
+        .to('path', { drawSVG: '100% 100%' });
     });
   </script>
 </body>
