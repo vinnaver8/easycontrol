@@ -126,65 +126,72 @@ class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full 
           
 </div></div></div></div>
 <!-- Container -->
-<div class="relative mt-12 sm:mt-[22px] md:absolute md:top-[1200px] md:left-[350px]">
-  <!-- Toolbar -->
-<div id="toolbar"
-    class="absolute -left-4 -top-10 right-0 z-50 mx-auto flex h-10 w-fit min-w-[330px] items-center
-           rounded-md px-3 shadow-[0px_10px_20px_0px_#00000080]
-           lg:-top-10 lg:left-11
-           md:-top-8 md:left-7 md:h-[30px] md:min-w-[218px] md:px-2
-           sm:-top-6 sm:left-0 sm:h-[27px] sm:min-w-[190px]"
-    style="background-color:#a53e00;">
-    <!-- Link -->
-    <button id="btn-link" class="transition-all duration-200 flex h-6 cursor-default items-center rounded bg-blue pl-2 pr-2.5 text-14 tracking-snugger text-white md:h-[19px] md:px-1 md:text-11 sm:text-10">
-      <!-- your SVG -->
-<svg xmlns="http://www.w3.org/2000/svg"width="200" height="50" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]">
-<rect width="70" height="32" rx="5" ry="5" fill="#0D0D0D" />
-<text x="18%" y="35%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="white" style="filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.3));">
-    + Link</text>
-</svg>
-    </button>
-    <!-- Bold -->
-    <button id="btn-bold" class="ml-1 transition-all duration-200">
-      <!-- your Bold SVG -->
-     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M9.197 19.5V7.621h4.756q1.31 0 2.186.389t1.317 1.079q.44.684.44 1.577 0 .696-.278 1.224-.277.522-.765.859-.482.33-1.102.47v.115q.678.03 1.27.383.597.354.969.992.37.633.37 1.508 0 .945-.469 1.688-.465.737-1.375 1.166t-2.244.429zm2.511-2.053h2.047q1.05 0 1.532-.4.48-.406.481-1.08 0-.492-.238-.87a1.6 1.6 0 0 0-.678-.591q-.435-.215-1.039-.215h-2.105zm0-4.855h1.862q.517 0 .916-.18.406-.186.638-.522.238-.336.238-.806 0-.644-.458-1.038-.452-.395-1.288-.395h-1.908z"></path></svg>
-     
-      <span class="sr-only">Bold</span>
-    </button>
-    <!-- Italic -->
-    <button id="btn-italic" class="ml-1 transition-all duration-200">
-      <!-- your Italic SVG -->
-     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M21 8.556V7H10.889v1.556h3.998l-3.4 10.888H7V21h10.111v-1.556h-3.998l3.4-10.888z"></path></svg>
-    <span class="sr-only">Italic</span>
-    </button>
-    <!-- Underline -->
-    <button id="btn-underline" class="ml-1 transition-all duration-200">
-      <!-- your Underline SVG -->
-     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M15.944 7.621h1.798v7.813q0 1.247-.586 2.21-.586.957-1.647 1.508-1.062.545-2.488.545-1.421 0-2.483-.545-1.062-.55-1.647-1.508-.585-.963-.586-2.21V7.621h1.792v7.668q0 .806.354 1.433.36.626 1.015.986.655.354 1.555.354.905 0 1.56-.354a2.5 2.5 0 0 0 1.01-.986q.353-.627.353-1.433zM7 22.164h12.833v1.167H7z"></path></svg>
-      <span class="sr-only">Underline</span>
-    </button>
-    <!-- Strikethrough -->
-    <button id="btn-strike" class="ml-1 transition-all duration-200">
-      <!-- your Line-through SVG -->
-     <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 28 28" class="h-7 w-7 transition-colors hover:fill-white md:h-[21px] md:w-[21px] fill-grey-60"><path d="M15.944 7.621h1.798v7.813q0 1.247-.586 2.21-.586.957-1.647 1.508-1.062.545-2.488.545-1.421 0-2.483-.545-1.062-.55-1.647-1.508-.585-.963-.586-2.21V7.621h1.792v7.668q0 .806.354 1.433.36.626 1.015.986.655.354 1.555.354.905 0 1.56-.354a2.5 2.5 0 0 0 1.01-.986q.353-.627.353-1.433z"></path><path d="M7 14h12.833v1.167H7z"></path></svg>
-      <span class="sr-only">Strikethrough</span>
-    </button>
-<span class="ml-1 h-full w-px bg-white-30"></span>
-<!-- Mention (no action) -->
-<button class="ml-2.5 md:ml-1.5 sm:ml-1 cursor-default transition-all duration-200">
-<!-- your Mention SVG -->
-<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 20 20" class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]"><path d="M9.866 13.335c1.765 0 3.195-1.555 3.195-3.472S11.63 6.39 9.866 6.39 6.672 7.945 6.672 9.863s1.43 3.472 3.194 3.472"></path><path d="M13.059 6.39v5.758c0 1.727 2.595 2.025 3.968-.31 1.165-1.975.88-4.988-.575-6.97C14.312 1.947 9.364.857 5.77 3.27 2.467 5.487 1.29 9.973 3.116 13.598c1.806 3.588 6.045 5.327 9.881 4.03"></path></svg>
-<span class="sr-only">Mention</span>
-</button>
-<!-- Highlight toggle -->
-<button id="btn-highlight" class="ml-3 md:ml-2 cursor-pointer transition-all duration-200">
-<!-- your Highlight SVG -->
-<svg xmlns="http://www.w3.org/2000/svg" fill="white" width="20px" height="20px" viewBox="0 0 24 24"
-  class="h-5 w-5 stroke-grey-60 transition-colors md:h-[15px] md:w-[15px]">
-  <path d="m20.707 5.826-3.535-3.533a.999.999 0 0 0-1.408-.006L7.096 10.82a1.01 1.01 0 0 0-.273.488l-1.024 4.437L4 18h2.828l1.142-1.129 3.588-.828c.18-.042.345-.133.477-.262l8.667-8.535a1 1 0 0 0 .005-1.42zm-9.369 7.833-2.121-2.12 7.243-7.131 2.12 2.12-7.242 7.131zM4 20h16v2H4z"/></svg>
- <span class="sr-only">Toggle Highlight</span>
-</button>
-</div></div>
+<div class="relative">
+    <div id="toolbar"
+        class="absolute md:top-[115px] md:left-[370px] z-50 mx-auto flex h-10 w-fit min-w-[330px]
+               rounded-md px-1.5 shadow-[0px_10px_20px_0px_#00000080] items-center
+               lg:-top-10 lg:left-11
+               md:-top-8 md:left-7 md:h-[30px] md:min-w-[218px] md:px-1
+               sm:-top-6 sm:left-0 sm:h-[27px] sm:min-w-[190px]"
+        style="background-color:#1E1E1E;">
+        <button id="btn-link" class="transition-all duration-200 flex h-7 cursor-pointer items-center rounded-md bg-blue-600 pl-2 pr-3 text-sm tracking-tight text-white md:h-[22px] md:px-1.5 md:text-xs sm:text-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-1 md:h-3 md:w-3">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07L10 3.46"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07L14 20.54"></path>
+            </svg>
+            <span>Link</span>
+        </button>
+
+        <button id="btn-bold" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M8.176 16.331V7.621h4.756q1.31 0 2.186.389t1.317 1.079q.44.684.44 1.577 0 .696-.278 1.224-.277.522-.765.859-.482.33-1.102.47v.115q.678.03 1.27.383.597.354.969.992.37.633.37 1.508 0 .945-.469 1.688-.465.737-1.375 1.166t-2.244.429zm2.511-2.053h2.047q1.05 0 1.532-.4.48-.406.481-1.08 0-.492-.238-.87a1.6 1.6 0 0 0-.678-.591q-.435-.215-1.039-.215h-2.105zm0-4.855h1.862q.517 0 .916-.18.406-.186.638-.522.238-.336.238-.806 0-.644-.458-1.038-.452-.395-1.288-.395h-1.908z"></path>
+            </svg>
+            <span class="sr-only">Bold</span>
+        </button>
+
+        <button id="btn-italic" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M12.193 6H17V7.556h-2.585l-3.328 9.888H7V18h5.807V16.444h2.586L12.068 6z"></path>
+            </svg>
+            <span class="sr-only">Italic</span>
+        </button>
+
+        <button id="btn-underline" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M12 17.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V5h2v8.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V5h2v8.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031zM4 20h16v2H4z"></path>
+            </svg>
+            <span class="sr-only">Underline</span>
+        </button>
+
+        <button id="btn-strike" class="ml-1.5 transition-all duration-200 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M12 10.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V5h2v1.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V5h2v1.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031zM4 11h16v2H4zM12 17.5q-2.062 0-3.312-1.031-1.25-1.03-1.25-2.875V12h2v1.625q0 1.125.438 1.625.437.5 1.187.5.75 0 1.188-.5.437-.5.437-1.625V12h2v1.625q0 1.844-1.25 2.875-1.25 1.031-3.312 1.031z"></path>
+            </svg>
+            <span class="sr-only">Strikethrough</span>
+        </button>
+
+        <span class="ml-2 h-5 w-px bg-gray-600 md:h-4"></span>
+
+        <button class="ml-2.5 md:ml-1.5 sm:ml-1 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="M12 12c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 2c-2.671 0-8 1.348-8 4v2h16v-2c0-2.652-5.329-4-8-4z"></path>
+            </svg>
+            <span class="sr-only">Mention</span>
+        </button>
+
+        <button id="btn-highlight" class="ml-2 md:ml-1.5 p-1 rounded-md hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" class="h-5 w-5 md:h-4 md:w-4 fill-gray-400">
+                <path d="m20.707 5.826-3.535-3.533a.999.999 0 0 0-1.408-.006L7.096 10.82a1.01 1.01 0 0 0-.273.488l-1.024 4.437L4 18h2.828l1.142-1.129 3.588-.828c.18-.042.345-.133.477-.262l8.667-8.535a1 1 0 0 0 .005-1.42zm-9.369 7.833-2.121-2.12 7.243-7.131 2.12 2.12-7.242 7.131zM4 20h16v2H4z"></path>
+            </svg>
+            <span class="sr-only">Toggle Highlight</span>
+        </button>
+    </div>
+</div>
+
+          
+
+
+<!-------editor toolbar end hete--->
 <div class="relative mt-12" id="editor-container">
 <!-- 1. Actual visible text (topmost) -->
 <div id="editor" contenteditable="true" 
