@@ -81,3 +81,71 @@ body {
     50%  { transform: translateY(-12px); }
     100% { transform: translateY(0); }
 }
+/* Draggable animation */
+ .draggable-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            height: 500px; /* Adjusted height to accommodate new content */
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            gap: 15px; /* Space between content blocks */
+        }
+
+        .row-guide {
+            position: relative;
+            /* height: auto; Removed fixed height for flexible content */
+            min-height: 50px; /* Minimum height for visual rows */
+            /* border-bottom: 1px dashed #e0e0e0; Removed dashed border for cleaner content */
+            display: flex;
+            align-items: flex-start; /* Align text to the top of the row */
+            justify-content: flex-start;
+            padding-left: 10px;
+            padding-right: 10px; /* Add some padding for text */
+            color: #333; /* Darker text for readability */
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .row-guide.heading {
+            font-size: 2.5rem; /* Larger font for heading */
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 10px; /* Space below heading */
+            min-height: 80px;
+        }
+
+        .row-guide.paragraph {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 10px; /* Space below paragraphs */
+        }
+
+        .draggable-box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #3b82f6; /* Blue-600 */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: grab;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease-in-out;
+            touch-action: none; /* Prevent browser default touch actions */
+        }
+
+        .draggable-box.dragging {
+            cursor: grabbing;
+            z-index: 100;
+            transition: none; /* Disable transition during drag */
+        }
