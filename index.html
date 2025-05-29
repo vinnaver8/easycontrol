@@ -102,10 +102,10 @@ class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg
 class="w-[360px] h-[240px] md:w-[250px] md:h-[240px] rounded-[20px] shadow-xl bg-[#111]" />
 </div></div>
 <!--drag events-->
-<div id="text-block" id="pin" class="relative md:absolute md:top-[950px] md:left-[360px] md:text-left text-80 text-center w-full md:w-auto relative overflow-visible pt-32">
+<div id="draggableContainer" class="relative md:absolute md:top-[950px] md:left-[360px] md:text-left text-80 text-center w-full md:w-auto relative overflow-visible pt-32">
 <h1 class="text-4xl font-bold mb-4" style="color: #E5E5E5;">
 Knowledge at <span style="color: #E5E5E5;">Fingertips</span></h1>
-<p class="max-w-xl mx-auto md:mx-0 mb-12" style="color: #A0A0A0;">Huly offers a wide range of features to create and manage your project documentation. Huly's suite of collaborative editing tools boosts team efficiency.</p>
+<p id="snap-target-row"class="max-w-xl mx-auto md:mx-0 mb-12" style="color: #A0A0A0;">Huly offers a wide range of features to create and manage your project documentation. Huly's suite of collaborative editing tools boosts team efficiency.</p>
 <!-- Floating Pin -->
 <div id="main-wrapper">
 <div class="absolute flex flex-col items-start cursor-grab active:cursor-grabbing select-none float-pin md:top-[900px] md:left-[100px]"
@@ -115,7 +115,7 @@ style="left:1px; top:-20px;">
 <div class="absolute inset-0 rounded-full bg-red-500 opacity-50 animate-ping"></div>
 <!-- Solid ring -->
 <div class="absolute inset-0 rounded-full border-3 border-red-500"></div>
-<img id="pin"
+<img id="draggablebox"
 src="pin.jpg"
 alt="pin"
 class="relative rounded-full bg-red border-4 border-red shadow-lg w-full h-full object-cover pointer-events-none"/>
@@ -441,49 +441,5 @@ style="fill:white"/><path d="M1443 1080.1c-34 3.7-54.7 8.1-82.1 17.4-47.8 16.2-9
 </span>Learn more<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"></path></svg></button></div></div></div></div></div></section>       
 <script src="script.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
-<style>
-.arrow-tl {
-  width: 0;
-  height: 0;
-  border-left: 12px solid black;
-  border-top: 12px solid black;
-}
-.arrow-br {
-  width: 0;
-  height: 0;
-  border-right: 12px solid black;
-  border-bottom: 12px solid black;
-}
-</style>
-
-<section id="team-section" class="min-h-screen flex items-center justify-center">
-  <div id="team-box" class="relative p-6 bg-white bg-opacity-80 rounded shadow-lg opacity-0 -translate-y-10 transition-opacity transition-transform duration-700 ease-out">
-    <div class="absolute -top-3 -left-3 arrow-tl animate-bounce"></div>
-    <span id="team-text" class="inline-block text-2xl font-bold text-black transform transition-transform duration-300 cursor-pointer">Team</span>
-    <div class="absolute -bottom-3 -right-3 arrow-br animate-bounce"></div>
-  </div>
-</section>
-
-<script>
-// Scroll-triggered animation: fade in and slide up when in view
-document.addEventListener('DOMContentLoaded', function() {
-  const teamBox = document.getElementById('team-box');
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        teamBox.classList.remove('opacity-0','-translate-y-10');
-        teamBox.classList.add('opacity-100','translate-y-0');
-      }
-    });
-  }, { threshold: 0.5 });
-  observer.observe(teamBox);
-
-  // Click/touch effect: change color to blue and scale up
-  const teamText = document.getElementById('team-text');
-  teamText.addEventListener('click', function() {
-    this.classList.add('text-blue-500','scale-125');
-  });
-});
-</script>
 </body>
 </html>
